@@ -32,12 +32,10 @@ var smallerNumber = function(firstNumber, secondNumber){
 
 basicFunctions.gcdOf = function(firstNumber, secondNumber){
 	if(typeof(firstNumber) == 'number' && typeof(secondNumber) == 'number'){
-		var bigNumber = Math.abs(biggerNumber(firstNumber, secondNumber));
-		var smallNumber = Math.abs(smallerNumber(firstNumber, secondNumber));
-		var remainder = bigNumber%smallNumber;
+		var remainder = firstNumber%secondNumber;
 		if(remainder == 0)
-			return smallNumber;
-		return basicFunctions.gcdOf(remainder, smallNumber);
+			return secondNumber;
+		return basicFunctions.gcdOf(secondNumber,remainder);
 	}
 	return NaN;
 };

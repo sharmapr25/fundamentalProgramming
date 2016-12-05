@@ -178,8 +178,8 @@ describe('basic functions ',function(){
 			assert.equal(2,gcdOf(18,16));
 		});
 
-		it('should return 2 when the given values are -8 and -10',function(){
-			assert.equal(2, gcdOf(-8,-10));
+		it('should return -2 when the given values are -8 and -10',function(){
+			assert.equal(-2, gcdOf(-8,-10));
 		});
 
 		it('should return NaN when the given values are not a number',function(){
@@ -216,8 +216,8 @@ describe('basic functions ',function(){
 			assert.equal(144,lcmOf(18,16));
 		});
 
-		it('should return 2 when the given values are -8 and -10',function(){
-			assert.equal(40, lcmOf(-8,-10));
+		it('should return -40 when the given values are -8 and -10',function(){
+			assert.equal(-40, lcmOf(-8,-10));
 		});
 
 		it('should return NaN when the given values are not a number',function(){
