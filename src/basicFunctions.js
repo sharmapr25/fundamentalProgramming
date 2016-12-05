@@ -63,9 +63,7 @@ basicFunctions.cToFTemperatureConversion = function(temperature){
 }
 
 basicFunctions.sumOfNNumber = function(range){
-	if(range >0)
-		return (range*(range+1))/2;
-	return 0;
+	return (range*(range+1))/2;
 };
 
 basicFunctions.greatestOfThreeNumbers = function(firstNumber, secondNumber, thirdNumber){

@@ -377,12 +377,12 @@ describe('basic functions ',function(){
 
 		it('should return 0 for the given range below 0',function(){
 			assert.equal(0, sumOfNNumber(-1));
-			assert.equal(0, sumOfNNumber(-2));
+			assert.equal(1, sumOfNNumber(-2));
 		});
 
-		it('should return 0 when the given range is undefined',function(){
-			assert.equal(0,sumOfNNumber(undefined));
-			assert.equal(0, sumOfNNumber('hello'));
+		it('should return NaN when the given range is undefined',function(){
+			assert.ok(isNaN(sumOfNNumber(undefined)));
+			assert.ok(isNaN(sumOfNNumber('hello')));
 		});
 
 		it('should return Infinity when the given range is Infinity',function(){
