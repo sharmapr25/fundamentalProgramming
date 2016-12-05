@@ -40,13 +40,9 @@ basicFunctions.gcdOf = function(firstNumber, secondNumber){
 	return NaN;
 };
 
-var quotientOf = function(dividend, divisor){
-	return dividend/divisor;
-}
-
 basicFunctions.lcmOf = function(firstNumber, secondNumber){
 	gcdOfTwoNumbers = basicFunctions.gcdOf(firstNumber,secondNumber);
-	return quotientOf(firstNumber*secondNumber, gcdOfTwoNumbers); 
+	return (firstNumber*secondNumber)/gcdOfTwoNumbers; 
 }
 
 basicFunctions.simpleInterestOf = function(principle, rate, time){
