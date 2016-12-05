@@ -74,8 +74,44 @@ describe('basic functions ',function(){
 
 	describe('square',function(){
 		var squareOf = basicFunctions.squareOf;
-		it('should return 1 for given number 1',function(){
+		it('should return 1 for the given value 1',function(){
 			assert.equal(1, squareOf(1));
+		});
+
+		it('should return 0 for the given value 0',function(){
+			assert.equal(0, squareOf(0));
+		});
+
+		it('should return 100 for the given value 10',function(){
+			assert.equal(100, squareOf(10));
+		});
+
+		it('should return 1 for the given negative value 1',function(){
+			assert.equal(1, squareOf(-1));
+		});
+
+		it('should return NaN when the given number is undefined',function(){
+			assert.ok(isNaN(squareOf(undefined)));
+		});
+
+		it('should return Infinity when the given number is Infinity',function(){
+			assert.ok(Infinity, squareOf(Infinity));
+		});
+
+		it('should return Infinity when the given number is negative Infinity',function(){
+			assert.ok(Infinity, squareOf(Infinity));
+		});
+
+		it('should return 0.36 for the given value 0.6',function(){
+			assert.equal(0.36, squareOf(0.6));
+		});
+
+		it('should return 1.0 for the given value 1.0',function(){
+			assert.equal(1.0, squareOf(1.0));
+		});
+
+		it('should reutrn NaN when the type of given value is not a number',function(){
+			assert.ok(isNaN(squareOf('s')));
 		});
 	});
 });
