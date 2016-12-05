@@ -228,7 +228,7 @@ describe('basic functions ',function(){
 	});
 
 	describe('Simple interest',function(){
-		var siOf = basicFunctions.siOf;
+		var siOf = basicFunctions.simpleInterestOf;
 
 		it('should return 100 for the given sum 1000 with rate 10 over a given 1 year',function(){
 			assert.equal(100, siOf(1000, 10, 1));
@@ -253,7 +253,7 @@ describe('basic functions ',function(){
 		});
 
 		it('should return a message of not zero principle when given principle is zero',function(){
-			assert.equal('principle should not be zero',siOf(0,2,3));
+			assert.equal(0,siOf(0,2,3));
 		});
 	});
 
@@ -387,6 +387,75 @@ describe('basic functions ',function(){
 
 		it('should return Infinity when the given range is Infinity',function(){
 			assert.equal(Infinity, sumOfNNumber(Infinity));
+		});
+	});
+
+	describe('greatest of three numbers',function(){
+		var greatestOfThreeNumbers = basicFunctions.greatestOfThreeNumbers;
+
+		it('should return 3 when the given numbers are 1,2 and 3',function(){
+			assert.equal(3, greatestOfThreeNumbers(1,2,3));
+		});
+
+		it('should return 5 when the given numbers are 3,2 and 5',function(){
+			assert.equal(5, greatestOfThreeNumbers(3,2,5));
+		});
+
+		it('should return 2 when the given numbers are 0,1 and 2',function(){
+			assert.equal(2, greatestOfThreeNumbers(0,1,2));
+		});
+
+		it('should return 0 when the given numbers are -2 -1 and 0',function(){
+			assert.equal(0, greatestOfThreeNumbers(-2,-1,0));
+		});
+
+		it('should return -2 when the given numbers are -5,-4 and -2',function(){
+			assert.equal(-2, greatestOfThreeNumbers(-5,-4,-2));
+		});
+
+		it('should return undefined when the one of the given number is undefined',function(){
+			assert.equal(undefined, greatestOfThreeNumbers(0,1,undefined));
+		});
+
+		it('should return 1 when the given all numbers are 1',function(){
+			assert.equal(1, greatestOfThreeNumbers(1,1,1));
+		});
+
+		it('should return Infinity when the one of the given number is Infinity',function(){
+			assert.equal(Infinity, greatestOfThreeNumbers(Infinity, 0,-1));
+		});
+	});
+
+	describe('Average of three numbers',function(){
+		var averageOfThreeNumbers = basicFunctions.averageOfThreeNumbers;
+
+		it('should return 2 when the given numbers are 1,2 and 3',function(){
+			assert.equal(2, averageOfThreeNumbers(1,2,3));
+		});
+
+		it('should return 4.67 when the given numbers are 2 7 and 5',function(){
+			assert.equal(4.67, averageOfThreeNumbers(2,7,5));
+		});
+
+		it('shoule return zero when the given numbers are 1,-4 and 3',function(){
+			assert.equal(0, averageOfThreeNumbers(1,-4,3));
+		});
+
+		it('should return 3 when the given numbers are 3,-3 and 3',function(){
+			assert.equal(1, averageOfThreeNumbers(3,-3,3));
+		});
+
+		it('should NaN when the one of the given number is undefined',function(){
+			assert.ok(isNaN(averageOfThreeNumbers(undefined,1,2)));
+			assert.ok(isNaN(averageOfThreeNumbers('one',1,2)));
+		});
+
+		it('should return Infinity when the one of the given number is Infinity',function(){
+			assert.equal(Infinity, averageOfThreeNumbers(Infinity, 0,-1));
+		});
+
+		it('should return -2 when the given numbers are -1,-2 and -3',function(){
+			assert.equal(-2, averageOfThreeNumbers(-1,-2,-3));
 		});
 	});
 });

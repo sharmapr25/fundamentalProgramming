@@ -51,18 +51,16 @@ basicFunctions.lcmOf = function(firstNumber, secondNumber){
 	return quotientOf(firstNumber*secondNumber, gcdOfTwoNumbers); 
 }
 
-basicFunctions.siOf = function(principle, rate, time){
-	if(principle >0 && time >0)
+basicFunctions.simpleInterestOf = function(principle, rate, time){
+	if(principle >=0 && time >0)
 		return (principle*rate*time)/100;
-	if(principle == 0)
-		return 'principle should not be zero';
 	return 'principle and time should not be negative';
 };
 
 basicFunctions.compoundInterestOf = function(principle, rate, time){
 	if(typeof(time) == 'number'){
 		while(time >0){
-			principle += basicFunctions.siOf(principle,rate, 1);
+			principle += basicFunctions.simpleInterestOf(principle,rate, 1);
 			time--;
 		};
 	return principle;
@@ -81,6 +79,14 @@ basicFunctions.sumOfNNumber = function(range){
 	if(range >0)
 		return (range*(range+1))/2;
 	return 0;
+};
+
+basicFunctions.greatestOfThreeNumbers = function(firstNumber, secondNumber, thirdNumber){
+	return biggerNumber(biggerNumber(firstNumber, secondNumber),thirdNumber);
+};
+
+basicFunctions.averageOfThreeNumbers = function(firstNumber, secondNumber, thirdNumber){
+	return parseFloat((firstNumber+secondNumber+thirdNumber)/3).toFixed(2);
 };
 
 module.exports = basicFunctions;
