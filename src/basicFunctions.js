@@ -34,10 +34,10 @@ basicFunctions.gcdOf = function(firstNumber, secondNumber){
 	if(typeof(firstNumber) == 'number' && typeof(secondNumber) == 'number'){
 		var bigNumber = Math.abs(biggerNumber(firstNumber, secondNumber));
 		var smallNumber = Math.abs(smallerNumber(firstNumber, secondNumber));
-		var remainderOfdividing = bigNumber%smallNumber;
-		if(remainderOfdividing == 0)
+		var remainder = bigNumber%smallNumber;
+		if(remainder == 0)
 			return smallNumber;
-		return basicFunctions.gcdOf(remainderOfdividing, smallNumber);
+		return basicFunctions.gcdOf(remainder, smallNumber);
 	}
 	return NaN;
 };
@@ -47,10 +47,26 @@ var quotientOf = function(dividend, divisor){
 }
 
 basicFunctions.lcmOf = function(firstNumber, secondNumber){
-	gcmOfTwoNumbers = basicFunctions.gcdOf(firstNumber,secondNumber);
-	var firstQuotient = quotientOf(firstNumber, gcmOfTwoNumbers);
-	var secondQuotient = quotientOf(secondNumber, gcmOfTwoNumbers);	
-	return gcmOfTwoNumbers*firstQuotient*secondQuotient;
+	gcdOfTwoNumbers = basicFunctions.gcdOf(firstNumber,secondNumber);
+	return quotientOf(firstNumber*secondNumber, gcdOfTwoNumbers); 
 }
+
+basicFunctions.siOf = function(principle, rate, time){
+	if(principle >0 && time >0)
+		return (principle*rate*time)/100;
+	if(principle == 0)
+		return 'principle should not be zero';
+	return 'principle and time should not be negative';
+};
+
+basicFunctions.compoundInterestOf = function(principle, rate, time){
+	if(typeof(time) == 'number'){
+		while(time >0){
+			principle += basicFunctions.siOf(principle,rate, 1);
+			time--;
+		};
+	return principle;
+	}
+};
 
 module.exports = basicFunctions;

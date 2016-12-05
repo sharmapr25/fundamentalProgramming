@@ -226,4 +226,62 @@ describe('basic functions ',function(){
 			assert.ok(isNaN(lcmOf(undefined, undefined)));
 		});
 	});
+
+	describe('Simple interest',function(){
+		var siOf = basicFunctions.siOf;
+
+		it('should return 100 for the given sum 1000 with rate 10 over a given 1 year',function(){
+			assert.equal(100, siOf(1000, 10, 1));
+		});
+
+		it('should return 400 for the given sum 5000 with rate 4 over given 2 years',function(){
+			assert.equal(400, siOf(5000,4,2));
+		});
+
+		it('should return NaN when the given sum is not a number',function(){
+			assert.ok(isNaN(siOf(undefined,2,3)));
+			assert.ok(isNaN(siOf('pi',10,3)));
+		});
+
+		it('should return 500.5 for the given sum 5000.5 with rate 3 over a given 1 year',function(){
+			assert.equal(5.005, siOf(500.5, 1,1));
+		});
+
+		it('should return a message of negative principle for given negative number',function(){
+			assert.equal('principle and time should not be negative',siOf(-2000,2,3));
+			assert.equal('principle and time should not be negative',siOf(2000,2,-3));
+		});
+
+		it('should return a message of not zero principle when given principle is zero',function(){
+			assert.equal('principle should not be zero',siOf(0,2,3));
+		});
+	});
+
+	describe('compound interest',function(){
+		var compoundInterestOf = basicFunctions.compoundInterestOf;
+
+		it('should return 101 for the given sum 100 with rate 1 over a given 1 year',function(){
+			assert.equal(101, compoundInterestOf(100,1,1));
+		});
+
+		it('should return 102.01 for the given sum 100 with rate 1 over a given 2 years',function(){
+			assert.equal(102.01, compoundInterestOf(100,1,2));
+		});
+
+		it('should return 104.04 for the given sum 100 with rate 2 over a given 2 years',function(){
+			assert.equal(104.04, compoundInterestOf(100,2,2));
+		});
+
+		it('should return NaN when the given sum is not a number',function(){
+			assert.ok(isNaN(compoundInterestOf(undefined,2,1)));
+			assert.ok(isNaN(compoundInterestOf('s',2,1)));
+		});
+
+		it('should return NaN when the given value is not a number',function(){
+			assert.ok(isNaN(compoundInterestOf(1000,undefined,2)));
+			assert.ok(isNaN(compoundInterestOf(1000,'r',2)));
+			assert.ok(isNaN(compoundInterestOf(1000,2,undefined)));
+			assert.ok(isNaN(compoundInterestOf(1000,2,'t')));
+		});
+	});
 });
