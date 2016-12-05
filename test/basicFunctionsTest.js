@@ -230,20 +230,20 @@ describe('basic functions ',function(){
 	describe('Simple interest',function(){
 		var siOf = basicFunctions.simpleInterestOf;
 
-		it('should return 100 for the given sum 1000 with rate 10 over a given 1 year',function(){
+		it('should return 100 when a principle is 1000 with rate 10 over a year',function(){
 			assert.equal(100, siOf(1000, 10, 1));
 		});
 
-		it('should return 400 for the given sum 5000 with rate 4 over given 2 years',function(){
+		it('should return 400 when a principle is 5000 with rate 4 over 2 years',function(){
 			assert.equal(400, siOf(5000,4,2));
 		});
 
-		it('should return NaN when the given sum is not a number',function(){
+		it('should return NaN when the given principle is not a number',function(){
 			assert.ok(isNaN(siOf(undefined,2,3)));
 			assert.ok(isNaN(siOf('pi',10,3)));
 		});
 
-		it('should return 500.5 for the given sum 5000.5 with rate 3 over a given 1 year',function(){
+		it('should return 500.5 when a principle is 5000.5 with rate 3 over a year',function(){
 			assert.equal(5.005, siOf(500.5, 1,1));
 		});
 
@@ -252,7 +252,7 @@ describe('basic functions ',function(){
 			assert.equal('principle and time should not be negative',siOf(2000,2,-3));
 		});
 
-		it('should return a message of not zero principle when given principle is zero',function(){
+		it('should return 0 when the given principle is zero',function(){
 			assert.equal(0,siOf(0,2,3));
 		});
 	});
@@ -260,19 +260,19 @@ describe('basic functions ',function(){
 	describe('compound interest',function(){
 		var compoundInterestOf = basicFunctions.compoundInterestOf;
 
-		it('should return 101 for the given sum 100 with rate 1 over a given 1 year',function(){
+		it('should return 101 when a principle is 100 with rate 1 over a year',function(){
 			assert.equal(101, compoundInterestOf(100,1,1));
 		});
 
-		it('should return 102.01 for the given sum 100 with rate 1 over a given 2 years',function(){
+		it('should return 102.01 when a principle is 100 with rate 1 over 2 years',function(){
 			assert.equal(102.01, compoundInterestOf(100,1,2));
 		});
 
-		it('should return 104.04 for the given sum 100 with rate 2 over a given 2 years',function(){
+		it('should return 104.04 when a principle is 100 with rate 2 over 2 years',function(){
 			assert.equal(104.04, compoundInterestOf(100,2,2));
 		});
 
-		it('should return NaN when the given sum is not a number',function(){
+		it('should return NaN when the given principle is not a number',function(){
 			assert.ok(isNaN(compoundInterestOf(undefined,2,1)));
 			assert.ok(isNaN(compoundInterestOf('s',2,1)));
 		});
@@ -288,37 +288,37 @@ describe('basic functions ',function(){
 	describe('fahrenheit to centigrade temperature conversion',function(){
 		var fToCTemperatureConversion = basicFunctions.fToCTemperatureConversion;
 
-		it('should return 0 when the given fahrenheit temperature is 32',function(){
+		it('should return 0 when temperature in fahrenheit is 32',function(){
 			assert.equal(0, fToCTemperatureConversion(32));
 		});
 
-		it('should return 2.22 when the given fahrenheit temperature is 34',function(){
+		it('should return 2.22 when temperature in fahrenheit is 34',function(){
 			assert.equal(2.22, fToCTemperatureConversion(36));
 		});
 
-		it('should return -0.55 when the given fahrenheit temperature is 31',function(){
+		it('should return -0.55 when temperature in fahrenheit is 31',function(){
 			assert.equal(-0.56, fToCTemperatureConversion(31));
 		});
 
-		it('should return -35 when the given fahrenheit temperature is -31',function(){
+		it('should return -35 when temperature in fahrenheit is -31',function(){
 			assert.equal(-35, fToCTemperatureConversion(-31));
 		});
 
-		it('should return -17.78 when the given fahrenheit temperature is 0',function(){
+		it('should return -17.78 when temperature in fahrenheit is 0',function(){
 			assert.equal(-17.78, fToCTemperatureConversion(0));
 			assert.equal(-17.78, fToCTemperatureConversion(-0));
 		});
 
-		it('should return NaN when the given fahrenheit temperature is not a number',function(){
+		it('should return NaN when temperature in fahrenheit is not a number',function(){
 			assert.ok(isNaN(fToCTemperatureConversion(undefined)));
 			assert.ok(isNaN(fToCTemperatureConversion('fahrenheit')));
 		});
 
-		it('should return 37 when the given fahrenheit temperature is 98.6',function(){
+		it('should return 37 when temperature in fahrenheit is 98.6',function(){
 			assert.equal(37, fToCTemperatureConversion(98.6));
 		});
 
-		it('should return Infinity when the given fahrenheit temperature is Infinity',function(){
+		it('should return Infinity when temperature in fahrenheit is Infinity',function(){
 			assert.equal(Infinity, fToCTemperatureConversion(Infinity));
 		});
 	});
@@ -326,36 +326,36 @@ describe('basic functions ',function(){
 	describe('centigrade to fahrenheit temperature conversion',function(){
 		var cToFTemperatureConversion = basicFunctions.cToFTemperatureConversion;
 
-		it('should return 32 when the given celcius temperature is 0',function(){
+		it('should return 32 when temperature in centigrade is 0',function(){
 			assert.equal(32, cToFTemperatureConversion(0));
 		});
 
-		it('should return 36 when the given celcius temperature is 2.22',function(){
+		it('should return 36 when temperature in centigrade is 2.22',function(){
 			assert.equal(36, cToFTemperatureConversion(2.22));
 		});
 
-		it('should return 30.99 when the given celcius temperature is -0.56',function(){
+		it('should return 30.99 when temperature in centigrade is -0.56',function(){
 			assert.equal(30.99, cToFTemperatureConversion(-0.56));
 		});
 
-		it('should return -31 when the given celcius temperature is -35',function(){
+		it('should return -31 when temperature in centigrade is -35',function(){
 			assert.equal(-31, cToFTemperatureConversion(-35));
 		});
 
-		it('should return -4 when the given celcius temperature is -20',function(){
+		it('should return -4 when temperature in centigrade is -20',function(){
 			assert.equal(-4, cToFTemperatureConversion(-20));
 		});
 
-		it('should return NaN when the given celcius temperature is not a number',function(){
+		it('should return NaN when temperature in centigrade is not a number',function(){
 			assert.ok(isNaN(cToFTemperatureConversion(undefined)));
 			assert.ok(isNaN(cToFTemperatureConversion('fahrenheit')));
 		});
 
-		it('should return 98.6 when the given celcius temperature is 37',function(){
+		it('should return 98.6 when temperature in centigrade is 37',function(){
 			assert.equal(98.6, cToFTemperatureConversion(37));
 		});
 
-		it('should return Infinity when the given celcius temperature is Infinity',function(){
+		it('should return Infinity when temperature in centigrade is Infinity',function(){
 			assert.equal(Infinity, cToFTemperatureConversion(Infinity));
 		});
 	});
@@ -413,7 +413,7 @@ describe('basic functions ',function(){
 			assert.equal(-2, greatestOfThreeNumbers(-5,-4,-2));
 		});
 
-		it('should return undefined when the one of the given number is undefined',function(){
+		it('should return undefined when one of the given numbers is undefined',function(){
 			assert.equal(undefined, greatestOfThreeNumbers(0,1,undefined));
 		});
 
@@ -421,7 +421,7 @@ describe('basic functions ',function(){
 			assert.equal(1, greatestOfThreeNumbers(1,1,1));
 		});
 
-		it('should return Infinity when the one of the given number is Infinity',function(){
+		it('should return Infinity when one of the given numbers is Infinity',function(){
 			assert.equal(Infinity, greatestOfThreeNumbers(Infinity, 0,-1));
 		});
 	});
@@ -445,12 +445,12 @@ describe('basic functions ',function(){
 			assert.equal(1, averageOfThreeNumbers(3,-3,3));
 		});
 
-		it('should NaN when the one of the given number is undefined',function(){
+		it('should NaN when one of the given numbers is undefined',function(){
 			assert.ok(isNaN(averageOfThreeNumbers(undefined,1,2)));
 			assert.ok(isNaN(averageOfThreeNumbers('one',1,2)));
 		});
 
-		it('should return Infinity when the one of the given number is Infinity',function(){
+		it('should return Infinity when one of the given numbers is Infinity',function(){
 			assert.equal(Infinity, averageOfThreeNumbers(Infinity, 0,-1));
 		});
 
