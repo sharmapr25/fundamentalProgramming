@@ -458,4 +458,41 @@ describe('basic functions ',function(){
 			assert.equal(-2, averageOfThreeNumbers(-1,-2,-3));
 		});
 	});
+
+	describe('Average as a percentage',function(){
+		var avgAsPercentage = basicFunctions.avgAsPercentage;
+
+		it('should return 0.4 for the given three numbers and a specified number',function(){
+			assert.equal(0.4,avgAsPercentage(3,4,5,10));
+		});
+
+		it('should return 0.8 for the given three numbers and percentage specified number is 20',function(){
+			assert.equal(0.8, avgAsPercentage(3,4,5,20));
+		});
+
+		it('should return 0.1 for the given three numbers and percentage specified number is 10',function(){
+			assert.equal(0.1, avgAsPercentage(3,-3,3,10));
+		});
+
+		it('should return 0 when the given percentage specified number is 0',function(){
+			assert.equal(0, avgAsPercentage(1,1,3,0));
+		});
+
+		it('should return NaN when the given percentage specified value is not a number',function(){
+			assert.ok(isNaN(avgAsPercentage(1,2,3,undefined)));
+			assert.ok(isNaN(avgAsPercentage(1,2,3,'percentage')));
+		});
+
+		it('should return Infinity when the given percentage specified number is Infinity',function(){
+			assert.equal(Infinity, avgAsPercentage(1,2,3,Infinity));
+		});
+
+		it('should return -0.4 when the given percentage specified number is negative',function(){
+			assert.equal(-0.4, avgAsPercentage(1,2,3,-20));
+		});
+
+		it('should return 0.3 when the given numbers are negative and percentage specified number is negative',function(){
+			assert.equal(0.3, avgAsPercentage(-6,-2,-1,-10));
+		});
+	});
 });

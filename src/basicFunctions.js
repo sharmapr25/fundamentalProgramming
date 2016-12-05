@@ -89,4 +89,8 @@ basicFunctions.averageOfThreeNumbers = function(firstNumber, secondNumber, third
 	return parseFloat((firstNumber+secondNumber+thirdNumber)/3).toFixed(2);
 };
 
+basicFunctions.avgAsPercentage = function(firstNumber, secondNumber, thirdNumber, percentileAgainst){
+	return (basicFunctions.averageOfThreeNumbers(firstNumber, secondNumber, thirdNumber)*percentileAgainst)/100;
+}
+
 module.exports = basicFunctions;
