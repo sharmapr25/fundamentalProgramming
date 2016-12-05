@@ -359,4 +359,34 @@ describe('basic functions ',function(){
 			assert.equal(Infinity, cToFTemperatureConversion(Infinity));
 		});
 	});
+
+	describe('sum of 1 to n',function(){
+		var sumOfNNumber = basicFunctions.sumOfNNumber;
+
+		it('should return 3 when the given range is 2',function(){
+			assert.equal(3, sumOfNNumber(2));
+		});
+
+		it('should return 55 when the given range is 10',function(){
+			assert.equal(55, sumOfNNumber(10));
+		});
+
+		it('should return 5050 when the given range is 100',function(){
+			assert.equal(5050, sumOfNNumber(100));
+		});
+
+		it('should return 0 for the given range below 0',function(){
+			assert.equal(0, sumOfNNumber(-1));
+			assert.equal(0, sumOfNNumber(-2));
+		});
+
+		it('should return 0 when the given range is undefined',function(){
+			assert.equal(0,sumOfNNumber(undefined));
+			assert.equal(0, sumOfNNumber('hello'));
+		});
+
+		it('should return Infinity when the given range is Infinity',function(){
+			assert.equal(Infinity, sumOfNNumber(Infinity));
+		});
+	});
 });

@@ -77,4 +77,10 @@ basicFunctions.cToFTemperatureConversion = function(temperature){
 	return parseFloat((((temperature*9)/5)+32).toFixed(2));
 }
 
+basicFunctions.sumOfNNumber = function(range){
+	if(range >0)
+		return (range*(range+1))/2;
+	return 0;
+};
+
 module.exports = basicFunctions;
