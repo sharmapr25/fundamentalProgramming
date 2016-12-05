@@ -284,4 +284,42 @@ describe('basic functions ',function(){
 			assert.ok(isNaN(compoundInterestOf(1000,2,'t')));
 		});
 	});
+
+	describe('fahrenheit to centigrade temperature conversion',function(){
+		var fToCTemperatureConversion = basicFunctions.fToCTemperatureConversion;
+
+		it('should return 0 when the given fahrenheit temperature is 32',function(){
+			assert.equal(0, fToCTemperatureConversion(32));
+		});
+
+		it('should return 2.22 when the given fahrenheit temperature is 34',function(){
+			assert.equal(2.22, fToCTemperatureConversion(36));
+		});
+
+		it('should return -0.55 when the given fahrenheit temperature is 31',function(){
+			assert.equal(-0.56, fToCTemperatureConversion(31));
+		});
+
+		it('should return -35 when the given fahrenheit temperature is -31',function(){
+			assert.equal(-35, fToCTemperatureConversion(-31));
+		});
+
+		it('should return -17.78 when the given fahrenheit temperature is 0',function(){
+			assert.equal(-17.78, fToCTemperatureConversion(0));
+			assert.equal(-17.78, fToCTemperatureConversion(-0));
+		});
+
+		it('should return NaN when the given fahrenheit temperature is not a number',function(){
+			assert.ok(isNaN(fToCTemperatureConversion(undefined)));
+			assert.ok(isNaN(fToCTemperatureConversion('fahrenheit')));
+		});
+
+		it('should return 37 when the given fahrenheit temperature is 98.6',function(){
+			assert.equal(37, fToCTemperatureConversion(98.6));
+		});
+
+		it('should return Infinity when the given fahrenheit temperature is Infinity',function(){
+			assert.equal(Infinity, fToCTemperatureConversion(Infinity));
+		});
+	});
 });
