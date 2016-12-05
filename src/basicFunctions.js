@@ -24,20 +24,13 @@ var biggerNumber = function(firstNumber,secondNumber){
 	return secondNumber;
 };
 
-var smallerNumber = function(firstNumber, secondNumber){
-	if(firstNumber<secondNumber)
-		return firstNumber;
-	return secondNumber;
-}
-
 basicFunctions.gcdOf = function(firstNumber, secondNumber){
-	if(typeof(firstNumber) == 'number' && typeof(secondNumber) == 'number'){
-		var remainder = firstNumber%secondNumber;
+	var remainder = firstNumber%secondNumber;
+	if(!isNaN(remainder)){
 		if(remainder == 0)
 			return secondNumber;
 		return basicFunctions.gcdOf(secondNumber,remainder);
-	}
-	return NaN;
+	};
 };
 
 basicFunctions.lcmOf = function(firstNumber, secondNumber){
