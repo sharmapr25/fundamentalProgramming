@@ -73,4 +73,8 @@ basicFunctions.fToCTemperatureConversion = function(temperature){
 	return parseFloat((((temperature-32)*5)/9).toFixed(2));
 }
 
+basicFunctions.cToFTemperatureConversion = function(temperature){
+	return parseFloat((((temperature*9)/5)+32).toFixed(2));
+}
+
 module.exports = basicFunctions;

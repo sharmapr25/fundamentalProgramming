@@ -322,4 +322,41 @@ describe('basic functions ',function(){
 			assert.equal(Infinity, fToCTemperatureConversion(Infinity));
 		});
 	});
+
+	describe('centigrade to fahrenheit temperature conversion',function(){
+		var cToFTemperatureConversion = basicFunctions.cToFTemperatureConversion;
+
+		it('should return 32 when the given celcius temperature is 0',function(){
+			assert.equal(32, cToFTemperatureConversion(0));
+		});
+
+		it('should return 36 when the given celcius temperature is 2.22',function(){
+			assert.equal(36, cToFTemperatureConversion(2.22));
+		});
+
+		it('should return 30.99 when the given celcius temperature is -0.56',function(){
+			assert.equal(30.99, cToFTemperatureConversion(-0.56));
+		});
+
+		it('should return -31 when the given celcius temperature is -35',function(){
+			assert.equal(-31, cToFTemperatureConversion(-35));
+		});
+
+		it('should return -4 when the given celcius temperature is -20',function(){
+			assert.equal(-4, cToFTemperatureConversion(-20));
+		});
+
+		it('should return NaN when the given celcius temperature is not a number',function(){
+			assert.ok(isNaN(cToFTemperatureConversion(undefined)));
+			assert.ok(isNaN(cToFTemperatureConversion('fahrenheit')));
+		});
+
+		it('should return 98.6 when the given celcius temperature is 37',function(){
+			assert.equal(98.6, cToFTemperatureConversion(37));
+		});
+
+		it('should return Infinity when the given celcius temperature is Infinity',function(){
+			assert.equal(Infinity, cToFTemperatureConversion(Infinity));
+		});
+	});
 });
