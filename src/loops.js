@@ -112,4 +112,15 @@ loops.evenNumbersBetweenAnyRange = function(firstNumber, range){
 	return loops.evenNumberSeries(firstNumber, range);
 };
 
+loops.nthNumberBetweenAnyRange = function(firstNumber, range, number){
+	var terms = [];
+	var count = firstNumber;
+	while(count <= range){
+		terms.push(count);
+		count += number;
+	}
+
+	return terms.join(" ");
+};
+
 module.exports = loops;

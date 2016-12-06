@@ -327,4 +327,30 @@ describe('loops', function() {
     	});
     });
 
+    describe('every nth number between any two numbers',function(){
+    	var nthNumberBetweenAnyRange = loops.nthNumberBetweenAnyRange;
+    	it('should return 1 2 3 4 5 for every 1th number between 1 to 6',function(){
+    		assert.equal('1 2 3 4 5 6', nthNumberBetweenAnyRange(1,6, 1));
+    	});
+
+    	it('should return 15 22 29 36 for every 7th number between 15 to 36',function(){
+    		assert.equal('15 22 29 36', nthNumberBetweenAnyRange(15, 37, 7));
+    	});
+
+    	it('should return 6 8 10 12 14 16 18 20 for every 2th number with range 6 to 21',function(){
+    		assert.equal('6 8 10 12 14 16 18 20',nthNumberBetweenAnyRange(6, 21, 2));
+    	});
+
+    	it('should return -1 0 1 for every 1th number between -1 to 1',function(){
+    		assert.equal('-1 0 1', nthNumberBetweenAnyRange(-1, 1, 1));
+    	});
+
+    	it('should return 3 7 11 15 for every 4th number between 3 and 15',function(){
+    		assert.equal('3 7 11 15', nthNumberBetweenAnyRange(3, 15, 4));
+    	});
+
+    	it('should return -18 -15 -12 -9 for every 3th number between -18 to -8',function(){
+    		assert.equal('-18 -15 -12 -9',nthNumberBetweenAnyRange(-18,-8,3));
+    	});
+    });
 });
