@@ -55,4 +55,14 @@ loops.evenNumberSeries = function(range){
 	return loops.oddNumberSeries(range)-terms;
 };
 
+loops.multiplicationTableOf = function(factor, range){
+	var table = [];
+	if(range <= 0)
+		throw new exception.invalidRangeException();
+	for (var i = 1; i <= range; i++) {
+		table.push(i*factor);
+	};
+	return table.join(" ");
+};
+
 module.exports = loops;
