@@ -27,4 +27,8 @@ describe('Factorial',function(){
 	it('should throw an error when the given number is negative',function(){
 		assert.throws(function(){factorialOf(-1)}, Error, "number must be non negative");
 	});
+
+	it('should return Infinity when the given number is Infinity',function(){
+		assert.equal(Infinity, factorialOf(Infinity));
+	});
 });
