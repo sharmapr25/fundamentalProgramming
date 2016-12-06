@@ -1,5 +1,6 @@
 var loops = {};
 var exception = require('./exception.js');
+var basic = require('./basicFunctions.js');
 
 loops.factorialOf = function(number) {
 	if(number==0)
@@ -43,5 +44,8 @@ loops.fibonacciOf = function(number){
 	return negativeFibonacciOf(number,0,1);
 };
 
+loops.oddNumberSeries = function(range){
+	return basic.squareOf(Math.floor(range/2))*Math.sign(range);
+};
 
 module.exports = loops;

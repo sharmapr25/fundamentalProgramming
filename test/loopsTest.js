@@ -69,4 +69,32 @@ describe('loops', function() {
     		assert.equal('0 1 -1 2 -3 5', fibonacciOf(-6));
     	});
     });
+
+    describe('Odd number series',function(){
+    	var oddNumberSeries = loops.oddNumberSeries;
+    	
+    	it('should return 0 when the given range is 1',function(){
+    		assert.equal(0, oddNumberSeries(1));
+    	});
+
+    	it('should return 4 when the given range is 1 to 5',function(){
+    		assert.equal(4, oddNumberSeries(5));
+    	});
+
+    	it('should return 25 when the given range is 1 to 10',function(){
+    		assert.equal(25, oddNumberSeries(10));
+    	});
+
+    	it('should return Infinity when the given range is 1 to Infinity',function(){
+    		assert.equal(Infinity, oddNumberSeries(Infinity));
+    	});
+
+    	it('should return -25 when the given range is -10 to -1',function(){
+    		assert.equal(-25, oddNumberSeries(-10));
+    	});
+
+    	it('should return -9 when the given range is -7 to -1',function(){
+    		assert.equal(-16, oddNumberSeries(-7));
+    	});
+    });
 });
