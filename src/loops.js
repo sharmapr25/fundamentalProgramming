@@ -44,16 +44,25 @@ loops.fibonacciOf = function(number){
 	return negativeFibonacciOf(number,0,1);
 };
 
-loops.oddNumberSeries = function(range){
-	return basic.squareOf(Math.floor(range/2))*Math.sign(range);
+loops.oddNumberSeries = function(first,limit){
+	var oddSeries = [];
+	for (var i = first; i < limit; i++) {
+		if(basic.isOdd(i))
+			oddSeries.push(i);	
+	};
+	return oddSeries.join(" ");
 };
 
-loops.evenNumberSeries = function(range){
-	if(range == Infinity)
-		return range;
-	var terms = Math.floor(range/2);
-	return loops.oddNumberSeries(range)-terms;
+loops.evenNumberSeries = function(first,limit){
+	var oddSeries = [];
+	for (var i = first; i < limit; i++) {
+		if(basic.isEven(i))
+			oddSeries.push(i);	
+	};
+	return oddSeries.join(" ");
 };
+
+
 
 loops.multiplicationTableOf = function(factor, range){
 	var table = [];
@@ -93,6 +102,14 @@ loops.sumOfAnyNNumbers = function(initial, range){
 
 loops.productOfAnyNNumbers = function(initial, range){
 	return loops.productOf(initial, range);
+};
+
+loops.oddNumbersBetweenAnyRange = function(firstNumber, range){
+	return loops.oddNumberSeries(firstNumber, range);
+};
+
+loops.evenNumbersBetweenAnyRange = function(firstNumber, range){
+	return loops.evenNumberSeries(firstNumber, range);
 };
 
 module.exports = loops;

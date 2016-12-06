@@ -72,64 +72,56 @@ describe('loops', function() {
 
     describe('Odd number series',function(){
     	var oddNumberSeries = loops.oddNumberSeries;
-    	
-    	it('should return 0 when the given range is 1',function(){
-    		assert.equal(0, oddNumberSeries(1));
+    	it('should return empty when the given range is 1',function(){
+    		assert.equal(oddNumberSeries(1,1).length,0);
     	});
 
-    	it('should return 4 when the given range is 1 to 5',function(){
-    		assert.equal(4, oddNumberSeries(5));
+    	it('should return 1 3 when the given range is 1 to 5',function(){
+    		assert.equal('1 3', oddNumberSeries(1,5));
     	});
 
-    	it('should return 25 when the given range is 1 to 10',function(){
-    		assert.equal(25, oddNumberSeries(10));
+    	it('should return 1 3 5 7 9 when the given range is 1 to 10',function(){
+    		assert.equal('1 3 5 7 9', oddNumberSeries(1,10));
     	});
 
-    	it('should return Infinity when the given range is 1 to Infinity',function(){
-    		assert.equal(Infinity, oddNumberSeries(Infinity));
+    	it('should return -9 -7 -5 -3 when the given range is -10 to -1',function(){
+    		assert.equal('-9 -7 -5 -3', oddNumberSeries(-10,-1));
     	});
 
-    	it('should return -25 when the given range is -10 to -1',function(){
-    		assert.equal(-25, oddNumberSeries(-10));
-    	});
-
-    	it('should return -9 when the given range is -7 to -1',function(){
-    		assert.equal(-16, oddNumberSeries(-7));
+    	it('should return -7 -5 -3 when the given range is -7 to -1',function(){
+    		assert.equal('-7 -5 -3', oddNumberSeries(-7,-1));
     	});
     });
 
     describe('Even number series',function(){
     	var evenNumberSeries = loops.evenNumberSeries;
+
     	it('should return 0 when the given range is 1',function(){
-    		assert.equal(0, evenNumberSeries(1));
+    		assert.equal(0, evenNumberSeries(0,1));
     	});
 
     	it('should return 0 when the given range is 1 to 2',function(){
-    		assert.equal(0,evenNumberSeries(2));
+    		assert.equal(0,evenNumberSeries(0,2));
     	});
 
     	it('should return 2 when the given range is 1 to 4',function(){
-    		assert.equal(2, evenNumberSeries(4));
+    		assert.equal('2', evenNumberSeries(1,4));
     	});
 
-    	it('should return 20 when the given range is 1 to 10',function(){
-    		assert.equal(20, evenNumberSeries(10));
+    	it('should return 2 4 6 8  when the given range is 1 to 10',function(){
+    		assert.equal('2 4 6 8', evenNumberSeries(1,10));
     	});
 
-    	it('should return -20 when the given range is -10 to -1',function(){
-    		assert.equal(-20, evenNumberSeries(-10));
+    	it('should return -10 -8 -6 -4 -2 when the given range is -10 to -1',function(){
+    		assert.equal('-10 -8 -6 -4 -2', evenNumberSeries(-10,-1));
     	});
 
-    	it('should return Infinity when the given range is 1 to Infinity',function(){
-    		assert.equal(Infinity, evenNumberSeries(Infinity));
+    	it('should return 0 when the given range is -1 to 0',function(){
+    		assert.equal(0, evenNumberSeries(-1,0));
     	});
 
-    	it('should return 0 when the given range is -1',function(){
-    		assert.equal(0, evenNumberSeries(-1));
-    	});
-
-    	it('should return -12 when the given range is -7 to -1',function(){
-    		assert.equal(-12, evenNumberSeries(-7));
+    	it('should return -6 -4 -2 when the given range is -7 to -1',function(){
+    		assert.equal('-6 -4 -2', evenNumberSeries(-7,-1));
     	});
     });
 
@@ -277,6 +269,61 @@ describe('loops', function() {
 
     	it('should return NaN when the given range is 0 to Infinity',function(){
     		assert.ok(isNaN(productOfAnyNNumbers(0,Infinity)));
+    	});
+    });
+
+    describe('Odd numbers between any two numbers',function(){
+    	var oddNumbersBetweenAnyRange = loops.oddNumbersBetweenAnyRange;
+    	it('should return empty when the given range is 1',function(){
+    		assert.equal(oddNumbersBetweenAnyRange(1,1).length,0);
+    	});
+
+    	it('should return 3 5 7 when the given range is 3 to 8',function(){
+    		assert.equal('3 5 7', oddNumbersBetweenAnyRange(3,8));
+    	});
+
+    	it('should return 91 93 95 97 99 when the given range is 90 to 100',function(){
+    		assert.equal('91 93 95 97 99', oddNumbersBetweenAnyRange(90,100));
+    	});
+
+    	it('should return -19 -17 -15 -13 when the given range is -20 to -11',function(){
+    		assert.equal('-19 -17 -15 -13', oddNumbersBetweenAnyRange(-20,-11));
+    	});
+
+    	it('should return -7 -5 -3 when the given range is -7 to -2',function(){
+    		assert.equal('-7 -5 -3', oddNumbersBetweenAnyRange(-7,-2));
+    	});
+    });
+
+    describe('Even number between any two numbers',function(){
+    	var evenNumbersBetweenAnyRange = loops.evenNumbersBetweenAnyRange;
+
+    	it('should return 0 when the given range is 1',function(){
+    		assert.equal(0, evenNumbersBetweenAnyRange(0,1));
+    	});
+
+    	it('should return 2 4 when the given range is 2 to 5',function(){
+    		assert.equal('2 4',evenNumbersBetweenAnyRange(2,5));
+    	});
+
+    	it('should return 2 when the given range is 2 to 4',function(){
+    		assert.equal('2', evenNumbersBetweenAnyRange(2,4));
+    	});
+
+    	it('should return 12 14 16 18 20 when the given range is 12 to 21',function(){
+    		assert.equal('12 14 16 18 20', evenNumbersBetweenAnyRange(12,21));
+    	});
+
+    	it('should return -10 -8 -6 -4 when the given range is -10 to -3',function(){
+    		assert.equal('-10 -8 -6 -4', evenNumbersBetweenAnyRange(-10,-3));
+    	});
+
+    	it('should return 0 when the given range is -1 to 0',function(){
+    		assert.equal(0, evenNumbersBetweenAnyRange(-1,0));
+    	});
+
+    	it('should return -70 -68 -66 when the given range is -70 to -65',function(){
+    		assert.equal('-70 -68 -66', evenNumbersBetweenAnyRange(-70, -65));
     	});
     });
 
