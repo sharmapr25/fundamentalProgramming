@@ -9,7 +9,7 @@ describe('loops', function() {
             assert.equal(1, factorialOf(1));
         });
 
-        it('should return 2 when the given number is 2', function() {
+        it('should return 2 for given number 2', function() {
             assert.equal(2, factorialOf(2));
         });
 
@@ -32,5 +32,41 @@ describe('loops', function() {
         it('should return Infinity when the given number is Infinity', function() {
             assert.equal(Infinity, factorialOf(Infinity));
         });
+    });
+
+    describe('Fibonacci',function(){
+    	var fibonacciOf = loops.fibonacciOf;
+
+    	it('should return 1 when the given number is 1',function(){
+    		assert.equal('0', fibonacciOf(1));
+    	});
+
+    	it('should return 0 1 when the given number is 2',function(){
+    		assert.equal('0 1', fibonacciOf(2));
+    	});
+
+    	it('should return 0 1 1 2 when the given number is 4',function(){
+    		assert.equal('0 1 1 2', fibonacciOf(4));
+    	});
+
+    	it('should return 0 1 1 2 3 5 when the given number is 6',function(){
+    		assert.equal('0 1 1 2 3 5', fibonacciOf(6));
+    	});
+
+    	it('should return 1 when the given number is -1',function(){
+    		assert.equal('0', fibonacciOf(-1));
+    	});
+
+    	it('should return 0 1 when the given number is -2',function(){
+    		assert.equal('0 1', fibonacciOf(-2));
+    	});
+
+    	it('should return 0 1 -1 2 -3 when the given number is -5',function(){
+    		assert.equal('0 1 -1 2 -3', fibonacciOf(-5));
+    	});
+
+    	it('should return 0 1 -1 2 -3 5 when the given number is -6',function(){
+    		assert.equal('0 1 -1 2 -3 5', fibonacciOf(-6));
+    	});
     });
 });
