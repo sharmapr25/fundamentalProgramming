@@ -164,4 +164,38 @@ describe('loops', function() {
     		assert.throws(function(){multiplicationTableOf(2,0)},Error,"invalid range");
     	});
     });
+
+    describe('Sum of N numbers',function(){
+    	var sumOfNNumbers = loops.sumOfNNumbers;
+    	
+    	it('should return 1 when the given range is 1',function(){
+    		assert.equal(1, sumOfNNumbers(1));
+    	});
+
+    	it('should return 1275 when the given range is 1 to 50',function(){
+    		assert.equal(1275, sumOfNNumbers(50));
+    	});
+
+    	it('should return 3 when the given range is 1 to 2',function(){
+			assert.equal(3, sumOfNNumbers(2));
+		});
+
+		it('should return 55 when the given range is 1 to 10',function(){
+			assert.equal(55, sumOfNNumbers(10));
+		});
+
+		it('should return 5050 when the given range is 1 to 100',function(){
+			assert.equal(5050, sumOfNNumbers(100));
+		});
+
+		it('should return 0 for the given range below 0',function(){
+			assert.equal(0, sumOfNNumbers(-1));
+			assert.equal(0, sumOfNNumbers(-2));
+		});
+
+		it('should return Infinity when the given range is 1 to Infinity',function(){
+			assert.equal(Infinity, sumOfNNumbers(Infinity));
+		});
+
+    });
 });
