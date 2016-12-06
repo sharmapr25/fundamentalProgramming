@@ -97,4 +97,39 @@ describe('loops', function() {
     		assert.equal(-16, oddNumberSeries(-7));
     	});
     });
+
+    describe('Even number series',function(){
+    	var evenNumberSeries = loops.evenNumberSeries;
+    	it('should return 0 when the given range is 1',function(){
+    		assert.equal(0, evenNumberSeries(1));
+    	});
+
+    	it('should return 0 when the given range is 1 to 2',function(){
+    		assert.equal(0,evenNumberSeries(2));
+    	});
+
+    	it('should return 2 when the given range is 1 to 4',function(){
+    		assert.equal(2, evenNumberSeries(4));
+    	});
+
+    	it('should return 20 when the given range is 1 to 10',function(){
+    		assert.equal(20, evenNumberSeries(10));
+    	});
+
+    	it('should return -20 when the given range is -10 to -1',function(){
+    		assert.equal(-20, evenNumberSeries(-10));
+    	});
+
+    	it('should return Infinity when the given range is 1 to Infinity',function(){
+    		assert.equal(Infinity, evenNumberSeries(Infinity));
+    	});
+
+    	it('should return 0 when the given range is -1',function(){
+    		assert.equal(0, evenNumberSeries(-1));
+    	});
+
+    	it('should return -12 when the given range is -7 to -1',function(){
+    		assert.equal(-12, evenNumberSeries(-7));
+    	});
+    })
 });

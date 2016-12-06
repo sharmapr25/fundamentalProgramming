@@ -48,4 +48,11 @@ loops.oddNumberSeries = function(range){
 	return basic.squareOf(Math.floor(range/2))*Math.sign(range);
 };
 
+loops.evenNumberSeries = function(range){
+	if(range == Infinity)
+		return range;
+	var terms = Math.floor(range/2);
+	return loops.oddNumberSeries(range)-terms;
+};
+
 module.exports = loops;
