@@ -91,4 +91,8 @@ loops.sumOfAnyNNumbers = function(initial, range){
 	return loops.sumOfNNumbers(initial, range);
 };
 
+loops.productOfAnyNNumbers = function(initial, range){
+	return loops.productOf(initial, range);
+};
+
 module.exports = loops;

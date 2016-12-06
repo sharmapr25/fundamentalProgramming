@@ -251,4 +251,33 @@ describe('loops', function() {
 			assert.equal(0, sumOfAnyNNumbers(1,-2));
 		});
     });
+
+    describe('Product of any N numbers',function(){
+    	var productOfAnyNNumbers = loops.productOfAnyNNumbers;
+
+    	it('should return 1 when the given range is 1',function(){
+    		assert.equal(1, productOfAnyNNumbers(1,1));
+    	});
+
+    	it('should return 60 when the given range is 3 to 5',function(){
+    		assert.equal(60, productOfAnyNNumbers(3,5));
+    	});
+
+    	it('should return -60 when the given range is -5 to -3',function(){
+    		assert.equal(-60, productOfAnyNNumbers(-5,-3));
+    	});
+
+    	it('should return 0 when the given range is -1 to 0,',function(){
+    		assert.equal(0,productOfAnyNNumbers(-1, 0));
+    	});
+
+    	it('should return Infinity when the given range is 1 to Infinity',function(){
+    		assert.equal(Infinity, productOfAnyNNumbers(1,Infinity));
+    	});
+
+    	it('should return NaN when the given range is 0 to Infinity',function(){
+    		assert.ok(isNaN(productOfAnyNNumbers(0,Infinity)));
+    	});
+    });
+
 });
