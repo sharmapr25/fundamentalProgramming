@@ -222,4 +222,33 @@ describe('loops', function() {
     		assert.ok(isNaN(productOf(0,Infinity)));
     	});
     });
+
+    describe('Sum of any N numbers',function(){
+    	var sumOfAnyNNumbers = loops.sumOfAnyNNumbers;
+
+    	it('should return 1 when the given range is 0 to 1',function(){
+    		assert.equal(1, sumOfAnyNNumbers(0,1));
+    	});
+
+    	it('should return 30 when the given range is 4 to 8',function(){
+    		assert.equal(30, sumOfAnyNNumbers(4,8));
+    	});
+
+    	it('should return 18 when the given range is 5 to 7',function(){
+			assert.equal(18, sumOfAnyNNumbers(5,7));
+		});
+
+		it('should return 57 when the given range is 7 to 12',function(){
+			assert.equal(57, sumOfAnyNNumbers(7,12));
+		});
+
+		it('should return 3825 when the given range is 1 to 100',function(){
+			assert.equal(3825, sumOfAnyNNumbers(50,100));
+		});
+
+		it('should return 0 for the given range below 0',function(){
+			assert.equal(0, sumOfAnyNNumbers(1,-1));
+			assert.equal(0, sumOfAnyNNumbers(1,-2));
+		});
+    });
 });

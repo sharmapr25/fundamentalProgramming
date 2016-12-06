@@ -87,4 +87,8 @@ loops.productOf = function(initial,range){
 	return total;
 };
 
+loops.sumOfAnyNNumbers = function(initial, range){
+	return loops.sumOfNNumbers(initial, range);
+};
+
 module.exports = loops;
