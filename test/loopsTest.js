@@ -169,33 +169,57 @@ describe('loops', function() {
     	var sumOfNNumbers = loops.sumOfNNumbers;
     	
     	it('should return 1 when the given range is 1',function(){
-    		assert.equal(1, sumOfNNumbers(1));
+    		assert.equal(1, sumOfNNumbers(1,1));
     	});
 
     	it('should return 1275 when the given range is 1 to 50',function(){
-    		assert.equal(1275, sumOfNNumbers(50));
+    		assert.equal(1275, sumOfNNumbers(1,50));
     	});
 
     	it('should return 3 when the given range is 1 to 2',function(){
-			assert.equal(3, sumOfNNumbers(2));
+			assert.equal(3, sumOfNNumbers(1,2));
 		});
 
 		it('should return 55 when the given range is 1 to 10',function(){
-			assert.equal(55, sumOfNNumbers(10));
+			assert.equal(55, sumOfNNumbers(1,10));
 		});
 
 		it('should return 5050 when the given range is 1 to 100',function(){
-			assert.equal(5050, sumOfNNumbers(100));
+			assert.equal(5050, sumOfNNumbers(1,100));
 		});
 
 		it('should return 0 for the given range below 0',function(){
-			assert.equal(0, sumOfNNumbers(-1));
-			assert.equal(0, sumOfNNumbers(-2));
+			assert.equal(0, sumOfNNumbers(1,-1));
+			assert.equal(0, sumOfNNumbers(1,-2));
 		});
 
-		it('should return Infinity when the given range is 1 to Infinity',function(){
-			assert.equal(Infinity, sumOfNNumbers(Infinity));
-		});
+    });
 
+    describe('Product of N numbers',function(){
+    	var productOf = loops.productOf;
+
+    	it('should return 1 when the given range is 1',function(){
+    		assert.equal(1, productOf(1,1));
+    	});
+
+    	it('should return 120 when the given range is 1 to 5',function(){
+    		assert.equal(120, productOf(1,5));
+    	});
+
+    	it('should return -120 when the given range is -1 to -5',function(){
+    		assert.equal(-120, productOf(-5,-1));
+    	});
+
+    	it('should return 0 when the given range is -1 to 0,',function(){
+    		assert.equal(0,productOf(-1, 0));
+    	});
+
+    	it('should return Infinity when the given range is 1 to Infinity',function(){
+    		assert.equal(Infinity, productOf(1,Infinity));
+    	});
+
+    	it('should return NaN when the given range is 0 to Infinity',function(){
+    		assert.ok(isNaN(productOf(0,Infinity)));
+    	});
     });
 });

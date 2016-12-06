@@ -65,14 +65,26 @@ loops.multiplicationTableOf = function(factor, range){
 	return table.join(" ");
 };
 
-loops.sumOfNNumbers = function(range){
-	var count = 1;
+loops.sumOfNNumbers = function(initial,range){
+	var count = initial;
 	var sum = 0;
 	while(range>= count){
 		sum += count;
 		count++;
 	};
 	return sum;
+};
+
+loops.productOf = function(initial,range){
+	if(range == Infinity)
+		return Infinity*initial;
+	var count = initial;
+	var total = 1;
+	while(range>= count){
+		total = total*count;
+		count++;
+	};
+	return total;
 };
 
 module.exports = loops;
