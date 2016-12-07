@@ -63,15 +63,18 @@ loops.evenNumberSeries = function(first,limit){
 };
 
 
+var formatOfTable = function(factor, number){
+	return factor+'*'+number+' = '+factor*number;
+}
 
 loops.multiplicationTableOf = function(factor, range){
 	var table = [];
 	if(range <= 0)
 		throw new exception.invalidRangeException();
 	for (var i = 1; i <= range; i++) {
-		table.push(i*factor);
+		table.push(formatOfTable(factor,i));
 	};
-	return table.join(" ");
+	return table.join("\n");
 };
 
 loops.sumOfNNumbers = function(initial,range){

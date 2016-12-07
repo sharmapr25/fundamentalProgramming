@@ -128,24 +128,29 @@ describe('loops', function() {
     describe('Multiplication table',function(){
     	multiplicationTableOf = loops.multiplicationTableOf;
 
-    	it('should return 3 when the given number is 1 and factor is 3',function(){
-    		assert.equal('3', multiplicationTableOf(3, 1));
+    	it('should return 3*1 = 3 when the given number is 1 and factor is 3',function(){
+    		assert.equal('3*1 = 3', multiplicationTableOf(3, 1));
     	});
 
-    	it('should return table of 3 until 18 when the given range is 6',function(){
-    		assert.equal('3 6 9 12 15 18',multiplicationTableOf(3, 6));
+    	it('should return table of 3 for given limit 6',function(){
+            var tableOfThree = "3*1 = 3\n3*2 = 6\n3*3 = 9\n3*4 = 12\n3*5 = 15\n3*6 = 18";
+    		assert.equal(tableOfThree,multiplicationTableOf(3, 6));
     	});
 
-    	it('should return table of 5 until 50 when the given range is 10',function(){
-    		assert.equal('5 10 15 20 25 30 35 40 45 50',multiplicationTableOf(5, 10));
+    	it('should return table of 5 for given range 10',function(){
+            var tableOfFive = "5*1 = 5\n5*2 = 10\n5*3 = 15\n5*4 = 20\n5*5 = 25\n5*6 = 30\n"+
+                "5*7 = 35\n5*8 = 40\n5*9 = 45\n5*10 = 50";
+    		assert.equal(tableOfFive,multiplicationTableOf(5, 10));
     	});
 
-    	it('should return table of -1 until -9 when the given range is 9',function(){
-    		assert.equal('-1 -2 -3 -4 -5 -6 -7 -8 -9',multiplicationTableOf(-1, 9));
+    	it('should return table of -1 for given range -9',function(){
+            var tableOfMinus1 = '-1*1 = -1\n-1*2 = -2\n-1*3 = -3\n-1*4 = -4\n-1*5 = -5\n-1*6 = -6\n-1*7 = -7\n-1*8 = -8\n-1*9 = -9';
+    		assert.equal(tableOfMinus1,multiplicationTableOf(-1, 9));
     	});
 
-    	it('should return table of Infinity until Infinity when the given range is Infinity',function(){
-    		assert.equal('Infinity Infinity Infinity Infinity Infinity',multiplicationTableOf(Infinity, 5)); 
+    	it('should return table of Infinity when the given range is 5',function(){
+            var taleOfInfinity = "Infinity*1 = Infinity\nInfinity*2 = Infinity\nInfinity*3 = Infinity\nInfinity*4 = Infinity\nInfinity*5 = Infinity";
+    		assert.equal(taleOfInfinity,multiplicationTableOf(Infinity, 5)); 
     	});
 
     	it('should throw an error for negative range when the given range is negative number',function(){
@@ -583,19 +588,19 @@ describe('loops', function() {
         });
 
         it('should throw an error for invalid range when the given range is 4 to 1',function(){
-            assert.throws(function(){sumOfOddNumbers(4,1)},Error,"range is invalid")
+            assert.throws(function(){sumOfOddNumbers(4,1)},Error,"range is invalid");
         });
 
         it('should throw an error for invalid range when the given range is 3 to 1',function(){
-            assert.throws(function(){sumOfOddNumbers(3,1)},Error,"range is invalid")
+            assert.throws(function(){sumOfOddNumbers(3,1)},Error,"range is invalid");
         });
 
         it('should throw an error for invalid range when the given range is -1 to -4',function(){
-            assert.throws(function(){sumOfOddNumbers(-1,-4)},Error,"range is invalid")
+            assert.throws(function(){sumOfOddNumbers(-1,-4)},Error,"range is invalid");
         });
 
         it('should throw an error for invalid range when the given range is -3 to -15',function(){
-            assert.throws(function(){sumOfOddNumbers(-3,-15)},Error,"range is invalid")
+            assert.throws(function(){sumOfOddNumbers(-3,-15)},Error,"range is invalid");
         });
     });
 
