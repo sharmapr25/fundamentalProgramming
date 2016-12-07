@@ -154,11 +154,11 @@ describe('loops', function() {
     	});
 
     	it('should throw an error for negative range when the given range is negative number',function(){
-    		assert.throws(function(){multiplicationTableOf(2,-9)}, Error, "invalid range");
+    		assert.throws(function(){multiplicationTableOf(2,-9)}, Error, "out of range");
     	});
 
     	it('should throw an error when the given range is zero',function(){
-    		assert.throws(function(){multiplicationTableOf(2,0)},Error,"invalid range");
+    		assert.throws(function(){multiplicationTableOf(2,0)},Error,"out of range");
     	});
     });
 
@@ -190,8 +190,8 @@ describe('loops', function() {
 			assert.equal(0, sumOfNNumbers(1,-2));
 		});
 
-        it('should return Infinity when the given range is 1 to Infinity',function(){
-            assert.equal(Infinity, sumOfNNumbers(1, Infinity));
+        it('should throw an error of out of range when the given range is 1 to Infinity',function(){
+            assert.throws(function(){sumOfNNumbers(1,Infinity)}, Error, "out of range");
         });
     });
 
@@ -214,13 +214,14 @@ describe('loops', function() {
     		assert.equal(0,productOf(-1, 0));
     	});
 
-    	it('should return Infinity when the given range is 1 to Infinity',function(){
-    		assert.equal(Infinity, productOf(1,Infinity));
-    	});
+    	it('should throw an error of out of range when the given range is 1 to Infinity',function(){
+            assert.throws(function(){productOf(1,Infinity)}, Error, "out of range");
+        });
 
-    	it('should return NaN when the given range is 0 to Infinity',function(){
-    		assert.ok(isNaN(productOf(0,Infinity)));
-    	});
+    	it('should throw an error of out of range when the given range is 0 to Infinity',function(){
+            assert.throws(function(){productOf(0,Infinity)}, Error, "out of range");
+        });
+
     });
 
     describe('Sum of any N numbers',function(){
@@ -250,6 +251,10 @@ describe('loops', function() {
 			assert.equal(0, sumOfAnyNNumbers(1,-1));
 			assert.equal(0, sumOfAnyNNumbers(1,-2));
 		});
+
+        it('should throw an error of out of range when the given range is 1 to Infinity',function(){
+            assert.throws(function(){sumOfAnyNNumbers(1,Infinity)}, Error, "out of range");
+        });
     });
 
     describe('Product of any N numbers',function(){
@@ -271,13 +276,13 @@ describe('loops', function() {
     		assert.equal(0,productOfAnyNNumbers(-1, 0));
     	});
 
-    	it('should return Infinity when the given range is 1 to Infinity',function(){
-    		assert.equal(Infinity, productOfAnyNNumbers(1,Infinity));
+    	it('should throw an error when the given range is 1 to Infinity',function(){
+              assert.throws(function(){productOfAnyNNumbers(1,Infinity)}, Error, "out of range");
     	});
 
-    	it('should return NaN when the given range is 0 to Infinity',function(){
-    		assert.ok(isNaN(productOfAnyNNumbers(0,Infinity)));
-    	});
+        it('should throw an error of out of range when the given range is 0 to Infinity',function(){
+            assert.throws(function(){productOfAnyNNumbers(0,Infinity)}, Error, "out of range");
+        });    
     });
 
     describe('Odd numbers series between any two numbers',function(){
@@ -496,19 +501,19 @@ describe('loops', function() {
             assert.equal(0,sumOfEvenNumbers(-5,-5));
         });
 
-        it('should throw an error for invalid range when the given range is 4 to 1',function(){
+        it('should throw an error for out of range when the given range is 4 to 1',function(){
             assert.throws(function(){sumOfEvenNumbers(4,1)},Error,"range is invalid")
         });
 
-        it('should throw an error for invalid range when the given range is 3 to 1',function(){
+        it('should throw an error for out of range when the given range is 3 to 1',function(){
             assert.throws(function(){sumOfEvenNumbers(3,1)},Error,"range is invalid")
         });
 
-        it('should throw an error for invalid range when the given range is -1 to -4',function(){
+        it('should throw an error for out of range when the given range is -1 to -4',function(){
             assert.throws(function(){sumOfEvenNumbers(-1,-4)},Error,"range is invalid")
         });
 
-        it('should throw an error for invalid range when the given range is -3 to -15',function(){
+        it('should throw an error for out of range when the given range is -3 to -15',function(){
             assert.throws(function(){sumOfEvenNumbers(-3,-15)},Error,"range is invalid")
         });
     });
@@ -590,19 +595,19 @@ describe('loops', function() {
             assert.equal(0,sumOfOddNumbers(-5,-5));
         });
 
-        it('should throw an error for invalid range when the given range is 4 to 1',function(){
+        it('should throw an error for out of range when the given range is 4 to 1',function(){
             assert.throws(function(){sumOfOddNumbers(4,1)},Error,"range is invalid");
         });
 
-        it('should throw an error for invalid range when the given range is 3 to 1',function(){
+        it('should throw an error for out of range when the given range is 3 to 1',function(){
             assert.throws(function(){sumOfOddNumbers(3,1)},Error,"range is invalid");
         });
 
-        it('should throw an error for invalid range when the given range is -1 to -4',function(){
+        it('should throw an error for out of range when the given range is -1 to -4',function(){
             assert.throws(function(){sumOfOddNumbers(-1,-4)},Error,"range is invalid");
         });
 
-        it('should throw an error for invalid range when the given range is -3 to -15',function(){
+        it('should throw an error for out of range when the given range is -3 to -15',function(){
             assert.throws(function(){sumOfOddNumbers(-3,-15)},Error,"range is invalid");
         });
     });

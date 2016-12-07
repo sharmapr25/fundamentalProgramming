@@ -69,7 +69,7 @@ var formatOfTable = function(factor, number){
 loops.multiplicationTableOf = function(factor, range){
 	var table = [];
 	if(range <= 0)
-		throw new exception.invalidRangeException();
+		throw new exception.outOfRangeException();
 	for (var i = 1; i <= range; i++) {
 		table.push(formatOfTable(factor,i));
 	};
@@ -78,7 +78,7 @@ loops.multiplicationTableOf = function(factor, range){
 
 loops.sumOfNNumbers = function(initial,range){
 	if(range == Infinity)
-		return Infinity;
+		throw new exception.outOfRangeException();
 	var count = initial;
 	var sum = 0;
 	while(range>= count){
@@ -90,7 +90,7 @@ loops.sumOfNNumbers = function(initial,range){
 
 loops.productOf = function(initial,range){
 	if(range == Infinity)
-		return Infinity*initial;
+		throw new exception.outOfRangeException();
 	var count = initial;
 	var total = 1;
 	while(range>= count){
@@ -108,17 +108,17 @@ loops.productOfAnyNNumbers = function(initial, range){
 	return loops.productOf(initial, range);
 };
 
-loops.oddNumbersBetweenAnyRange = function(firstNumber, range){
-	return loops.oddNumberSeries(firstNumber, range);
+loops.oddNumbersBetweenAnyRange = function(first, range){
+	return loops.oddNumberSeries(first, range);
 };
 
-loops.evenNumbersBetweenAnyRange = function(firstNumber, range){
-	return loops.evenNumberSeries(firstNumber, range);
+loops.evenNumbersBetweenAnyRange = function(first, range){
+	return loops.evenNumberSeries(first, range);
 };
 
-loops.nthNumberBetweenAnyRange = function(firstNumber, range, number){
+loops.nthNumberBetweenAnyRange = function(first, range, number){
 	var terms = [];
-	var count = firstNumber;
+	var count = first;
 	while(count <= range){
 		terms.push(count);
 		count += number;
@@ -147,7 +147,7 @@ var sumOfNumbers = function(rangeFrom, rangeTo,condition){
 		var terms = countTerms(startNumber, rangeTo);
 		return sumOfSeries(startNumber, terms);
 	};
-	throw new exception.invalidRangeException();
+	throw new exception.outOfRangeException();
 };
 
 loops.sumOfEvenNumbers = function(first, last){

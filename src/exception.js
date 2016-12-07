@@ -5,10 +5,10 @@ exception.negativeNumberException = function(){
 	this.message = 'number must be non negative';
 };
 
-exception.invalidRangeException = function(){
-	this.message = 'invalid range';
+exception.outOfRangeException = function(){
+	this.message = 'out of range';
 };
 
 util.inherits(exception.negativeNumberException, Error);
-util.inherits(exception.invalidRangeException, Error);
+util.inherits(exception.outOfRangeException, Error);
 module.exports = exception;
