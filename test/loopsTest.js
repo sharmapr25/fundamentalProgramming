@@ -26,7 +26,7 @@ describe('loops', function() {
         });
 
         it('should throw an error when the given number is negative', function() {
-            assert.throws(function() { factorialOf(-1) }, Error, "number must be non negative");
+            assert.throws(function() { factorialOf(-1) },/number must be non negative/);
         });
 
         it('should return Infinity when the given number is Infinity', function() {
@@ -154,11 +154,11 @@ describe('loops', function() {
     	});
 
     	it('should throw an error for negative range when the given range is negative number',function(){
-    		assert.throws(function(){multiplicationTableOf(2,-9)}, Error, "out of range");
+    		assert.throws(function(){multiplicationTableOf(2,-9)},/out of range/);
     	});
 
     	it('should throw an error when the given range is zero',function(){
-    		assert.throws(function(){multiplicationTableOf(2,0)},Error,"out of range");
+    		assert.throws(function(){multiplicationTableOf(2,0)},/out of range/);
     	});
     });
 
@@ -191,7 +191,7 @@ describe('loops', function() {
 		});
 
         it('should throw an error of out of range when the given range is 1 to Infinity',function(){
-            assert.throws(function(){sumOfNNumbers(1,Infinity)}, Error, "out of range");
+            assert.throws(function(){sumOfNNumbers(1,Infinity)},/out of range/);
         });
     });
 
@@ -215,11 +215,11 @@ describe('loops', function() {
     	});
 
     	it('should throw an error of out of range when the given range is 1 to Infinity',function(){
-            assert.throws(function(){productOf(1,Infinity)}, Error, "out of range");
+            assert.throws(function(){productOf(1,Infinity)},/out of range/);
         });
 
     	it('should throw an error of out of range when the given range is 0 to Infinity',function(){
-            assert.throws(function(){productOf(0,Infinity)}, Error, "out of range");
+            assert.throws(function(){productOf(0,Infinity)},/out of range/);
         });
 
     });
@@ -253,7 +253,7 @@ describe('loops', function() {
 		});
 
         it('should throw an error of out of range when the given range is 1 to Infinity',function(){
-            assert.throws(function(){sumOfAnyNNumbers(1,Infinity)}, Error, "out of range");
+            assert.throws(function(){sumOfAnyNNumbers(1,Infinity)},/out of range/);
         });
     });
 
@@ -277,11 +277,11 @@ describe('loops', function() {
     	});
 
     	it('should throw an error when the given range is 1 to Infinity',function(){
-              assert.throws(function(){productOfAnyNNumbers(1,Infinity)}, Error, "out of range");
+              assert.throws(function(){productOfAnyNNumbers(1,Infinity)},/out of range/);
     	});
 
         it('should throw an error of out of range when the given range is 0 to Infinity',function(){
-            assert.throws(function(){productOfAnyNNumbers(0,Infinity)}, Error, "out of range");
+            assert.throws(function(){productOfAnyNNumbers(0,Infinity)},/out of range/);
         });    
     });
 
@@ -502,19 +502,19 @@ describe('loops', function() {
         });
 
         it('should throw an error for out of range when the given range is 4 to 1',function(){
-            assert.throws(function(){sumOfEvenNumbers(4,1)},Error,"range is invalid")
+            assert.throws(function(){sumOfEvenNumbers(4,1)},/out of range/)
         });
 
         it('should throw an error for out of range when the given range is 3 to 1',function(){
-            assert.throws(function(){sumOfEvenNumbers(3,1)},Error,"range is invalid")
+            assert.throws(function(){sumOfEvenNumbers(3,1)},/out of range/)
         });
 
         it('should throw an error for out of range when the given range is -1 to -4',function(){
-            assert.throws(function(){sumOfEvenNumbers(-1,-4)},Error,"range is invalid")
+            assert.throws(function(){sumOfEvenNumbers(-1,-4)},/out of range/)
         });
 
         it('should throw an error for out of range when the given range is -3 to -15',function(){
-            assert.throws(function(){sumOfEvenNumbers(-3,-15)},Error,"range is invalid")
+            assert.throws(function(){sumOfEvenNumbers(-3,-15)},/out of range/)
         });
     });
 
@@ -596,19 +596,19 @@ describe('loops', function() {
         });
 
         it('should throw an error for out of range when the given range is 4 to 1',function(){
-            assert.throws(function(){sumOfOddNumbers(4,1)},Error,"range is invalid");
+            assert.throws(function(){sumOfOddNumbers(4,1)},/out of range/);
         });
 
         it('should throw an error for out of range when the given range is 3 to 1',function(){
-            assert.throws(function(){sumOfOddNumbers(3,1)},Error,"range is invalid");
+            assert.throws(function(){sumOfOddNumbers(3,1)},/out of range/);
         });
 
         it('should throw an error for out of range when the given range is -1 to -4',function(){
-            assert.throws(function(){sumOfOddNumbers(-1,-4)},Error,"range is invalid");
+            assert.throws(function(){sumOfOddNumbers(-1,-4)},/out of range/);
         });
 
         it('should throw an error for out of range when the given range is -3 to -15',function(){
-            assert.throws(function(){sumOfOddNumbers(-3,-15)},Error,"range is invalid");
+            assert.throws(function(){sumOfOddNumbers(-3,-15)},/out of range/);
         });
     });
 
@@ -647,7 +647,7 @@ describe('loops', function() {
         });
 
         it('should throw an error of out of range when the given number is Infinity',function(){
-            assert.throws(function(){oddNumberSeriesBackwards(Infinity)},Error,"range is invalid");
+            assert.throws(function(){oddNumberSeriesBackwards(Infinity)},/out of range/);
         });
 
         it('should return 0 when the given range is negative Infinity',function(){
@@ -688,7 +688,7 @@ describe('loops', function() {
         });
 
         it('should throw an error of out of range when the given number is Infinity',function(){
-            assert.throws(function(){evenNumberSeriesBackwards(Infinity)},Error,"range is invalid");
+            assert.throws(function(){evenNumberSeriesBackwards(Infinity)},/out of range/);
         });
 
         it('should return 0 when the given range is negative Infinity',function(){
