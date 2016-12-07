@@ -157,4 +157,14 @@ loops.sumOfOddNumbers = function(first, last){
 	return sumOfNumbers(first, last, basic.isOdd);
 };
 
+loops.oddNumberSeriesBackwards = function(rangeTo){
+	var oddNumberSeries = [];
+	if(rangeTo == Infinity)
+		return rangeTo;
+	for (var i = rangeTo; i > 0; i--) {
+		oddNumberSeries.push(i);
+	};
+	return oddNumberSeries.join(" ");
+};
+
 module.exports = loops;

@@ -604,4 +604,40 @@ describe('loops', function() {
         });
     });
 
+    describe('Odd number series between N and 1 backwards',function(){
+        var oddNumberSeriesBackwards = loops.oddNumberSeriesBackwards;
+
+        it('should return 1 when the given range is 1',function(){
+            assert.equal('1',oddNumberSeriesBackwards(1));
+        });
+
+        it('should return 2 1 when the given number is 2',function(){
+            assert.equal('2 1', oddNumberSeriesBackwards(2));
+        });
+
+        it('should return 3 2 1 when the given number is 3',function(){
+            assert.equal('3 2 1', oddNumberSeriesBackwards(3));
+        });
+
+        it('should return 4 3 2 1 when the given number is 4',function(){
+            assert.equal('4 3 2 1', oddNumberSeriesBackwards(4));
+        });
+
+        it('should return 5 4 3 2 1 when the given number is 5',function(){
+            assert.equal('5 4 3 2 1', oddNumberSeriesBackwards(5));
+        });
+
+        it('should return empty when the given number is 0',function(){
+            assert.equal(0,oddNumberSeriesBackwards(0).length);
+        });
+
+        it('should return empty when the given number is -1',function(){
+            assert.equal(0, oddNumberSeriesBackwards(0).length);
+        });
+
+        it('should return Infinity when the given number is negative Infinity',function(){
+            assert.equal(Infinity, oddNumberSeriesBackwards(Infinity));
+            assert.equal(0, oddNumberSeriesBackwards(-Infinity));
+        });
+    });
 });
