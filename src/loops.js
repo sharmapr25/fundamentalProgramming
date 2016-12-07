@@ -157,15 +157,19 @@ loops.sumOfOddNumbers = function(first, last){
 	return sumOfNumbers(first, last, basic.isOdd);
 };
 
-loops.oddNumberSeriesBackwards = function(rangeTo){
-	var oddNumberSeries = [];
+var numberSeriesBackwards = function(rangeTo, condition){
+	var numberSeries = [];
 	if(rangeTo == Infinity)
 		return rangeTo;
-	for (var i = rangeTo; i > 0; i--) {
-		if(basic.isOdd(i))
-			oddNumberSeries.push(i);
+	for (var i = rangeTo;i>0; i--) {
+		if(condition(i))
+			numberSeries.push(i);
 	};
-	return oddNumberSeries.join(" ");
+	return numberSeries.join(" ");
+};
+
+loops.oddNumberSeriesBackwards = function(rangeTo){
+	return numberSeriesBackwards(rangeTo, basic.isOdd);
 };
 
 module.exports = loops;
