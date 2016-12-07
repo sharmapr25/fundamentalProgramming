@@ -190,6 +190,9 @@ describe('loops', function() {
 			assert.equal(0, sumOfNNumbers(1,-2));
 		});
 
+        it('should return Infinity when the given range is 1 to Infinity',function(){
+            assert.equal(Infinity, sumOfNNumbers(1, Infinity));
+        });
     });
 
     describe('Product of first N numbers',function(){

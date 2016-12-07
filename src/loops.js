@@ -77,6 +77,8 @@ loops.multiplicationTableOf = function(factor, range){
 };
 
 loops.sumOfNNumbers = function(initial,range){
+	if(range == Infinity)
+		return Infinity;
 	var count = initial;
 	var sum = 0;
 	while(range>= count){
