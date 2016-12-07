@@ -504,4 +504,99 @@ describe('loops', function() {
             assert.throws(function(){sumOfEvenNumbers(-3,-15)},Error,"range is invalid")
         });
     });
+
+    describe('Sum of all odd numbers between any two numbers',function(){
+        var sumOfOddNumbers = loops.sumOfOddNumbers;
+        it('should return 2 for given range 1 to 3',function(){
+            assert.equal(1, sumOfOddNumbers(1,3));
+        });
+
+        it('should return 0 when the given range is 2 to 3',function(){
+            assert.equal(0, sumOfOddNumbers(2,3));
+        });
+
+        it('should return 3 for the given range 2 to 4 or 2 to 5',function(){
+            assert.equal(3, sumOfOddNumbers(2,4));
+            assert.equal(3, sumOfOddNumbers(2,5));
+        });
+
+        it('should return 8 for the given range 2 to 6 or 2 to 7',function(){
+            assert.equal(8, sumOfOddNumbers(2,6));
+            assert.equal(8, sumOfOddNumbers(2,7));
+        });
+
+        it('should return 15 for the given range 2 to 8 or 2 to 9',function(){
+            assert.equal(15, sumOfOddNumbers(2,8));
+            assert.equal(15, sumOfOddNumbers(2,9));
+        });
+
+        it('should return 24 for the given range 2 to 10 or 2 to 11',function(){
+            assert.equal(24, sumOfOddNumbers(2,10));
+            assert.equal(24, sumOfOddNumbers(2,11));
+        });
+
+        it('should return 35 for the given range 2 to 12 or 2 to 13',function(){
+            assert.equal(35, sumOfOddNumbers(2,12));
+            assert.equal(35, sumOfOddNumbers(2,13));
+        });
+
+        it('should return 48 for the given range 2 to 14 or 2 to 15',function(){ 
+            assert.equal(48, sumOfOddNumbers(2,14));
+            assert.equal(48, sumOfOddNumbers(2,15));
+        });
+
+        it('should return -3 when the given range is -3 to -1',function(){
+            assert.equal(-3, sumOfOddNumbers(-3,-1));
+        });
+
+        it('should return -8 when the given range is -5 to -1',function(){
+            assert.equal(-8, sumOfOddNumbers(-5,-1));
+        });
+
+        it('should return -55 for the given range -15 to -5',function(){
+            assert.equal(-55, sumOfOddNumbers(-15,-5));
+        });
+
+        it('should return -40 for the given range -14 to -5 or -13 to -5',function(){
+            assert.equal(-40, sumOfOddNumbers(-14,-5));
+            assert.equal(-40, sumOfOddNumbers(-13,-5));
+        });
+
+        it('should return -27 for the given range -12 to -5 or -11 to -5',function(){
+            assert.equal(-27, sumOfOddNumbers(-12,-5));
+            assert.equal(-27, sumOfOddNumbers(-11,-5));
+        });
+
+        it('should return -16 for the given range -10 to -5 or -9 to -5',function(){
+            assert.equal(-16, sumOfOddNumbers(-10,-5));
+            assert.equal(-16, sumOfOddNumbers(-9,-5));
+        });
+
+        it('should return -7 for the given range -8 to -5 or -7 to -5',function(){
+            assert.equal(-7, sumOfOddNumbers(-8,-5));
+            assert.equal(-7, sumOfOddNumbers(-7,-5));
+        });
+
+        it('should return 0 for the given range -6 to -5 or -5 to -5',function(){
+            assert.equal(0, sumOfOddNumbers(-6,-5));
+            assert.equal(0,sumOfOddNumbers(-5,-5));
+        });
+
+        it('should throw an error for invalid range when the given range is 4 to 1',function(){
+            assert.throws(function(){sumOfOddNumbers(4,1)},Error,"range is invalid")
+        });
+
+        it('should throw an error for invalid range when the given range is 3 to 1',function(){
+            assert.throws(function(){sumOfOddNumbers(3,1)},Error,"range is invalid")
+        });
+
+        it('should throw an error for invalid range when the given range is -1 to -4',function(){
+            assert.throws(function(){sumOfOddNumbers(-1,-4)},Error,"range is invalid")
+        });
+
+        it('should throw an error for invalid range when the given range is -3 to -15',function(){
+            assert.throws(function(){sumOfOddNumbers(-3,-15)},Error,"range is invalid")
+        });
+    });
+
 });

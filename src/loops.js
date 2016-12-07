@@ -123,34 +123,35 @@ loops.nthNumberBetweenAnyRange = function(firstNumber, range, number){
 	return terms.join(" ");
 };
 
-var evalNumber = function(number, condition){
+var startPoint = function(number, condition){
 	if(condition(number))
 		return number;
 	return number+1;
 }
 
-var calculateSumOf = function(start, terms){
-	
+var sumOfSeries = function(start, terms){
 	return terms*(start+(terms-1));
 }
 
-
-var evalTerms = function(start, last,first){
-	if(first <= last)
-		return Math.ceil((last-start)/2)
-	throw new exception.invalidRangeException();
+var countTerms = function(start, last){
+	return Math.ceil((last-start)/2);
 }
 
+var sumOfNumbers = function(rangeFrom, rangeTo,condition){
+	if(rangeFrom <= rangeTo){
+		var startNumber = startPoint(rangeFrom, condition);
+		var terms = countTerms(startNumber, rangeTo);
+		return sumOfSeries(startNumber, terms);
+	};
+	throw new exception.invalidRangeException();
+};
+
 loops.sumOfEvenNumbers = function(first, last){
-	var start = evalNumber(first, basic.isEven);
-	var terms = evalTerms(start, last,first);
-	return calculateSumOf(start,terms);
+	return sumOfNumbers(first, last, basic.isEven);
 };
 
 loops.sumOfOddNumbers = function(first, last){
-	var start = evalNumber(first, basic.isOdd);
-	var terms = evalTerms(start, last, first);
-	return calculateSumOf(start,terms);
-}
+	return sumOfNumbers(first, last, basic.isOdd);
+};
 
 module.exports = loops;
