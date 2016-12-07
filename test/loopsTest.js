@@ -70,7 +70,7 @@ describe('loops', function() {
     	});
     });
 
-    describe('Odd number series',function(){
+    describe('First N odd numbers series',function(){
     	var oddNumberSeries = loops.oddNumberSeries;
     	it('should return empty when the given range is 1',function(){
     		assert.equal(oddNumberSeries(1,1).length,0);
@@ -93,7 +93,7 @@ describe('loops', function() {
     	});
     });
 
-    describe('Even number series',function(){
+    describe('First N even numbers series',function(){
     	var evenNumberSeries = loops.evenNumberSeries;
 
     	it('should return 0 when the given range is 1',function(){
@@ -157,7 +157,7 @@ describe('loops', function() {
     	});
     });
 
-    describe('Sum of N numbers',function(){
+    describe('Sum of first N numbers',function(){
     	var sumOfNNumbers = loops.sumOfNNumbers;
     	
     	it('should return 1 when the given range is 1',function(){
@@ -187,7 +187,7 @@ describe('loops', function() {
 
     });
 
-    describe('Product of N numbers',function(){
+    describe('Product of first N numbers',function(){
     	var productOf = loops.productOf;
 
     	it('should return 1 when the given range is 1',function(){
@@ -272,7 +272,7 @@ describe('loops', function() {
     	});
     });
 
-    describe('Odd numbers between any two numbers',function(){
+    describe('Odd numbers series between any two numbers',function(){
     	var oddNumbersBetweenAnyRange = loops.oddNumbersBetweenAnyRange;
     	it('should return empty when the given range is 1',function(){
     		assert.equal(oddNumbersBetweenAnyRange(1,1).length,0);
@@ -295,7 +295,7 @@ describe('loops', function() {
     	});
     });
 
-    describe('Even number between any two numbers',function(){
+    describe('Even numbers series between any two numbers',function(){
     	var evenNumbersBetweenAnyRange = loops.evenNumbersBetweenAnyRange;
 
     	it('should return 0 when the given range is 1',function(){
