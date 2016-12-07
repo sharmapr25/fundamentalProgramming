@@ -329,15 +329,72 @@ describe('loops', function() {
 
     describe('every nth number between any two numbers',function(){
     	var nthNumberBetweenAnyRange = loops.nthNumberBetweenAnyRange;
-    	it('should return 1 2 3 4 5 for every 1th number between 1 to 6',function(){
+    	
+        it('should return 1 2 3 4 5 6 for every 1st number between 1 to 6',function(){
     		assert.equal('1 2 3 4 5 6', nthNumberBetweenAnyRange(1,6, 1));
     	});
+
+        it('should return 1 3 5for every 2nd number between 1 to 6',function(){
+            assert.equal('1 3 5', nthNumberBetweenAnyRange(1,6,2));
+        });
+
+        it('should return 1 4 for every 3rd number between 1 to 6',function(){
+            assert.equal('1 4', nthNumberBetweenAnyRange(1,6, 3));
+        });
+
+        it('should return 1 5 for every 4th number between 1 to 6',function(){
+            assert.equal('1 5', nthNumberBetweenAnyRange(1,6, 4));
+        });
+
+        it('should return 1 6 for every 5th number between 1 to 6',function(){
+            assert.equal('1 6', nthNumberBetweenAnyRange(1,6, 5));
+        });
+
+        it('should return 1 2 3 4 5 6 7 8 9 10 for every 1st number between 1 to 10',function(){
+            assert.equal('1 2 3 4 5 6 7 8 9 10', nthNumberBetweenAnyRange(1,10, 1));
+        });
+
+        it('should return 1 3 5 7 9 for every 2nd number between 1 to 10',function(){
+            assert.equal('1 3 5 7 9', nthNumberBetweenAnyRange(1,10, 2));
+        });  
+
+        it('should return 1 4 7 10 for every 3rd number between 1 to 10',function(){
+            assert.equal('1 4 7 10', nthNumberBetweenAnyRange(1,10, 3));
+        });  
+
+        it('should return 1 5 9 for every 4th number between 1 to 10',function(){
+            assert.equal('1 5 9', nthNumberBetweenAnyRange(1,10, 4));
+        });   
+
+        it('should return 1 6 for every 5th number between 1 to 10',function(){
+            assert.equal('1 6', nthNumberBetweenAnyRange(1,10, 5));
+        }); 
+
+        it('should return 1 7 for every 6th number between 1 to 10',function(){
+            assert.equal('1 7', nthNumberBetweenAnyRange(1,10, 6));
+        });    
+
+        it('should return 1 8 for every 7th number between 1 to 10',function(){
+            assert.equal('1 8', nthNumberBetweenAnyRange(1,10, 7));
+        });
+
+        it('should return 1 9 for every 8th number between 1 to 10',function(){
+            assert.equal('1 9', nthNumberBetweenAnyRange(1,10, 8));
+        });
+
+        it('should return 1 10 for every 9th number between 1 to 10',function(){
+            assert.equal('1 10', nthNumberBetweenAnyRange(1,10, 9));
+        });
+
+        it('should return 1 for every 10th number between 1 to 10',function(){
+            assert.equal('1', nthNumberBetweenAnyRange(1,10, 10));
+        });
 
     	it('should return 15 22 29 36 for every 7th number between 15 to 36',function(){
     		assert.equal('15 22 29 36', nthNumberBetweenAnyRange(15, 37, 7));
     	});
 
-    	it('should return 6 8 10 12 14 16 18 20 for every 2th number with range 6 to 21',function(){
+    	it('should return 6 8 10 12 14 16 18 20 for every 2nd number with range 6 to 21',function(){
     		assert.equal('6 8 10 12 14 16 18 20',nthNumberBetweenAnyRange(6, 21, 2));
     	});
 
