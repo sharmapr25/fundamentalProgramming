@@ -123,4 +123,18 @@ loops.nthNumberBetweenAnyRange = function(firstNumber, range, number){
 	return terms.join(" ");
 };
 
+var makeEvenNumber = function(number){
+	if(basic.isEven(number))
+		return number;
+	return number+1;
+}
+
+loops.sumOfEvenNumbers = function(first, last){
+	if(last< first)
+		throw new invalidRangeException();
+	var terms = Math.ceil((last-first)/2);
+	var start = makeEvenNumber(first);
+	return terms*(start+(terms-1));
+};
+
 module.exports = loops;
