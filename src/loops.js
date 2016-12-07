@@ -44,22 +44,21 @@ loops.fibonacciOf = function(number){
 	return negativeFibonacciOf(number,0,1);
 };
 
-loops.oddNumberSeries = function(first,limit){
+var numberSeries = function(rangeFrom, rangeTo, condition){
 	var oddSeries = [];
-	for (var i = first; i < limit; i++) {
-		if(basic.isOdd(i))
+	for (var i = rangeFrom; i < rangeTo; i++) {
+		if(condition(i))
 			oddSeries.push(i);	
 	};
-	return oddSeries.join(" ");
+	return oddSeries.join(" "); 
+}
+
+loops.oddNumberSeries = function(first,limit){
+	return numberSeries(first, limit, basic.isOdd);
 };
 
 loops.evenNumberSeries = function(first,limit){
-	var oddSeries = [];
-	for (var i = first; i < limit; i++) {
-		if(basic.isEven(i))
-			oddSeries.push(i);	
-	};
-	return oddSeries.join(" ");
+	return numberSeries(first, limit, basic.isEven);
 };
 
 
