@@ -635,12 +635,50 @@ describe('loops', function() {
         });
 
         it('should return empty when the given number is -1',function(){
-            assert.equal(0, oddNumberSeriesBackwards(0).length);
+            assert.equal(0, oddNumberSeriesBackwards(-1).length);
         });
 
         it('should return Infinity when the given number is negative Infinity',function(){
             assert.equal(Infinity, oddNumberSeriesBackwards(Infinity));
             assert.equal(0, oddNumberSeriesBackwards(-Infinity));
+        });
+    });
+
+    describe('Even number series between N and 1 backwards',function(){
+        var evenNumberSeriesBackwards = loops.evenNumberSeriesBackwards;
+
+        it('should return empty when the given range is 1',function(){
+            assert.equal(0,evenNumberSeriesBackwards(1).length);
+        });
+
+        it('should return 2 when the given number is 2',function(){
+            assert.equal('2', evenNumberSeriesBackwards(2));
+        });
+
+        it('should return 4 2 when the given number is 4 or 5',function(){
+            assert.equal('4 2', evenNumberSeriesBackwards(4));
+            assert.equal('4 2', evenNumberSeriesBackwards(5));
+        });
+
+        it('should return 6 4 2 when the given number is 7',function(){
+            assert.equal('6 4 2', evenNumberSeriesBackwards(7));
+        });
+
+        it('should return 8 6 4 2 when the given number is 8',function(){
+            assert.equal('8 6 4 2', evenNumberSeriesBackwards(8));
+        });
+
+        it('should return empty when the given number is 0',function(){
+            assert.equal(0,evenNumberSeriesBackwards(0).length);
+        });
+
+        it('should return empty when the given number is -1',function(){
+            assert.equal(0, evenNumberSeriesBackwards(-1).length);
+        });
+
+        it('should return Infinity when the given number is negative Infinity',function(){
+            assert.equal(Infinity, evenNumberSeriesBackwards(Infinity));
+            assert.equal(0, evenNumberSeriesBackwards(-Infinity));
         });
     });
 });

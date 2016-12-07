@@ -172,4 +172,8 @@ loops.oddNumberSeriesBackwards = function(rangeTo){
 	return numberSeriesBackwards(rangeTo, basic.isOdd);
 };
 
+loops.evenNumberSeriesBackwards = function(rangeTo){
+	return numberSeriesBackwards(rangeTo, basic.isEven);
+};
+
 module.exports = loops;
