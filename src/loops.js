@@ -161,7 +161,7 @@ loops.sumOfOddNumbers = function(first, last){
 var numberSeriesBackwards = function(rangeTo, condition){
 	var numberSeries = [];
 	if(rangeTo == Infinity)
-		return rangeTo;
+		throw new exception.outOfRangeException();
 	for (var i = rangeTo;i>0; i--) {
 		if(condition(i))
 			numberSeries.push(i);

@@ -646,8 +646,11 @@ describe('loops', function() {
             assert.equal(0, oddNumberSeriesBackwards(-1).length);
         });
 
-        it('should return Infinity when the given number is negative Infinity',function(){
-            assert.equal(Infinity, oddNumberSeriesBackwards(Infinity));
+        it('should throw an error of out of range when the given number is Infinity',function(){
+            assert.throws(function(){oddNumberSeriesBackwards(Infinity)},Error,"range is invalid");
+        });
+
+        it('should return 0 when the given range is negative Infinity',function(){
             assert.equal(0, oddNumberSeriesBackwards(-Infinity));
         });
     });
@@ -684,8 +687,11 @@ describe('loops', function() {
             assert.equal(0, evenNumberSeriesBackwards(-1).length);
         });
 
-        it('should return Infinity when the given number is negative Infinity',function(){
-            assert.equal(Infinity, evenNumberSeriesBackwards(Infinity));
+        it('should throw an error of out of range when the given number is Infinity',function(){
+            assert.throws(function(){evenNumberSeriesBackwards(Infinity)},Error,"range is invalid");
+        });
+
+        it('should return 0 when the given range is negative Infinity',function(){
             assert.equal(0, evenNumberSeriesBackwards(-Infinity));
         });
     });
