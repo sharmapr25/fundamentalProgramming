@@ -162,7 +162,8 @@ loops.oddNumberSeriesBackwards = function(rangeTo){
 	if(rangeTo == Infinity)
 		return rangeTo;
 	for (var i = rangeTo; i > 0; i--) {
-		oddNumberSeries.push(i);
+		if(basic.isOdd(i))
+			oddNumberSeries.push(i);
 	};
 	return oddNumberSeries.join(" ");
 };

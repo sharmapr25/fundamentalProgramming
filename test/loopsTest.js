@@ -611,20 +611,23 @@ describe('loops', function() {
             assert.equal('1',oddNumberSeriesBackwards(1));
         });
 
-        it('should return 2 1 when the given number is 2',function(){
-            assert.equal('2 1', oddNumberSeriesBackwards(2));
+        it('should return 1 when the given number is 2',function(){
+            assert.equal('1', oddNumberSeriesBackwards(2));
         });
 
-        it('should return 3 2 1 when the given number is 3',function(){
-            assert.equal('3 2 1', oddNumberSeriesBackwards(3));
+        it('should return 3 1 when the given number is 3 or 4',function(){
+            assert.equal('3 1', oddNumberSeriesBackwards(3));
+            assert.equal('3 1', oddNumberSeriesBackwards(4));
         });
 
-        it('should return 4 3 2 1 when the given number is 4',function(){
-            assert.equal('4 3 2 1', oddNumberSeriesBackwards(4));
+        it('should return 5 3 1 when the given number is 5 or 6',function(){
+            assert.equal('5 3 1', oddNumberSeriesBackwards(5));
+            assert.equal('5 3 1', oddNumberSeriesBackwards(6));
         });
 
-        it('should return 5 4 3 2 1 when the given number is 5',function(){
-            assert.equal('5 4 3 2 1', oddNumberSeriesBackwards(5));
+        it('should return 7 5 3 1 when the given number is 7 or 8',function(){
+            assert.equal('7 5 3 1', oddNumberSeriesBackwards(7));
+            assert.equal('7 5 3 1', oddNumberSeriesBackwards(8));
         });
 
         it('should return empty when the given number is 0',function(){
