@@ -1,7 +1,8 @@
 var assert = require('assert');
-var myMap = require('../src/myMap');
+var myArray = require('../src/myArray');
 
 describe('myMap',function(){
+	var myMap = myArray.myMap;
 	describe('Operation on single array',function(){
 		it('should return same array',function(){
 			assert.deepEqual([1,2,3], myMap([1,2,3], function(number){return number}));
@@ -46,6 +47,5 @@ describe('myMap',function(){
 			var other = [1,2,3,4];
 			assert.deepEqual([1,4,27,256], myMap([1,2,3,4], function(number, index){return Math.pow(number, other[index])}))
 		});
-	});
-	
+	});	
 });

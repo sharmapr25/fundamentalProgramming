@@ -1,4 +1,5 @@
-var myMap = function (list, callback) {
+var myArray = {};
+myArray.myMap = function (list, callback) {
 	var newList = [];
 	for (var i = 0; i < list.length; i++) {
 		newList.push(callback(list[i], i, list));
@@ -6,4 +7,4 @@ var myMap = function (list, callback) {
 	return newList;
 };
 
-module.exports = myMap;
+module.exports = myArray;
