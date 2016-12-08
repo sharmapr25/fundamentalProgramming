@@ -1,9 +1,9 @@
 var assert = require('assert');
-var myArray = require('../src/myArray');
+var arrayMethods = require('../src/arrayMethods');
 var basic = require('../src/basicFunctions.js');
 
 describe('myMap',function(){
-	var myMap = myArray.myMap;
+	var myMap = arrayMethods.myMap;
 	describe('Operation on single array',function(){
 		it('should return same array',function(){
 			assert.deepEqual([1,2,3], myMap([1,2,3], function(number){return number}));
@@ -52,7 +52,7 @@ describe('myMap',function(){
 });
 
 describe('myFilter',function(){
-	var myFilter = myArray.myFilter;
+	var myFilter = arrayMethods.myFilter;
 	
 	it('should return an array of same elements when callback return true for each element of given array',function(){
 		assert.deepEqual([1,2,3,4], myFilter([1,2,3,4], function(){return true;}));
