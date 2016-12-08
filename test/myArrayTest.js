@@ -1,5 +1,6 @@
 var assert = require('assert');
 var myArray = require('../src/myArray');
+var basic = require('../src/basicFunctions.js');
 
 describe('myMap',function(){
 	var myMap = myArray.myMap;
@@ -48,4 +49,48 @@ describe('myMap',function(){
 			assert.deepEqual([1,4,27,256], myMap([1,2,3,4], function(number, index){return Math.pow(number, other[index])}))
 		});
 	});	
+});
+
+describe('myFilter',function(){
+	var myFilter = myArray.myFilter;
+	
+	it('should return an array of same elements when callback return true for each element of given array',function(){
+		assert.deepEqual([1,2,3,4], myFilter([1,2,3,4], function(){return true;}));
+	});
+
+	it('should return an empty array when callback return false for each element of given array',function(){
+		assert.deepEqual([], myFilter([1,2,3,4], function(){return false}));
+	});
+
+	it('should filter all of the even elemets from the given array',function(){
+		assert.deepEqual([2,4,6,8,10], myFilter([1,2,3,4,5,6,7,8,9,10], basic.isEven));
+	});
+
+	it('should filter all of the odd elements from the given array',function(){
+		assert.deepEqual([1,3,5,7,9], myFilter([1,2,3,4,5,6,7,8,9,10], basic.isOdd));
+	});
+
+	it('should return an empty array when the given array has only undefined elements',function(){
+		assert.deepEqual([],myFilter([undefined, undefined, undefined],function(number){return number}));
+	});
+
+	it('should return an empty array when the given array has only falsy elements',function(){
+		assert.deepEqual([], myFilter([0,undefined, NaN], function(number){return number}));
+	});
+
+	it('should filter all of the truthy elements from the given array',function(){
+		assert.deepEqual([1,2], myFilter([0,1,undefined,2,NaN],function(number){return number}));
+	});
+
+	it('should filter all of the elements divisible by three from the given array',function(){
+		assert.deepEqual([3,6,9], myFilter([1,2,3,4,5,6,7,8,9,10], function(number){return number%3==0;}));
+	});
+
+	it('should return same array of elements for negative elements array',function(){
+		assert.deepEqual([-1,-2,-3,-4], myFilter([-1,-2,-3,-4], function(number){return number;}));
+	});
+
+	it('should filter all of the truthy index of elements from the given array',function(){
+		assert.deepEqual([2,3,4], myFilter([1,2,3,4], function(element, index){return index}));
+	});
 });
