@@ -37,17 +37,28 @@ helpers.largestdiff = function(first, second){
 	return first;
 };
 
-helpers.sum = function(first, second){return first+second};
-helpers.sumOfIndexes = function(first, second, index){return first+index};
-helpers.flatten = function(first, second){return first.concat(second)};
-helpers.flattenBackward = function(first, second){return second.concat(first)};
+helpers.sum = function(first, second){
+	return first+second;
+};
+
+helpers.sumOfIndexes = function(first, second, index){
+	return first+index;
+};
+
+helpers.flatten = function(first, second){
+	return first.concat(second);
+};
+
+helpers.flattenBackward = function(first, second){
+	return second.concat(first);
+};
 
 helpers.isUniqueNumber = function(number, index, list){
-	return list.indexOf(number)== index
+	return list.indexOf(number)== index;
 };
 helpers.sumWithOtherList = function(number, index){
 	var secondList = [1,2,3,4];
-	return number+secondList[index]
+	return number+secondList[index];
 };
 
 helpers.powOf = function(number){
