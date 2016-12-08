@@ -31,6 +31,12 @@ helpers.min = function(first, second){
 	return Math.min(first, second);
 };
 
+helpers.largestdiff = function(first, second){
+	first.diff = Math.max(first.diff, Math.abs(second-first.value));
+	first.value = second;
+	return first;
+};
+
 helpers.sum = function(first, second){return first+second};
 helpers.sumOfIndexes = function(first, second, index){return first+index};
 helpers.flatten = function(first, second){return first.concat(second)};
@@ -193,4 +199,13 @@ describe('myReduce',function(){
 	it('should return min element from given array',function(){
 		assert.equal(1, myReduce(list, helpers.min));
 	});
+
+	it('should return largest diff between consecutive elements',function(){
+		var init = {value:0, diff:0};
+		var randomList = [2,10,100,0];
+
+		assert.equal(1, myReduce(list, helpers.largestdiff,init).diff);
+		assert.equal(100, myReduce(randomList, helpers.largestdiff,init).diff);
+	});
+
 });

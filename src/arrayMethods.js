@@ -2,17 +2,17 @@ var arrayMethods = {};
 
 arrayMethods.myMap = function (list, callback) {
 	var newList = [];
-	for (var i = 0; i < list.length; i++) {
-		newList.push(callback(list[i], i, list));
+	for (var index = 0; index < list.length; index++) {
+		newList.push(callback(list[index], index, list));
 	}
 	return newList;
 };
 
 arrayMethods.myFilter = function(list, callback){
 	var newList = [];
-	for (var i = 0; i < list.length; i++) {
-		if(callback(list[i], i, list))
-			newList.push(list[i]);
+	for (var index = 0; index < list.length; index++) {
+		if(callback(list[index], index, list))
+			newList.push(list[index]);
 	}
 	return newList;
 };
@@ -27,8 +27,8 @@ arrayMethods.myReduce = function(list, callback,initial){
 		current = 0;
 	}
 
-	for (var i = current; i < list.length; i++) {
-		initial = callback(initial, list[i], i, list);
+	for (var index = current; index < list.length; index++) {
+		initial = callback(initial, list[index], index, list);
 	}
 	return initial;
 }
