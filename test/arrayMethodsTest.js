@@ -14,9 +14,28 @@ helpers.zero = function(){return 0;};
 helpers.nothing = function(){};
 helpers.trueValue = function(){return true};
 helpers.falseValue = function(){return false};
-helpers.isDivisibleBy3 = function(number){return number%3==0;}
-helpers.isGreaterThan3 = function(element){return element.length>3};
-helpers.isGreaterThan4 = function(element){return (element[0]+element[1]) > 4};
+
+helpers.isDivisibleBy3 = function(number){
+	return number%3==0;
+};
+
+helpers.isGreaterThan3 = function(element){
+	return element.length>3;
+};
+
+helpers.isGreaterThan4 = function(element){
+	return (element[0]+element[1]) > 4;
+};
+
+helpers.min = function(first, second){
+	return Math.min(first, second);
+};
+
+helpers.sum = function(first, second){return first+second};
+helpers.sumOfIndexes = function(first, second, index){return first+index};
+helpers.flatten = function(first, second){return first.concat(second)};
+helpers.flattenBackward = function(first, second){return second.concat(first)};
+
 helpers.isUniqueNumber = function(number, index, list){
 	return list.indexOf(number)== index
 };
@@ -146,5 +165,32 @@ describe('myFilter',function(){
 			var expected = [[7,5],[2,3]];
 			assert.deepEqual(expected, myFilter(list, helpers.isGreaterThan4));
 		})
+	});
+});
+
+describe('myReduce',function(){
+	var myReduce = arrayMethods.myReduce;
+	var list = [1,2,3,4];
+	
+	it('should return sum of the elements',function(){
+		assert.equal(10,myReduce(list, helpers.sum));
+	});
+
+	it('should return sum of the index of elements',function(){
+		assert.equal(6, myReduce(list, helpers.sumOfIndexes,0));
+	});
+
+	it('should return flattened array of elements',function(){
+		var list = [[1,2],[3,4]];
+		assert.deepEqual([1,2,3,4], myReduce(list, helpers.flatten,[]));
+	});
+
+	it('should return flatten array backward of elements',function(){
+		var list = [[2,1],[4,3]];
+		assert.deepEqual([4,3,2,1], myReduce(list, helpers.flattenBackward));
+	});
+
+	it('should return min element from given array',function(){
+		assert.equal(1, myReduce(list, helpers.min));
 	});
 });

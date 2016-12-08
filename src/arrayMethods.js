@@ -17,5 +17,21 @@ arrayMethods.myFilter = function(list, callback){
 	return newList;
 };
 
+arrayMethods.myReduce = function(list, callback,initial){
+	var current;
+	if(initial == undefined){
+		initial = list[0];
+		current = 1;
+	}
+	else{
+		current = 0;
+	}
+
+	for (var i = current; i < list.length; i++) {
+		initial = callback(initial, list[i], i, list);
+	}
+	return initial;
+}
+
 module.exports = arrayMethods;
 
