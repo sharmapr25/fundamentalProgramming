@@ -31,7 +31,14 @@ arrayMethods.myReduce = function(list, callback,initial){
 		initial = callback(initial, list[index], index, list);
 	}
 	return initial;
-}
+};
+
+
+arrayMethods.myForEach = function(list, callback){
+	for (var index = 0; index < list.length; index++) {
+		callback(list[index],index, list);
+	};
+};
 
 module.exports = arrayMethods;
 

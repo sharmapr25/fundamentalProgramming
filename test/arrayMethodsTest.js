@@ -65,6 +65,7 @@ helpers.powOf = function(number){
 	return Math.pow(number, number);
 };
 
+
 describe('myMap',function(){
 	var myMap = arrayMethods.myMap;
 	describe('Operation on single array',function(){
@@ -218,5 +219,38 @@ describe('myReduce',function(){
 		assert.equal(1, myReduce(list, helpers.largestdiff,init).diff);
 		assert.equal(100, myReduce(randomList, helpers.largestdiff,init).diff);
 	});
+});
 
+describe('myForEach', function(){
+	var myForEach = arrayMethods.myForEach;
+	var list = [1,2,3,4];
+
+	var makeForEach=function(total) {
+		return function(d,i,list) {
+			total.value+=d;
+		};
+	};
+
+	var addingWith = function(addingList){
+		return function(d, i, list){
+			addingList[i] += d;
+		};
+	};
+
+	it('should return undefined for given array',function(){
+		assert.equal(undefined, myForEach(list, helpers.identity));
+	});
+
+	it('should set value of total as sum of the elements',function(){
+		var total={value:0};
+		myForEach(list, makeForEach(total));
+		assert.equal(10,total.value);
+	});
+
+	it('should add elements of an array with another array',function(){
+		var firstList= [1,2,3];
+		var secondList = [5,4,3];
+		myForEach(firstList, addingWith(secondList));
+		assert.deepEqual([6,6,6],secondList);
+	});
 });
