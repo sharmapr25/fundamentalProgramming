@@ -237,6 +237,14 @@ describe('myForEach', function(){
 		};
 	};
 
+	var areSameElements = function(equalTo,result){
+		result.value=true;		
+		return function(element, index, list){
+			if(equalTo[index] != element)
+				result.value = false;
+		}
+	}
+
 	it('should return undefined for given array',function(){
 		assert.equal(undefined, myForEach(list, helpers.identity));
 	});
@@ -253,4 +261,20 @@ describe('myForEach', function(){
 		myForEach(firstList, addingWith(secondList));
 		assert.deepEqual([6,6,6],secondList);
 	});
+
+	it('should set true value for isSameElement condition',function(){
+		var list = [1,2,3];
+		var equalTo =[1,2,3];
+		var result={}; 
+		myForEach(list, areSameElements(equalTo,result));
+		assert.ok(result.value);
+	});
+
+	it('should set false value for different elements',function(){
+		var list = [1,2,3];
+		var equalTo = [1,9,3];
+		var result = {};
+		myForEach(list, areSameElements(equalTo, result));
+		assert.ok(!result.value);
+	})	
 });
