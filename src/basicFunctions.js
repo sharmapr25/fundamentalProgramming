@@ -5,7 +5,7 @@ basicFunctions.isEven = function(number){
 };
 
 basicFunctions.isOdd = function(number){
-	if(typeof(number) != 'number' || number == Infinity)
+	if(!Number.isInteger(number))
 		return false;
 	return !basicFunctions.isEven(number);
 };

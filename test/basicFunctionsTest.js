@@ -35,6 +35,10 @@ describe('basic functions ',function(){
 		it('should return false if given element is not number type',function(){
 			assert.ok(!isEven('1'));
 		});
+
+		it('should return false for given element NaN',function(){
+	    	assert.ok(!isEven(NaN));
+	    });
 	});
 
 	describe('isOdd', function() {
@@ -69,6 +73,10 @@ describe('basic functions ',function(){
 
 	    it('should return false if given element is not number type', function() {
 	        assert.ok(!isOdd('s'));
+	    });
+
+	    it('should return false for given element NaN',function(){
+	    	assert.ok(!isOdd(NaN));
 	    });
 	});
 
