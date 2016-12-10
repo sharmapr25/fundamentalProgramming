@@ -4,6 +4,7 @@ var arrays = require('../src/arrays');
 
 describe('array', function(){
 	var list = [1,2,3,4];
+	var negativeList = [-1,-2,-3,-4];
 
 	describe('select odd numbers',function(){
 		it('should return odd numbers from given list',function(){
@@ -32,8 +33,8 @@ describe('array', function(){
 		});
 
 		it('should return even numbers from negative number list',function(){
-			var list = [-1,-2,-3,-4];
-			assert.deepEqual([-2,-4], arrays.evenNumbers(list));
+			
+			assert.deepEqual([-2,-4], arrays.evenNumbers(negativeList));
 		});
 
 		it('should return empty list from non even numbers list',function(){
@@ -50,6 +51,25 @@ describe('array', function(){
 	describe('sum of ',function(){
 		it('should return sum of numbers of given list',function(){
 			assert.equal(10, arrays.sumOfNumbers(list));
+		});
+
+		it('should return sum of numbers of given negative list',function(){
+			assert.equal(-10, arrays.sumOfNumbers(negativeList));
+		});
+
+		it('should return Infinity when list has Infinity element',function(){
+			var list = [1,2,3,4,Infinity];
+			assert.equal(Infinity, arrays.sumOfNumbers(list));
+		});
+
+		it('should throw an error for an empty list',function(){
+			var msg = /Reduce of empty array with no initial value/;
+			assert.throws(function(){arrays.sumOfNumbers([])},msg)
+		});
+
+		it('should return sum of a single element list',function(){
+			var list = [1];
+			assert.equal(1, arrays.sumOfNumbers(list));
 		});
 	});
 
