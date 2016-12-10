@@ -359,4 +359,26 @@ describe('array', function(){
 			assert.equal(0, arrays.numbersBelowThresold(list, 's'));
 		});
 	});
+
+	describe('Reversing an array',function(){
+		it('should return same list for single element list',function(){
+			assert.deepEqual([1], arrays.reversing([1]));
+		});
+
+		it('should return reverse list for two elements list',function(){
+			var list= [1,2];
+			assert.deepEqual([2,1], arrays.reversing(list));
+		});
+
+		it('should return reverse order for given list',function(){
+			var expected = [4,3,2,1];
+			assert.deepEqual(expected, arrays.reversing(list));
+		});
+
+		it('should return reverse order for string list',function(){
+			var list =['c','u','b','e'];
+			var expected = ['e','b','u','c'];
+			assert.deepEqual(expected, arrays.reversing(list));
+		});
+	});
 });

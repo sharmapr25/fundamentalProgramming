@@ -99,4 +99,8 @@ arrays.numbersBelowThresold = function(list, thresold){
 	return isNumberValidateUpon(list, thresold, isLesser);
 };
 
+arrays.reversing = function(list){
+	return list.reduce(reverseOrder,[]);
+};
+
 module.exports = arrays;
