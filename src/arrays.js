@@ -65,4 +65,10 @@ arrays.averageOf = function(list){
 	return arrays.sumOfNumbers(list)/list.length;
 };
 
+arrays.mappingLengths = function(list){
+	return list.map(function(element){
+		return element.length;
+	});
+};
+
 module.exports = arrays;

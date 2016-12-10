@@ -46,5 +46,11 @@ describe('array', function(){
 			assert.equal(2.5, arrays.averageOf(list));
 		});
 
+		it('should return length of each element',function(){
+			var expected = [4,3,1,6,4];
+			var list = ["mary","had","a","little","lamb"];
+			assert.deepEqual(expected, arrays.mappingLengths(list));
+		});
+
 	});
 });
