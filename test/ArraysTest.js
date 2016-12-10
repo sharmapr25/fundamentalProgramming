@@ -6,31 +6,32 @@ describe('array', function(){
 	var list = [1,2,3,4];
 
 	describe('select odd numbers',function(){
-		it('should return odd numbers',function(){
+		it('should return odd numbers from given list',function(){
 			assert.deepEqual([1,3], arrays.oddNumbers(list));
 		});
+
 	});
 	describe('select even numbers',function(){
-		it('should return even numbers',function(){
+		it('should return even numbers from given list',function(){
 			assert.deepEqual([2,4], arrays.evenNumbers(list));
 		});
 	});
 
 	describe('sum of ',function(){
-		it('should return sum of numbers',function(){
+		it('should return sum of numbers of given list',function(){
 			assert.equal(10, arrays.sumOfNumbers(list));
 		});
 	});
 
 	describe('printing reverse', function(){
-		it('should return list in reverse order',function(){
+		it('should return given list in reverse order',function(){
 			var expected = "4\n3\n2\n1";
 			assert.equal(expected, arrays.printReverseOrder(list));
 		});
 	});
 
 	describe('selecting every second number',function(){
-		it('should return every second element',function(){
+		it('should return every second element from the given list',function(){
 			assert.deepEqual([1,3],arrays.eachSecondElement(list));
 		});
 	});
@@ -63,7 +64,7 @@ describe('array', function(){
 	});
 
 	describe('Mapping lengths',function(){
-		it('should return length of each element',function(){
+		it('should return length of each element of the given list',function(){
 			var expected = [4,3,1,6,4];
 			var list = ["mary","had","a","little","lamb"];
 			assert.deepEqual(expected, arrays.mappingLengths(list));
