@@ -141,10 +141,48 @@ describe('array', function(){
 			assert.equal(4, arrays.greatestElement(list));
 			assert.equal(26, arrays.greatestElement(otherList));
 		});
+
+		it('should return greatest number in negative list',function(){
+			assert.equal(-1, arrays.greatestElement(negativeList));
+		});
+
+		it('should return Infinity as greatest number',function(){
+			var list = [0,1 ,Infinity];
+			assert.equal(Infinity, arrays.greatestElement(list));
+		});
+
+		it('should return greatest number for floating list',function(){
+			var list = [1.2,2.1,3.3,4.2];
+			assert.equal(4.2, arrays.greatestElement(list));
+		});
+
+		it('should return greatest number from the given list',function(){
+			var list = [1,2.2,3,4,4.01];
+			assert.equal(4.01, arrays.greatestElement(list));
+		});
 	});
 
 	describe('Lowest number',function(){
 		it('should return the lowest number in the list',function(){
+			assert.equal(1, arrays.lowestElement(list));
+		});
+
+		it('should return lowest number in negative list',function(){
+			assert.equal(-4, arrays.lowestElement(negativeList));
+		});
+
+		it('should return -Infinity as lowest number',function(){
+			var list = [0,1 ,-Infinity];
+			assert.equal(-Infinity, arrays.lowestElement(list));
+		});
+
+		it('should return lowest number for floating list',function(){
+			var list = [1.2,2.1,3.3,4.2];
+			assert.equal(1.2, arrays.lowestElement(list));
+		});
+
+		it('should return lowest number from the given list',function(){
+			var list = [1,2.2,3,4,4.01];
 			assert.equal(1, arrays.lowestElement(list));
 		});
 	});
