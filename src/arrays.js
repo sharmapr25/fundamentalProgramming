@@ -76,4 +76,27 @@ arrays.countEvenNumbers = function(list){
 	return list.filter(basic.isEven).length;
 };
 
+var isGreater = function(number, limit){
+	return limit<number;
+}
+
+var isLesser = function(number, limit){
+	return limit> number;
+}
+
+
+arrays.numbersAboveThresold = function(list, thresold){
+	return isNumberValidateUpon(list, thresold, isGreater);
+};
+
+isNumberValidateUpon = function(list, thresold, condition){
+	return list.filter(function(number){
+		return condition(number, thresold);
+	}).length;
+};
+
+arrays.numbersBelowThresold = function(list, thresold){
+	return isNumberValidateUpon(list, thresold, isLesser);
+};
+
 module.exports = arrays;

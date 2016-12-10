@@ -292,4 +292,71 @@ describe('array', function(){
 			assert.equal(1, arrays.countEvenNumbers(list));
 		});
 	});
+
+	describe('Count numbers above a certain thresold',function(){
+		it('should return 1 for given thresold 0',function(){
+			assert.equal(1, arrays.numbersAboveThresold([1],0));
+		});
+
+		it('should return 2 for given thresold 0',function(){
+			var list = [1,2];
+			assert.equal(2,arrays.numbersAboveThresold(list, 0));
+		});
+
+		it('should return 3 for given thresold 1',function(){
+			assert.equal(3, arrays.numbersAboveThresold(list, 1));
+		});
+
+		it('should return 2 for given thresold 2',function(){
+			assert.equal(2, arrays.numbersAboveThresold(list, 2));
+		});
+
+		it('should return 1 for given thresold 3',function(){
+			assert.equal(1, arrays.numbersAboveThresold(list, 3));
+		});
+
+		it('should return 0 for given thresold 4',function(){
+			assert.equal(0, arrays.numbersAboveThresold(list, 4));
+		});
+
+		it("should return 0 for non number's list",function(){
+			var list = [NaN, undefined];
+			assert.equal(0, arrays.numbersAboveThresold(list, 1));
+		});
+
+		it('should return 0 for non number thresold',function(){
+			assert.equal(0, arrays.numbersAboveThresold(list, 's'));
+		});
+	});
+
+	describe('Count numbers below a certain thresold',function(){
+		it('should return 0 for given thresold 0',function(){
+			assert.equal(0, arrays.numbersBelowThresold([1],0));
+		});
+
+		it('should return 0 for given thresold 1',function(){
+			assert.equal(0, arrays.numbersBelowThresold(list, 1));
+		});
+
+		it('should return 1 for given thresold 2',function(){
+			assert.equal(1, arrays.numbersBelowThresold(list, 2));
+		});
+
+		it('should return 2 for given thresold 3',function(){
+			assert.equal(2, arrays.numbersBelowThresold(list, 3));
+		});
+
+		it('should return 3 for given thresold 4',function(){
+			assert.equal(3, arrays.numbersBelowThresold(list, 4));
+		});
+
+		it("should return 0 for non number's list",function(){
+			var list = [NaN, undefined];
+			assert.equal(0, arrays.numbersBelowThresold(list, 1));
+		});
+
+		it('should return 0 for non number thresold',function(){
+			assert.equal(0, arrays.numbersBelowThresold(list, 's'));
+		});
+	});
 });
