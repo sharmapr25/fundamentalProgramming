@@ -191,12 +191,56 @@ describe('array', function(){
 		it('should return the average of the elements',function(){
 			assert.equal(2.5, arrays.averageOf(list));
 		});
+
+		it('should return the average of the negative elements',function(){
+			assert.equal(-2.5, arrays.averageOf(negativeList));
+		});
+
+		it('should return Infinity when the list contain Infinity',function(){
+			var list = [1,2,Infinity];
+			assert.equal(Infinity,arrays.averageOf(list));
+		});
+
+		it("should return NaN for the non integer element's list",function(){
+			var list = ['s','q','u','r'];
+			assert.ok(isNaN(arrays.averageOf(list)));
+		});
+
+		it("should return averageOf floating elements's list",function(){
+			var list = [1.2,2.2,3.2,4.2];
+			assert.equal(2.7, arrays.averageOf(list));
+		});
+
+		it('should return average of positive and negative elements',function(){
+			var list = [1,2,-1,-2];
+			assert.equal(0,arrays.averageOf(list));
+		});
 	});
 
 	describe('Mapping lengths',function(){
 		it('should return length of each element of the given list',function(){
 			var expected = [4,3,1,6,4];
 			var list = ["mary","had","a","little","lamb"];
+			assert.deepEqual(expected, arrays.mappingLengths(list));
+		});
+
+		it('should return undefined for integer element',function(){
+			var expected = [undefined, undefined, undefined];
+			var list = [1,2,3];
+			assert.deepEqual(expected, arrays.mappingLengths(list));
+		});
+
+		it('should return length of each array element',function(){
+			var list = [[1],[1,2,3],[1,2]];
+			var expected = [1,3,2];
+			assert.deepEqual(expected, arrays.mappingLengths(list));
+		});
+
+		it('should return undefined for each object element',function(){
+			var obj1 = {a:1,b:2};
+			var obj2 = {a:3,b:2};
+			var list = [obj1, obj2];
+			var expected = [undefined, undefined];
 			assert.deepEqual(expected, arrays.mappingLengths(list));
 		});
 	});
