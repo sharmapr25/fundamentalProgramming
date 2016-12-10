@@ -15,7 +15,7 @@ describe('array', function(){
 		});
 
 		it('should return sum of numbers',function(){
-			assert.deepEqual(10, arrays.sumOfNumbers(list));
+			assert.equal(10, arrays.sumOfNumbers(list));
 		});
 
 		it('should return list in reverse order',function(){
@@ -34,14 +34,17 @@ describe('array', function(){
 
 		it('should return greatest number in the list',function(){
 			var otherList = [1,26,3,5];
-			assert.deepEqual(4, arrays.greatestElement(list));
-			assert.deepEqual(26, arrays.greatestElement(otherList));
+			assert.equal(4, arrays.greatestElement(list));
+			assert.equal(26, arrays.greatestElement(otherList));
 		});
 
 		it('should return the lowest number in the list',function(){
-			assert.deepEqual(1, arrays.lowestElement(list));
+			assert.equal(1, arrays.lowestElement(list));
 		});
 
+		it('should return the average of the elements',function(){
+			assert.equal(2.5, arrays.averageOf(list));
+		});
 
 	});
 });

@@ -59,6 +59,10 @@ arrays.lowestElement = function(list){
 	return list.reduce(function(initial, number){
 		return Math.min(initial, number);
 	});	
-}
+};
+
+arrays.averageOf = function(list){
+	return arrays.sumOfNumbers(list)/list.length;
+};
 
 module.exports = arrays;
