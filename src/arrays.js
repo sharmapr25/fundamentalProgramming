@@ -104,7 +104,11 @@ arrays.reversing = function(list){
 };
 
 arrays.indexOfNumber = function(list, number){
-	return list.indexOf(number);
+	for (var i = 0; i < list.length; i++) {
+		if(list[i]==number)
+			return i;
+	};
+	return -1;
 };
 
 module.exports = arrays;
