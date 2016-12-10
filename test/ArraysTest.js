@@ -31,5 +31,17 @@ describe('array', function(){
 			var expected = [13,8,5,3,2,1,1,0];
 			assert.deepEqual(expected, arrays.fiboReverse(8));
 		});
+
+		it('should return greatest number in the list',function(){
+			var otherList = [1,26,3,5];
+			assert.deepEqual(4, arrays.greatestElement(list));
+			assert.deepEqual(26, arrays.greatestElement(otherList));
+		});
+
+		it('should return the lowest number in the list',function(){
+			assert.deepEqual(1, arrays.lowestElement(list));
+		});
+
+
 	});
 });

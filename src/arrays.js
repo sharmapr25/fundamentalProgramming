@@ -48,4 +48,17 @@ arrays.fiboReverse = function(number){
 	return list;
 };
 
+
+arrays.greatestElement = function(list){
+	return list.reduce(function(initial, number){
+		return Math.max(initial, number);
+	});
+}
+
+arrays.lowestElement = function(list){
+	return list.reduce(function(initial, number){
+		return Math.min(initial, number);
+	});	
+}
+
 module.exports = arrays;
