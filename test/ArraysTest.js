@@ -102,12 +102,36 @@ describe('array', function(){
 		it('should return every second element from the given list',function(){
 			assert.deepEqual([1,3],arrays.eachSecondElement(list));
 		});
+
+		it('should return every second number of the negative list',function(){
+			assert.deepEqual([-1,-3], arrays.eachSecondElement(negativeList));
+		});
+
+		it('should return each second number of str elements list',function(){
+			var list = ['s','q','u','a','r','e'];
+			var expected = ['s','u','r'];
+			assert.deepEqual(expected, arrays.eachSecondElement(list));
+		});
 	});
 
 	describe('Reverse fibonacci',function(){
 		it('should return reverse fibonacci for given number',function(){
 			var expected = [13,8,5,3,2,1,1,0];
 			assert.deepEqual(expected, arrays.fiboReverse(8));
+		});
+
+		it('should return reverse fibo for 1',function(){
+			assert.deepEqual([0], arrays.fiboReverse(1));
+		});
+
+		it('should return empty array for 0',function(){
+			assert.deepEqual([], arrays.fiboReverse(0));
+		});
+
+		it('should throw an erorr of Invalid length',function(){
+			var msg = /Invalid array length/;
+			assert.throws(function(){arrays.fiboReverse(Infinity)},msg);
+			assert.throws(function(){arrays.fiboReverse(-1)},msg);
 		});
 	});
 
