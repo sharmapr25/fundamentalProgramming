@@ -11,7 +11,7 @@ describe('array', function(){
 			assert.deepEqual([1,3], arrays.oddNumbers(list));
 		});
 
-		it('should return odd numbers from negative number list',function(){
+		it("should return odd numbers from negative numbers's list",function(){
 			var list = [-1,-2,-3,-4];
 			assert.deepEqual([-1,-3], arrays.oddNumbers(list));
 		});
@@ -85,6 +85,16 @@ describe('array', function(){
 		it('should return given list in reverse order',function(){
 			var expected = "4\n3\n2\n1";
 			assert.equal(expected, arrays.printReverseOrder(list));
+		});
+
+		it('should return LIVE TO EVIL in reverse order',function(){
+			var list = ['L','I','V','E'];
+			var expected = "E\nV\nI\nL";
+			assert.equal(expected,arrays.printReverseOrder(list));
+		});
+
+		it('should return an empty string for empty list',function(){
+			assert.equal('',arrays.printReverseOrder([]));
 		});
 	});
 
