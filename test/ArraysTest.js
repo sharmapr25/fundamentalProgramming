@@ -124,14 +124,12 @@ describe('array', function(){
 			assert.deepEqual([0], arrays.fiboReverse(1));
 		});
 
-		it('should return empty array for 0',function(){
-			assert.deepEqual([], arrays.fiboReverse(0));
-		});
-
 		it('should throw an erorr of Invalid length',function(){
 			var msg = /Invalid array length/;
 			assert.throws(function(){arrays.fiboReverse(Infinity)},msg);
 			assert.throws(function(){arrays.fiboReverse(-1)},msg);
+			assert.throws(function(){arrays.fiboReverse(0)},msg);
+
 		});
 	});
 

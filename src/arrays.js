@@ -33,19 +33,16 @@ arrays.eachSecondElement = function(list){
 	});
 };
 
-var fibo = function(number){
-	if(number == 0 || number == 1)
-		return number;
-	return fibo(number-1)+fibo(number-2);
-};
 
 arrays.fiboReverse = function(number){
-	var list = Array.apply(null, Array(number));
-	list.forEach(function(d, i, l){
-		l.pop(l[i]);
-		l.unshift(fibo(i))
-	});
-	return list;
+	var list = [[0],[1,0]];
+	if(number == 1 || number ==2)
+		return list[number-1];
+	var list = Array.apply(null, Array(number-2));
+	return list.reduce(function(initial){
+		initial.unshift(initial[0]+initial[1]);
+		return initial;
+	},[1,0]);
 };
 
 
