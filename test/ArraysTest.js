@@ -10,10 +10,40 @@ describe('array', function(){
 			assert.deepEqual([1,3], arrays.oddNumbers(list));
 		});
 
+		it('should return odd numbers from negative number list',function(){
+			var list = [-1,-2,-3,-4];
+			assert.deepEqual([-1,-3], arrays.oddNumbers(list));
+		});
+
+		it('should return empty list from non odd numbers list',function(){
+			var list = [2,4,6,8];
+			assert.deepEqual([], arrays.oddNumbers(list));
+		});
+
+		it('should return empty list for Infinity numbers list',function(){
+			var list = [Infinity, Infinity, Infinity];
+			assert.deepEqual([], arrays.oddNumbers(list));
+		});
+
 	});
 	describe('select even numbers',function(){
 		it('should return even numbers from given list',function(){
 			assert.deepEqual([2,4], arrays.evenNumbers(list));
+		});
+
+		it('should return even numbers from negative number list',function(){
+			var list = [-1,-2,-3,-4];
+			assert.deepEqual([-2,-4], arrays.evenNumbers(list));
+		});
+
+		it('should return empty list from non even numbers list',function(){
+			var list = [1,3,5,7];
+			assert.deepEqual([], arrays.evenNumbers(list));
+		});
+
+		it('should return empty list for Infinity numbers list',function(){
+			var list = [Infinity, Infinity, Infinity];
+			assert.deepEqual([], arrays.evenNumbers(list));
 		});
 	});
 
