@@ -26,6 +26,10 @@ describe('array', function(){
 			assert.deepEqual([], arrays.oddNumbers(list));
 		});
 
+		it('should return empty list for given empty list',function(){
+			assert.deepEqual([], arrays.oddNumbers([]));
+		});
+
 	});
 	describe('select even numbers',function(){
 		it('should return even numbers from given list',function(){
@@ -45,6 +49,10 @@ describe('array', function(){
 		it('should return empty list for Infinity numbers list',function(){
 			var list = [Infinity, Infinity, Infinity];
 			assert.deepEqual([], arrays.evenNumbers(list));
+		});
+
+		it('should return empty list for given empty list',function(){
+			assert.deepEqual([], arrays.oddNumbers([]));
 		});
 	});
 
