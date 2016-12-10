@@ -242,4 +242,54 @@ describe('array', function(){
 			assert.deepEqual(expected, arrays.mappingLengths(list));
 		});
 	});
+
+	describe('Counting odd numbers',function(){
+		it('should return count of oddNumbers in a list',function(){
+			assert.equal(2, arrays.countOddNumbers(list));
+		});
+
+		it('should return 0 for an empty list',function(){
+			assert.equal(0,arrays.countOddNumbers([]));
+		});
+
+		it("should return 5 for given negative element's list",function(){
+			var list = [-1,-3,-5,-7,-9];
+			assert.equal(5, arrays.countOddNumbers(list));
+		});
+
+		it("should return 0 for Infinity element's list",function(){
+			var list = [Infinity, undefined];
+			assert.equal(0, arrays.countOddNumbers(list));
+		});
+
+		it("should return 1 for NaN 's list",function(){
+			var list = [NaN,1,2];
+			assert.equal(1, arrays.countOddNumbers(list));
+		});
+	});
+
+	describe('Counting even numbers',function(){
+		it('should return count of EvenNumbers in a list',function(){
+			assert.equal(2, arrays.countEvenNumbers(list));
+		});
+
+		it('should return 0 for an empty list',function(){
+			assert.equal(0,arrays.countEvenNumbers([]));
+		});
+
+		it("should return 5 for given negative element's list",function(){
+			var list = [-2,-4,-6,-8,-10];
+			assert.equal(5, arrays.countEvenNumbers(list));
+		});
+
+		it("should return 0 for Infinity element's list",function(){
+			var list = [Infinity, undefined];
+			assert.equal(0, arrays.countEvenNumbers(list));
+		});
+
+		it("should return 1 for NaN 's list",function(){
+			var list = [NaN,1,2];
+			assert.equal(1, arrays.countEvenNumbers(list));
+		});
+	});
 });

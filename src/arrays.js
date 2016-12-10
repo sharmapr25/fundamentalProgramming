@@ -68,4 +68,12 @@ arrays.mappingLengths = function(list){
 	});
 };
 
+arrays.countOddNumbers = function(list){
+	return list.filter(basic.isOdd).length;
+};
+
+arrays.countEvenNumbers = function(list){
+	return list.filter(basic.isEven).length;
+};
+
 module.exports = arrays;
