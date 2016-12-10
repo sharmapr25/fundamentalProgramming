@@ -103,4 +103,8 @@ arrays.reversing = function(list){
 	return list.reduce(reverseOrder,[]);
 };
 
+arrays.indexOfNumber = function(list, number){
+	return list.indexOf(number);
+};
+
 module.exports = arrays;

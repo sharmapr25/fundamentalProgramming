@@ -381,4 +381,36 @@ describe('array', function(){
 			assert.deepEqual(expected, arrays.reversing(list));
 		});
 	});
+
+	describe('Index of a number',function(){
+		it('should return index of the given number',function(){
+			assert.equal(0, arrays.indexOfNumber([1],1));
+		});
+
+		it('should return 1 index in the list for given number 2',function(){
+			assert.equal(1, arrays.indexOfNumber(list, 2));
+		});
+
+		it('should return 2 index in the list for given number 3',function(){
+			assert.equal(2, arrays.indexOfNumber(list, 3));
+		});
+
+		it('should return 3 index in the list for given number 4',function(){
+			assert.equal(3, arrays.indexOfNumber(list,4));
+		});
+
+		it('should return first occur index for given number 1',function(){
+			var list = [1,2,2,3,4];
+			assert.equal(1, arrays.indexOfNumber(list, 2));
+		});
+
+		it('should return first occur index for given number -1',function(){
+			var list = [-4,-3,-1,-2,-1];
+			assert.equal(2, arrays.indexOfNumber(list, -1));
+		});
+
+		it('should return -1 when given number is not in the list',function(){
+			assert.equal(-1, arrays.indexOfNumber(list, 5));
+		});
+	});
 });

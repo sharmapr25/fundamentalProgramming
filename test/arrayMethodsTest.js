@@ -165,7 +165,7 @@ describe('myFilter',function(){
 	        assert.deepEqual([2, 3, 4], myFilter(list, helpers.index));
 	    });
 
-	    it('should return array of unique elements',function(){
+	    it('should return an array of unique elements',function(){
 	    	 var list = [1,2,3,3,4];
 	    	assert.deepEqual([1,2,3,4],myFilter(list, helpers.isUniqueNumber));
 	    })
