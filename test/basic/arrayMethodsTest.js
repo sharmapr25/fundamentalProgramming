@@ -1,6 +1,6 @@
 var assert = require('assert');
-var arrayMethods = require('../src/arrayMethods');
-var basic = require('../src/basicFunctions.js');
+var arrayMethods = require('../../src/basic/arrayMethods');
+var basic = require('../../src/assignments/basicFunctions.js');
 
 var helpers = {};
 

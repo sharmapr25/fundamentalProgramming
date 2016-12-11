@@ -1,5 +1,5 @@
 var assert = require('assert');
-var loops = require('../src/loops');
+var loops = require('../../src/assignments/loops');
 
 describe('loops', function() {
     describe('Factorial', function() {

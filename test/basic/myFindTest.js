@@ -1,5 +1,5 @@
 var assert = require('assert');
-var my_find = require('../src/myFind');
+var my_find = require('../../src/basic/myFind');
 
 describe('find element in an array',function(){
 	it('should find the only element in a single element array',function(){

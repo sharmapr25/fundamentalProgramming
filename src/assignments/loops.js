@@ -1,5 +1,5 @@
 var loops = {};
-var exception = require('./exception.js');
+var exception = require('../lib/exception.js');
 var basic = require('./basicFunctions.js');
 
 loops.factorialOf = function(number) {

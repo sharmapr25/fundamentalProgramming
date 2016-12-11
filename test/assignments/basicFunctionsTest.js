@@ -1,5 +1,5 @@
 var assert = require('assert');
-var basicFunctions = require('../src/basicFunctions.js');
+var basicFunctions = require('../../src/assignments/basicFunctions.js');
 
 describe('basic functions ',function(){
 	describe('isEven',function(){

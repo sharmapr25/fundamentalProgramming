@@ -1,6 +1,6 @@
 var arrays = {};
 var basic = require('./basicFunctions.js');
-var exception = require('./exception.js');
+var exception = require('../lib/exception.js');
 
 arrays.oddNumbers = function(list){
 	return list.filter(basic.isOdd);

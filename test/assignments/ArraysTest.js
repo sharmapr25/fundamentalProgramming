@@ -1,5 +1,5 @@
 var assert = require('assert');
-var arrays = require('../src/arrays');
+var arrays = require('../../src/assignments/arrays');
 
 
 describe('array', function(){
