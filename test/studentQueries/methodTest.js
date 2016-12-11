@@ -6,7 +6,7 @@ describe('Mapping list into student',function(){
 
 	it('should return student object for given list',function(){
 		var expected = [{name:"joy", roll_num:1,english:2,
-			 mathematics:3,computer_science:4}];
+			mathematics:3,computer_science:4}];
 
 		assert.deepEqual(expected, queries.mappingList(defaulList));
 	});
@@ -23,78 +23,61 @@ describe('Highest score based on subject',function(){
 	describe('Highest score in mathematics',function(){
 		it('should return joel student as a highest scorer in maths',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
-			var expected= {name:"joel", roll_num:2,english:1,
-				 mathematics:4,computer_science:3};
+
 			var actualStudent = queries.highest(list, "mathematics");
 			assert.equal("joel",actualStudent.name);
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(4, actualStudent.mathematics);
-			assert.deepEqual(expected, actualStudent);
 		});
 
 
 		it('should return highest for undefined score',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,undefined,3"];
-			var expected = {name:"joy", roll_num:1,english:2,
-				 mathematics:3,computer_science:4};
 
 			var actualStudent = queries.highest(list, "mathematics");
 			assert.equal("joy", actualStudent.name);
 			assert.equal(1, actualStudent.roll_num);
 			assert.equal(3, actualStudent.mathematics);
-			assert.deepEqual(expected, actualStudent);
 		});
 	});
 
 	describe('Highest score in english',function(){
 		it('should return joy student as a high score in english',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
-			var expected = {name:"joy", roll_num:1,english:2,
-				 mathematics:3,computer_science:4};
 
 			var actualStudent = queries.highest(list, "english");
 			assert.equal("joy", actualStudent.name);
 			assert.equal(1, actualStudent.roll_num);
 			assert.equal(2, actualStudent.english);
-			assert.deepEqual(expected, actualStudent);
 		});
 
 		it('should return highest score in english for given list',function(){
 			var list = ["joy,1,undefined,3,4", "joel,2,1,undefined,3"];
-			var expected= {name:"joel", roll_num:2,english:1,
-				 mathematics:0,computer_science:3};
 
 			var actualStudent = queries.highest(list, "english");
 			assert.equal("joel",actualStudent.name);
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(1, actualStudent.english);
-			assert.deepEqual(expected, actualStudent);
 		});
 	});
 
 	describe('Highest score in computer_science',function(){
 		it("should return highest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
-			var expected = {name:"joy", roll_num:1,english:2,
-				 mathematics:3,computer_science:4};
 
 			var actualStudent = queries.highest(list, "computer_science");
 			assert.equal("joy", actualStudent.name);
 			assert.equal(1, actualStudent.roll_num);
 			assert.equal(4, actualStudent.computer_science);
-			assert.deepEqual(expected, actualStudent);
 		});
 
 		it('should return high score if student has undefined marks',function(){ 
 			var list = ["joy,1,1,3,undefined", "joel,2,1,2,3"];
-			var expected= {name:"joel", roll_num:2,english:1,
-				 mathematics:2,computer_science:3};
 
 			var actualStudent = queries.highest(list, "english");
 			assert.equal("joel",actualStudent.name);
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(3, actualStudent.computer_science);
-			assert.deepEqual(expected, actualStudent);
 		});
 	});
 });
