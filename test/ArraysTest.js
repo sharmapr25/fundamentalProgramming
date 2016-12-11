@@ -483,4 +483,35 @@ describe('array', function(){
 			assert.ok(!arrays.isDescendingOrder(negativeList));
 		});
 	});
+
+	describe('Extract digits',function(){
+			var msg = /invalid number/;
+		it('should return list of 1234',function(){
+			assert.deepEqual(defaultList, arrays.extractDigits(1234));
+		});
+
+		it('should return list of zero',function(){
+			assert.deepEqual([0], arrays.extractDigits(0));
+		});
+
+		it('should return list of 20345',function(){
+			var expected = [2,0,3,4,5];
+			assert.deepEqual(expected, arrays.extractDigits(20345));
+		});
+
+		it('should throw an error of invalid number',function(){
+			assert.throws(function(){arrays.extractDigits(NaN)},msg);
+		});
+
+		it('should throw an error for non integer element',function(){
+			var input = 'hello';
+			assert.throws(function(){arrays.extractDigits(Infinity)},msg);
+			assert.throws(function(){arrays.extractDigits(input)},msg);
+		});
+
+		it('should return negative element list for -1234',function(){
+			var expected = [-1,-2,-3,-4];
+			assert.deepEqual(expected, arrays.extractDigits(-1234));
+		});
+	});
 });

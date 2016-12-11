@@ -1,5 +1,6 @@
 var arrays = {};
 var basic = require('./basicFunctions.js');
+var exception = require('./exception.js');
 
 arrays.oddNumbers = function(list){
 	return list.filter(basic.isOdd);
@@ -133,6 +134,24 @@ arrays.isAscendingOrder = function(list){
 
 arrays.isDescendingOrder = function(list){
 	return inOrderOf(list, arrays.greatestElement);
+};
+
+var addElementIn = function(list, number){
+	list.forEach(function(){
+		list.pop();
+		list.unshift(number%10);
+		number = parseInt(number/10);
+	});
+};
+
+arrays.extractDigits = function(number){
+	if(!Number.isInteger(number))
+		throw new exception.invalidNumber();
+
+	var len = Math.abs(number).toString().length;
+	var list = Array.apply(null, Array(len));	
+	addElementIn(list, number);
+	return list;
 };
 
 module.exports = arrays;
