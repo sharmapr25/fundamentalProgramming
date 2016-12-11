@@ -82,5 +82,67 @@ describe('Highest score based on subject',function(){
 	});
 });
 
+describe('Lowest score based on subject',function(){
+	describe('lowest score in english',function(){
+		it("should return lowest score's student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
+			var actualStudent = queries.lowest(list, "english");
+
+			assert.equal("joel",actualStudent.name);
+			assert.equal(2, actualStudent.roll_num);
+			assert.equal(1, actualStudent.english);
+		});
+
+		it('should return lowest score for undefined marks student',function(){
+			var list = ["joy,1,undefined,3,4", "joel,2,1,2,3"];
+
+			var actualStudent = queries.lowest(list, "english");
+			assert.equal("joy",actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(0, actualStudent.english);
+		});
+	});
+		
+	describe('lowest score in mathematics',function(){
+		it("should return lowest score's student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
+			var actualStudent = queries.lowest(list, "mathematics");
+
+			assert.equal("joy",actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(3, actualStudent.mathematics);
+		});
+
+		it('should return lowest score for undefined marks student',function(){
+			var list = ["joy,1,2,3,4", "joel,2,1,undefined,3"];
+
+			var actualStudent = queries.lowest(list, "mathematics");
+			assert.equal("joel",actualStudent.name);
+			assert.equal(2, actualStudent.roll_num);
+			assert.equal(0, actualStudent.mathematics);
+		});
+	});
+
+	describe('lowest score in computer_science',function(){
+		it("should return lowest score's student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
+				var actualStudent = queries.lowest(list, "computer_science");
+
+				assert.equal("joel",actualStudent.name);
+				assert.equal(2, actualStudent.roll_num);
+				assert.equal(3, actualStudent.computer_science);
+		});
+
+		it('should return lowest score for undefined marks student',function(){
+			var list = ["joy,1,2,3,undefined", "joel,2,1,1,3"];
+
+			var actualStudent = queries.lowest(list, "computer_science");
+			assert.equal("joy",actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(0, actualStudent.computer_science);	
+		});
+	});
+});
+
 
 

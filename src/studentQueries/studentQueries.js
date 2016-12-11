@@ -24,10 +24,23 @@ var greater = function(first, second, subject){
 	return second;
 };
 
+var lesser = function(first, second, subject){
+	if(first[subject]< second[subject])
+		return first;
+	return second;
+};
+
 studentQueries.highest = function(list, subject){
 	var newList = studentQueries.mappingList(list);
 	return newList.reduce(function(initial, current){
 		return greater(initial, current, subject);
+	});
+};
+
+studentQueries.lowest = function(list, subject){
+	var newList = studentQueries.mappingList(list);
+	return newList.reduce(function(initial, current){
+		return lesser(initial, current, subject);
 	});
 };
 
