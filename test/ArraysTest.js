@@ -384,33 +384,71 @@ describe('array', function(){
 
 	describe('Index of a number',function(){
 		it('should return index of the given number',function(){
-			assert.equal(0, arrays.indexOfNumber([1],1));
+			assert.equal(0, arrays.firtsIndexOfNumber([1],1));
 		});
 
 		it('should return 1 index in the list for given number 2',function(){
-			assert.equal(1, arrays.indexOfNumber(list, 2));
+			assert.equal(1, arrays.firtsIndexOfNumber(list, 2));
 		});
 
 		it('should return 2 index in the list for given number 3',function(){
-			assert.equal(2, arrays.indexOfNumber(list, 3));
+			assert.equal(2, arrays.firtsIndexOfNumber(list, 3));
 		});
 
 		it('should return 3 index in the list for given number 4',function(){
-			assert.equal(3, arrays.indexOfNumber(list,4));
+			assert.equal(3, arrays.firtsIndexOfNumber(list,4));
 		});
 
 		it('should return first occur index for given number 1',function(){
 			var list = [1,2,2,3,4];
-			assert.equal(1, arrays.indexOfNumber(list, 2));
+			assert.equal(1, arrays.firtsIndexOfNumber(list, 2));
 		});
 
 		it('should return first occur index for given number -1',function(){
 			var list = [-4,-3,-1,-2,-1];
-			assert.equal(2, arrays.indexOfNumber(list, -1));
+			assert.equal(2, arrays.firtsIndexOfNumber(list, -1));
 		});
 
 		it('should return -1 when given number is not in the list',function(){
-			assert.equal(-1, arrays.indexOfNumber(list, 5));
+			assert.equal(-1, arrays.firtsIndexOfNumber(list, 5));
+		});
+	});
+
+	describe('Ascending order',function(){
+		it("should return true for ascending order's list",function(){
+			var expected = [1,2,3,4];
+			assert.ok(arrays.isAscendingOrder(list));
+		});
+
+		it('should return false for not ascending list',function(){
+			var list = [3,2,4,1];
+			assert.ok(!arrays.isAscendingOrder(list));
+		});
+
+		it('should return false for non ascending negative elements',function(){
+			var list = [2,-4,0,1];
+			assert.ok(!arrays.isAscendingOrder(list));
+		});
+
+		it("should return true for all zero elements' list",function(){
+			var list = [0,0,0,0];
+			assert.ok(arrays.isAscendingOrder(list));
+		});
+
+		it("should return false for falsy elements' list",function(){
+			var list = [NaN, undefined, Infinity];
+			var reverseList = [undefined, NaN, Infinity];
+			assert.ok(!arrays.isAscendingOrder(list));
+			assert.ok(!arrays.isAscendingOrder(reverseList));
+		});
+
+		it("should return false for negative elements' list",function(){
+			assert.ok(!arrays.isAscendingOrder(negativeList));	
+		});
+
+		it("should return true for asc negative elements' List",function(){
+			var ascNegativeList = [-4,-3,-2,-1];
+			assert.ok(arrays.isAscendingOrder(ascNegativeList));
 		});
 	});
 });

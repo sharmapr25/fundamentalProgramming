@@ -103,12 +103,28 @@ arrays.reversing = function(list){
 	return list.reduce(reverseOrder,[]);
 };
 
-arrays.indexOfNumber = function(list, number){
+arrays.firtsIndexOfNumber = function(list, number){
+	//Since it doesn't perfrom each element of an array. It comes out when it got the number.  
 	for (var i = 0; i < list.length; i++) {
 		if(list[i]==number)
 			return i;
 	};
 	return -1;
+};
+
+var resultOf = function(result,list){
+	var newList = list.map(function(number){return number;})
+	return function(number){
+		if(arrays.lowestElement(newList)!=number)
+			result.value = false;
+		newList.shift();
+	};
+};
+
+arrays.isAscendingOrder = function(list){
+	var  result = {value:true};
+	list.forEach(resultOf(result, list));
+	return result.value;
 };
 
 module.exports = arrays;
