@@ -30,18 +30,19 @@ var lesser = function(first, second, subject){
 	return second;
 };
 
-studentQueries.highest = function(list, subject){
+var selectStudentBaseOn = function(list, subject, condition){
 	var newList = studentQueries.mappingList(list);
 	return newList.reduce(function(initial, current){
-		return greater(initial, current, subject);
-	});
+		return condition(initial, current, subject);
+	});	
+};
+
+studentQueries.highest = function(list, subject){
+	return selectStudentBaseOn(list, subject, greater);
 };
 
 studentQueries.lowest = function(list, subject){
-	var newList = studentQueries.mappingList(list);
-	return newList.reduce(function(initial, current){
-		return lesser(initial, current, subject);
-	});
+	return selectStudentBaseOn(list, subject, lesser);
 };
 
 module.exports = studentQueries;
