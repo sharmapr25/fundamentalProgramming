@@ -451,4 +451,36 @@ describe('array', function(){
 			assert.ok(arrays.isAscendingOrder(ascNegativeList));
 		});
 	});
+
+	describe('Descending order',function(){
+		it("should return true for descending order's list",function(){
+			var list = [4,3,2,1];
+			assert.ok(arrays.isDescendingOrder(list));
+		});
+
+		it("should return false for non descending order's list",function(){
+			assert.ok(!arrays.isDescendingOrder(list));
+		});
+
+		it("should return true for negative list",function(){
+			assert.ok(arrays.isDescendingOrder(negativeList));
+		});
+
+		it("should return true for all same elements's list",function(){
+			var sameEleList = [1,1,1,1];
+			assert.ok(arrays.isDescendingOrder(sameEleList));
+		});
+
+		it("should return false for falsy elements' list",function(){
+			var list= [NaN, undefined,Infinity];
+			assert.ok(!arrays.isDescendingOrder(list));
+		});
+
+		it('should return false for given list',function(){
+			var list = [2,-1,3];
+			var negativeList = [-4,-3,-2,-1];
+			assert.ok(!arrays.isDescendingOrder(list));
+			assert.ok(!arrays.isDescendingOrder(negativeList));
+		});
+	});
 });

@@ -112,19 +112,27 @@ arrays.firtsIndexOfNumber = function(list, number){
 	return -1;
 };
 
-var resultOf = function(result,list){
+var resultOf = function(result,list, condition){
 	var newList = list.map(function(number){return number;})
 	return function(number){
-		if(arrays.lowestElement(newList)!=number)
+		if(condition(newList)!=number)
 			result.value = false;
 		newList.shift();
 	};
 };
 
-arrays.isAscendingOrder = function(list){
+var inOrderOf = function(list, condition){
 	var  result = {value:true};
-	list.forEach(resultOf(result, list));
+	list.forEach(resultOf(result, list, condition));
 	return result.value;
+}
+
+arrays.isAscendingOrder = function(list){
+	return inOrderOf(list, arrays.lowestElement);
+};
+
+arrays.isDescendingOrder = function(list){
+	return inOrderOf(list, arrays.greatestElement);
 };
 
 module.exports = arrays;
