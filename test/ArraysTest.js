@@ -3,12 +3,12 @@ var arrays = require('../src/arrays');
 
 
 describe('array', function(){
-	var list = [1,2,3,4];
-	var negativeList = [-1,-2,-3,-4];
+	var defaultList = [1,2,3,4];
+	var defnegativeList = [-1,-2,-3,-4];
 
 	describe('select odd numbers',function(){
 		it('should return odd numbers from given list',function(){
-			assert.deepEqual([1,3], arrays.oddNumbers(list));
+			assert.deepEqual([1,3], arrays.oddNumbers(defaultList));
 		});
 
 		it("should return odd numbers from negative numbers's list",function(){
@@ -33,12 +33,12 @@ describe('array', function(){
 	});
 	describe('select even numbers',function(){
 		it('should return even numbers from given list',function(){
-			assert.deepEqual([2,4], arrays.evenNumbers(list));
+			assert.deepEqual([2,4], arrays.evenNumbers(defaultList));
 		});
 
 		it('should return even numbers from negative number list',function(){
 			
-			assert.deepEqual([-2,-4], arrays.evenNumbers(negativeList));
+			assert.deepEqual([-2,-4], arrays.evenNumbers(defnegativeList));
 		});
 
 		it('should return empty list from non even numbers list',function(){
@@ -58,11 +58,11 @@ describe('array', function(){
 
 	describe('sum of ',function(){
 		it('should return sum of numbers of given list',function(){
-			assert.equal(10, arrays.sumOfNumbers(list));
+			assert.equal(10, arrays.sumOfNumbers(defaultList));
 		});
 
 		it('should return sum of numbers of given negative list',function(){
-			assert.equal(-10, arrays.sumOfNumbers(negativeList));
+			assert.equal(-10, arrays.sumOfNumbers(defnegativeList));
 		});
 
 		it('should return Infinity when list has Infinity element',function(){
@@ -84,7 +84,7 @@ describe('array', function(){
 	describe('printing reverse', function(){
 		it('should return given list in reverse order',function(){
 			var expected = "4\n3\n2\n1";
-			assert.equal(expected, arrays.printReverseOrder(list));
+			assert.equal(expected, arrays.printReverseOrder(defaultList));
 		});
 
 		it('should return LIVE TO EVIL in reverse order',function(){
@@ -100,11 +100,11 @@ describe('array', function(){
 
 	describe('selecting every second number',function(){
 		it('should return every second element from the given list',function(){
-			assert.deepEqual([1,3],arrays.eachSecondElement(list));
+			assert.deepEqual([1,3],arrays.eachSecondElement(defaultList));
 		});
 
 		it('should return every second number of the negative list',function(){
-			assert.deepEqual([-1,-3], arrays.eachSecondElement(negativeList));
+			assert.deepEqual([-1,-3], arrays.eachSecondElement(defnegativeList));
 		});
 
 		it('should return each second number of str elements list',function(){
@@ -136,12 +136,12 @@ describe('array', function(){
 	describe('Greatest number',function(){
 		it('should return greatest number in the list',function(){
 			var otherList = [1,26,3,5];
-			assert.equal(4, arrays.greatestElement(list));
+			assert.equal(4, arrays.greatestElement(defaultList));
 			assert.equal(26, arrays.greatestElement(otherList));
 		});
 
 		it('should return greatest number in negative list',function(){
-			assert.equal(-1, arrays.greatestElement(negativeList));
+			assert.equal(-1, arrays.greatestElement(defnegativeList));
 		});
 
 		it('should return Infinity as greatest number',function(){
@@ -162,11 +162,11 @@ describe('array', function(){
 
 	describe('Lowest number',function(){
 		it('should return the lowest number in the list',function(){
-			assert.equal(1, arrays.lowestElement(list));
+			assert.equal(1, arrays.lowestElement(defaultList));
 		});
 
 		it('should return lowest number in negative list',function(){
-			assert.equal(-4, arrays.lowestElement(negativeList));
+			assert.equal(-4, arrays.lowestElement(defnegativeList));
 		});
 
 		it('should return -Infinity as lowest number',function(){
@@ -187,11 +187,11 @@ describe('array', function(){
 
 	describe('Average of', function(){
 		it('should return the average of the elements',function(){
-			assert.equal(2.5, arrays.averageOf(list));
+			assert.equal(2.5, arrays.averageOf(defaultList));
 		});
 
 		it('should return the average of the negative elements',function(){
-			assert.equal(-2.5, arrays.averageOf(negativeList));
+			assert.equal(-2.5, arrays.averageOf(defnegativeList));
 		});
 
 		it('should return Infinity when the list contain Infinity',function(){
@@ -245,7 +245,7 @@ describe('array', function(){
 
 	describe('Counting odd numbers',function(){
 		it('should return count of oddNumbers in a list',function(){
-			assert.equal(2, arrays.countOddNumbers(list));
+			assert.equal(2, arrays.countOddNumbers(defaultList));
 		});
 
 		it('should return 0 for an empty list',function(){
@@ -270,7 +270,7 @@ describe('array', function(){
 
 	describe('Counting even numbers',function(){
 		it('should return count of EvenNumbers in a list',function(){
-			assert.equal(2, arrays.countEvenNumbers(list));
+			assert.equal(2, arrays.countEvenNumbers(defaultList));
 		});
 
 		it('should return 0 for an empty list',function(){
@@ -304,19 +304,19 @@ describe('array', function(){
 		});
 
 		it('should return 3 for given thresold 1',function(){
-			assert.equal(3, arrays.numbersAboveThresold(list, 1));
+			assert.equal(3, arrays.numbersAboveThresold(defaultList, 1));
 		});
 
 		it('should return 2 for given thresold 2',function(){
-			assert.equal(2, arrays.numbersAboveThresold(list, 2));
+			assert.equal(2, arrays.numbersAboveThresold(defaultList, 2));
 		});
 
 		it('should return 1 for given thresold 3',function(){
-			assert.equal(1, arrays.numbersAboveThresold(list, 3));
+			assert.equal(1, arrays.numbersAboveThresold(defaultList, 3));
 		});
 
 		it('should return 0 for given thresold 4',function(){
-			assert.equal(0, arrays.numbersAboveThresold(list, 4));
+			assert.equal(0, arrays.numbersAboveThresold(defaultList, 4));
 		});
 
 		it("should return 0 for non number's list",function(){
@@ -325,7 +325,7 @@ describe('array', function(){
 		});
 
 		it('should return 0 for non number thresold',function(){
-			assert.equal(0, arrays.numbersAboveThresold(list, 's'));
+			assert.equal(0, arrays.numbersAboveThresold(defaultList, 's'));
 		});
 	});
 
@@ -335,19 +335,19 @@ describe('array', function(){
 		});
 
 		it('should return 0 for given thresold 1',function(){
-			assert.equal(0, arrays.numbersBelowThresold(list, 1));
+			assert.equal(0, arrays.numbersBelowThresold(defaultList, 1));
 		});
 
 		it('should return 1 for given thresold 2',function(){
-			assert.equal(1, arrays.numbersBelowThresold(list, 2));
+			assert.equal(1, arrays.numbersBelowThresold(defaultList, 2));
 		});
 
 		it('should return 2 for given thresold 3',function(){
-			assert.equal(2, arrays.numbersBelowThresold(list, 3));
+			assert.equal(2, arrays.numbersBelowThresold(defaultList, 3));
 		});
 
 		it('should return 3 for given thresold 4',function(){
-			assert.equal(3, arrays.numbersBelowThresold(list, 4));
+			assert.equal(3, arrays.numbersBelowThresold(defaultList, 4));
 		});
 
 		it("should return 0 for non number's list",function(){
@@ -356,7 +356,7 @@ describe('array', function(){
 		});
 
 		it('should return 0 for non number thresold',function(){
-			assert.equal(0, arrays.numbersBelowThresold(list, 's'));
+			assert.equal(0, arrays.numbersBelowThresold(defaultList, 's'));
 		});
 	});
 
@@ -372,7 +372,7 @@ describe('array', function(){
 
 		it('should return reverse order for given list',function(){
 			var expected = [4,3,2,1];
-			assert.deepEqual(expected, arrays.reversing(list));
+			assert.deepEqual(expected, arrays.reversing(defaultList));
 		});
 
 		it('should return reverse order for string list',function(){
@@ -388,15 +388,15 @@ describe('array', function(){
 		});
 
 		it('should return 1 index in the list for given number 2',function(){
-			assert.equal(1, arrays.firtsIndexOfNumber(list, 2));
+			assert.equal(1, arrays.firtsIndexOfNumber(defaultList, 2));
 		});
 
 		it('should return 2 index in the list for given number 3',function(){
-			assert.equal(2, arrays.firtsIndexOfNumber(list, 3));
+			assert.equal(2, arrays.firtsIndexOfNumber(defaultList, 3));
 		});
 
 		it('should return 3 index in the list for given number 4',function(){
-			assert.equal(3, arrays.firtsIndexOfNumber(list,4));
+			assert.equal(3, arrays.firtsIndexOfNumber(defaultList,4));
 		});
 
 		it('should return first occur index for given number 1',function(){
@@ -410,14 +410,14 @@ describe('array', function(){
 		});
 
 		it('should return -1 when given number is not in the list',function(){
-			assert.equal(-1, arrays.firtsIndexOfNumber(list, 5));
+			assert.equal(-1, arrays.firtsIndexOfNumber(defaultList, 5));
 		});
 	});
 
 	describe('Ascending order',function(){
 		it("should return true for ascending order's list",function(){
 			var expected = [1,2,3,4];
-			assert.ok(arrays.isAscendingOrder(list));
+			assert.ok(arrays.isAscendingOrder(defaultList));
 		});
 
 		it('should return false for not ascending list',function(){
@@ -443,7 +443,7 @@ describe('array', function(){
 		});
 
 		it("should return false for negative elements' list",function(){
-			assert.ok(!arrays.isAscendingOrder(negativeList));	
+			assert.ok(!arrays.isAscendingOrder(defnegativeList));	
 		});
 
 		it("should return true for asc negative elements' List",function(){
@@ -459,11 +459,11 @@ describe('array', function(){
 		});
 
 		it("should return false for non descending order's list",function(){
-			assert.ok(!arrays.isDescendingOrder(list));
+			assert.ok(!arrays.isDescendingOrder(defaultList));
 		});
 
 		it("should return true for negative list",function(){
-			assert.ok(arrays.isDescendingOrder(negativeList));
+			assert.ok(arrays.isDescendingOrder(defnegativeList));
 		});
 
 		it("should return true for all same elements's list",function(){
