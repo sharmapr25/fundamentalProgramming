@@ -20,7 +20,7 @@ describe('Mapping list into student',function(){
 });
 
 describe('Highest score based on subject',function(){
-	describe('Highest score in mathematics',function(){
+	describe('highest score in mathematics',function(){
 		it('should return joel student as a highest scorer in maths',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 
@@ -41,7 +41,7 @@ describe('Highest score based on subject',function(){
 		});
 	});
 
-	describe('Highest score in english',function(){
+	describe('highest score in english',function(){
 		it('should return joy student as a high score in english',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 
@@ -61,7 +61,7 @@ describe('Highest score based on subject',function(){
 		});
 	});
 
-	describe('Highest score in computer_science',function(){
+	describe('highest score in computer_science',function(){
 		it("should return highest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 
