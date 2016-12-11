@@ -1,60 +1,34 @@
-var object=function(sentence){
-	var value=[];
-	for(var i=0;i<sentence.length;i++){
-		var a=sentence[i].split(',');
-		value.push({
-			name:a[0],roll_num:a[1],english:a[2],mathematics:+a[3],computer_science:+a[4]
-		})
-		}
-	return value;
-}
- 
-exports.highest = function(students,subject){
-	var marksOfSubject = object(students);
-	var subject=marksOfSubject.reduce(function(current,next){
-		if(+current[subject]<+next[subject])
-			return next;
-		return  current;
-	});
-	return subject;
-}
-exports.lowest = function(students,subject){
-	var marksOfSubject=object(students);
-	var subject=marksOfSubject.reduce(function(current,next){
-		if(+current[subject]>=+next[subject])
-			 return next;
-			return current;
-	});
-	return subject;
+var studentQueries = {};
+
+var setValue = function(number){
+	if(number == undefined || number == 'undefined'){
+		return 0;
+	}
+	return number;
 };
 
-exports.above = function(students,subject,limit){
-	var marksOfSubject=object(students);
-	var subject=marksOfSubject.filter(function(current){
-		return current[subject]>limit;
-	})
-	return subject;
+var changedToSubject = function(ele){
+	return {name:ele[0], roll_num:setValue(ele[1]),english:setValue(ele[2]),
+		mathematics: setValue(ele[3]), computer_science: setValue(ele[4])};
 };
-exports.below = function(students,subject,limit){
-	var marksOfSubject=object(students);
-	var subject=marksOfSubject.filter(function(current){
-		return current[subject]<limit;
-	})
-	return subject;
+
+studentQueries.mappingList = function(list){
+	return list.map(function(ele){
+		return changedToSubject(ele.split(","));
+	});
 };
-exports.phoneBook = function(students){
-	return {'B':function(){	
-	}}
+
+var greater = function(first, second, subject){
+	if(first[subject] > second[subject])
+		return first;
+	return second;
 };
-exports.averageOf = function(students,subject){
-	var marksOfSubject=object(students);
-	var subject=marksOfSubject.reduce(function(current,next){
-		if(next[subject]=='DNA'){
-		return current;
-		}
-		return (+current)+(+next[subject]);
-	},0);
-	console.log(students.length,subject);
-	return Math.floor(subject/students.length);
-	console.log(subject);
+
+studentQueries.highest = function(list, subject){
+	var newList = studentQueries.mappingList(list);
+	return newList.reduce(function(initial, current){
+		return greater(initial, current, subject);
+	});
 };
+
+module.exports = studentQueries;

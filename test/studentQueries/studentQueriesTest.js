@@ -1,8 +1,6 @@
-// Do not edit or modify this file.
-
 var assert=require("assert");
-var students=require("./students.js").students;
-var queries=require("./studentQueries.js");
+var students=require("../../src/studentQueries/data/students.js").students;
+var queries=require("../../src/studentQueries/studentQueries.js");
 
 var test={};
 test["'highest' Can Retrieve Student With Highest Score In Mathematics"]=function() {
