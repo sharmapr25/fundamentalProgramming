@@ -1,20 +1,20 @@
 var util = require('util');
 var exception = {};
 
-exception.negativeNumberException = function(){
+exception.NegativeNumberException = function(){
 	this.message = 'number must be non negative';
 };
 
-exception.outOfRangeException = function(){
+exception.OutOfRangeException = function(){
 	this.message = 'out of range';
 };
 
-exception.invalidNumber = function(){
+exception.InvalidNumber = function(){
 	this.message = 'invalid number';
 };
 
-util.inherits(exception.negativeNumberException, Error);
-util.inherits(exception.outOfRangeException, Error);
-util.inherits(exception.invalidNumber, Error);
+util.inherits(exception.NegativeNumberException, Error);
+util.inherits(exception.OutOfRangeException, Error);
+util.inherits(exception.InvalidNumber, Error);
 
 module.exports = exception;

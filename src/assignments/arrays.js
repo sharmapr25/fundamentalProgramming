@@ -146,7 +146,7 @@ var addElementIn = function(list, number){
 
 arrays.extractDigits = function(number){
 	if(!Number.isInteger(number))
-		throw new exception.invalidNumber();
+		throw new exception.InvalidNumber();
 
 	var len = Math.abs(number).toString().length;
 	var list = Array.apply(null, Array(len));	
