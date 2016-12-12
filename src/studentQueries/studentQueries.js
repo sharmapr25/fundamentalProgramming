@@ -105,4 +105,14 @@ studentQueries.phoneBook = function(list){
 	return alphabetsPhoneBook;
 };
 
+studentQueries.averageOf = function(list,subject){
+	var newList = studentQueries.mappingList(list);
+	var filteredList = skipDNAMarksStudent(newList, subject);
+	var sum = filteredList.reduce(function(initial, current){
+		return initial+current[subject];
+	},0);
+
+	return (sum/list.length);
+};
+
 module.exports = studentQueries;

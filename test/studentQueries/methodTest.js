@@ -539,5 +539,39 @@ describe('Phonebook',function(){
 	});
 });
 
+describe('AverageOf',function(){
+	describe('single element array',function(){
+		var list = ["Joy,1,2,3,4"];
+
+		it('should return 2 for english subject',function(){
+			assert.equal(2, queries.averageOf(list, "english"));
+		});
+
+		it('should return 3 for maths',function(){
+			assert.equal(3, queries.averageOf(list, "mathematics"));
+		});	
+
+		it('should return 4 for computer science',function(){
+			assert.equal(4, queries.averageOf(list, "computer_science"));
+		});
+	});
+
+	describe('more than one element array',function(){
+		var list = ["Joy,1,2,3,4","Joel,2,3,4,5"];
+
+		it('should return 2.5 average of given subject english',function(){
+			assert.equal(2.5, queries.averageOf(list, "english"));
+		});
+
+		it('should return 3.5 average of given subject maths',function(){
+			assert.equal(3.5, queries.averageOf(list, "mathematics"));
+		});
+
+		it('should reutrn 4.5 average for computer science', function(){
+			assert.equal(4.5, queries.averageOf(list, "computer_science"));
+		});
+	});
+});
+
 
 
