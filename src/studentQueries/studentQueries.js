@@ -1,12 +1,11 @@
 var studentQueries = {};
 
-var setValue = function(number){
-	return +number;
-};
-
 var changedToSubject = function(ele){
-	return {name:ele[0], roll_num:setValue(ele[1]),english:setValue(ele[2]),
-		mathematics: setValue(ele[3]), computer_science: setValue(ele[4])};
+	return { name:ele[0],
+	 	roll_num:+(ele[1]),
+	 	english:+(ele[2]),
+		mathematics: +(ele[3]),
+		computer_science: +(ele[4])};
 };
 
 studentQueries.mappingList = function(list){
@@ -14,8 +13,6 @@ studentQueries.mappingList = function(list){
 		return changedToSubject(ele.split(","));
 	});
 };
-
-
 
 var greater = function(first, second, subject){ 
 	if(first[subject] > second[subject])
@@ -33,7 +30,7 @@ var isSubjectHasDNAMarks = function(marks){
 	return isNaN(marks);
 };
 
-var skipDNAMarksStudent = function(list, subject){
+var skipDNAMarksStudents = function(list, subject){
 	return list.filter(function(student){
 		return !isSubjectHasDNAMarks(student[subject])
 	});
@@ -41,7 +38,7 @@ var skipDNAMarksStudent = function(list, subject){
 
 var filteredList = function(list, subject){
 	var newList = studentQueries.mappingList(list);
-	return skipDNAMarksStudent(newList, subject);
+	return skipDNAMarksStudents(newList, subject);
 };
 
 var selectStudentBasedOn = function(list, subject, condition){
@@ -85,7 +82,7 @@ studentQueries.below = function(list, subject, score){
 var isAlphabet = function(alphabet){
 	var asciiCode = alphabet.charCodeAt(0);
 	return (asciiCode > 64 && asciiCode <= 90);
-}
+};
 
 studentQueries.createPhoneBook = function(alphabets){
 	var list = Array.prototype.filter.call(alphabets, function(alphabet){	
@@ -95,7 +92,7 @@ studentQueries.createPhoneBook = function(alphabets){
 	return list.reduce(function(initial, current){
 		initial[current] = [];
 		return initial;
-	},{})
+	},{});
 };
 
 var addStudentInPhoneBook = function(list, phoneBook){
@@ -107,10 +104,10 @@ var addStudentInPhoneBook = function(list, phoneBook){
 
 studentQueries.phoneBook = function(list){
 	var alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var alphabetsPhoneBook =  studentQueries.createPhoneBook(alphabets);
+	var phonebook = studentQueries.createPhoneBook(alphabets);
 	var newList = studentQueries.mappingList(list);
-	addStudentInPhoneBook(newList, alphabetsPhoneBook);
-	return alphabetsPhoneBook;
+	addStudentInPhoneBook(newList, phonebook);
+	return phonebook;
 };
 
 studentQueries.averageOf = function(list,subject){

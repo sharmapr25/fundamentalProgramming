@@ -104,7 +104,7 @@ arrays.reversing = function(list){
 	return list.reduce(reverseOrder,[]);
 };
 
-arrays.firtsIndexOfNumber = function(list, number){
+arrays.firstIndexOfNumber = function(list, number){
 	//Since it doesn't perfrom each element of an array. It comes out when it got the number.  
 	for (var i = 0; i < list.length; i++) {
 		if(list[i]==number)

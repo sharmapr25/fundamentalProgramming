@@ -384,33 +384,33 @@ describe('array', function(){
 
 	describe('Index of a number',function(){
 		it('should return index of the given number',function(){
-			assert.equal(0, arrays.firtsIndexOfNumber([1],1));
+			assert.equal(0, arrays.firstIndexOfNumber([1],1));
 		});
 
 		it('should return 1 index in the list for given number 2',function(){
-			assert.equal(1, arrays.firtsIndexOfNumber(defaultList, 2));
+			assert.equal(1, arrays.firstIndexOfNumber(defaultList, 2));
 		});
 
 		it('should return 2 index in the list for given number 3',function(){
-			assert.equal(2, arrays.firtsIndexOfNumber(defaultList, 3));
+			assert.equal(2, arrays.firstIndexOfNumber(defaultList, 3));
 		});
 
 		it('should return 3 index in the list for given number 4',function(){
-			assert.equal(3, arrays.firtsIndexOfNumber(defaultList,4));
+			assert.equal(3, arrays.firstIndexOfNumber(defaultList,4));
 		});
 
 		it('should return first occur index for given number 1',function(){
 			var list = [1,2,2,3,4];
-			assert.equal(1, arrays.firtsIndexOfNumber(list, 2));
+			assert.equal(1, arrays.firstIndexOfNumber(list, 2));
 		});
 
 		it('should return first occur index for given number -1',function(){
 			var list = [-4,-3,-1,-2,-1];
-			assert.equal(2, arrays.firtsIndexOfNumber(list, -1));
+			assert.equal(2, arrays.firstIndexOfNumber(list, -1));
 		});
 
 		it('should return -1 when given number is not in the list',function(){
-			assert.equal(-1, arrays.firtsIndexOfNumber(defaultList, 5));
+			assert.equal(-1, arrays.firstIndexOfNumber(defaultList, 5));
 		});
 	});
 
