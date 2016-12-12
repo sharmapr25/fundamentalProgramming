@@ -78,4 +78,31 @@ studentQueries.below = function(list, subject, score){
 	return studentRangeOf(list, subject, score, isBelowOf);
 };
 
+var isAlphabet = function(alphabet){
+	var asciiCode = alphabet.charCodeAt(0);
+	return (asciiCode > 64 && asciiCode <= 90);
+}
+
+studentQueries.createPhoneBook = function(alphabets){
+	var list = Array.prototype.filter.call(alphabets, function(alphabet){	
+		return isAlphabet(alphabet);
+	});	
+
+	return list.reduce(function(initial, current){
+		initial[current] = [];
+		return initial;
+	},{})
+};
+
+studentQueries.phoneBook = function(list){
+	var alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var alphabetsPhoneBook =  studentQueries.createPhoneBook(alphabets);
+	var newList = studentQueries.mappingList(list);
+	newList.forEach(function(student){
+		var alphabet = student.name[0];
+		alphabetsPhoneBook[alphabet].push(student);
+	});
+	return alphabetsPhoneBook;
+};
+
 module.exports = studentQueries;

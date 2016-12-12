@@ -26,7 +26,7 @@ describe('Mapping list into student',function(){
 	it('should return students object for given list',function(){
 		var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 		var expectedNames = ["joy","joel"]
-		
+
 		var students = queries.mappingList(list);
 		var actualNames = studentNames(students);  
 		assert.deepEqual(expectedNames, actualNames);
@@ -266,7 +266,7 @@ describe('Lowest score based on subject',function(){
 	});
 });
 
-describe('above a certain score',function(){
+describe('Above a certain score',function(){
 	var defaultList = ["joy,1,2,3,4"];
 	var studentNames = function(list){
 		return list.map(function(student){return student.name;});
@@ -387,7 +387,7 @@ describe('above a certain score',function(){
 	});
 });
 
-describe('below a certain score',function(){
+describe('Below a certain score',function(){
 	var defaultList = ["joy,1,2,3,4"];
 
 	var studentNames = function(list){
@@ -478,6 +478,64 @@ describe('below a certain score',function(){
 			assert.deepEqual(["joy"], studentNames(actualStudent));
 			assert.equal(1, actualStudent.length);
 		});
+	});
+});
+
+describe('Create Phonebook',function(){
+	it('should return phonebook for given alphabet A',function(){
+		var expected = {"A":[]};
+		assert.deepEqual(expected,queries.createPhoneBook("A"));
+	});
+
+	it('should return phonebook for given alphabets ABC',function(){
+		var expected = {A:[],B:[],C:[]};
+		assert.deepEqual(expected, queries.createPhoneBook("ABC"));
+	});
+
+	it('should return an empty list for given non-alphabet 1',function(){
+		assert.deepEqual([], queries.createPhoneBook("1"));
+	});
+
+	it('should return only alphabets list for given alphabets 12ABC',function(){
+		var expected = {"A":[],"B":[],"C":[]};
+		assert.deepEqual(expected, queries.createPhoneBook("12ABC"));
+	});
+});
+
+describe('Phonebook',function(){
+	var namesBeginWith = function(phoneBook,alphabet){
+		return phoneBook[alphabet].map(function(student){return student.name});
+	};
+
+	it("should return student list for a single element list",function(){
+		var list = ["Joy,1,2,3,4"];
+		var phoneBook = queries.phoneBook(list);
+
+		assert.equal(1, phoneBook['J'].length);
+		assert.deepEqual(['Joy'], namesBeginWith(phoneBook,'J'));
+	});
+
+	it("should return students' list according to given alphabet",function(){
+		var list = ["Joy,1,8,3,4", "Joel,2,9,4,6"];
+		var phoneBook = queries.phoneBook(list);
+		var expectedNames = ["Joy","Joel"];
+		assert.equal(2, phoneBook['J'].length);
+		assert.deepEqual(expectedNames, namesBeginWith(phoneBook, 'J'));
+	});
+
+	it('should return undefined for non-alphabet',function(){
+		var list = ["Joy,1,2,3,4"];
+		var phoneBook = queries.phoneBook(list);
+		assert.equal(undefined, phoneBook['7']);
+		assert.equal(undefined, phoneBook['Error']);
+		assert.equal(undefined, phoneBook[undefined]);
+	});
+
+	it('should return 0 for non contain alphabets',function(){
+		var list = ["Joy,1,2,3,4"];
+		var phoneBook = queries.phoneBook(list);
+		assert.equal(0, phoneBook['E'].length);
+		assert.equal(0, phoneBook['A'].length);
 	});
 });
 
