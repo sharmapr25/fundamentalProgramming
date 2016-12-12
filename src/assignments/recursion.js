@@ -1,3 +1,4 @@
+var exception = require('../lib/exception');
 var recursion ={};
 
 var areNumbers = function(first,second){
@@ -26,12 +27,22 @@ var addSumOfLastTwoElements = function(list){
 	return list;
 };
 
-recursion.fibo = function(terms){
+var areTerms = function(terms){
+	return (terms>0 && Number.isInteger(terms));
+};
+
+var fiboOf = function(terms){
 	if(terms == 1)
 		return [0];
 	if(terms == 2)
 		return [0,1];
 	return addSumOfLastTwoElements(recursion.fibo(terms-1));
+};
+
+recursion.fibo = function(terms){
+	if(!areTerms(terms))
+		throw new exception.OutOfRangeException();
+	return fiboOf(terms);
 };
 
 module.exports = recursion;

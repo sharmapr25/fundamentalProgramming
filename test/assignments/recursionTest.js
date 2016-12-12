@@ -25,24 +25,39 @@ describe('Greatest common divisor',function(){
 
 
 describe('Fibonacci',function(){
-	it('should return 0 for given number 1',function(){
+	var errorMsg = /out of range/;
+	it('should return 0 for given term 1',function(){
 		assert.deepEqual([0], recursion.fibo(1));
 	});
 
-	it('should return 01 for given number 2',function(){
+	it('should return 01 for given terms 2',function(){
 		assert.deepEqual([0,1], recursion.fibo(2));
 	});
 
-	it('should return 011 for given number 3',function(){
+	it('should return 011 for given terms 3',function(){
 		assert.deepEqual([0,1,1], recursion.fibo(3));
 	});
 
-	it('should return 0112 for given number 4',function(){
+	it('should return 0112 for given terms 4',function(){
 		assert.deepEqual([0,1,1,2], recursion.fibo(4));
 	});	
 
-	it('should return 011235 for given number 6',function(){
+	it('should return 011235 for given terms 6',function(){
 		var expected = [0,1,1,2,3,5];
 		assert.deepEqual(expected, recursion.fibo(6));
+	});
+
+	it('should return out of range for given negative terms',function(){
+		assert.throws(function(){recursion.fibo(-1)},errorMsg);
+	});
+
+	it('should return out of range for given terms non integer',function(){
+		assert.throws(function(){recursion.fibo(Infinity)},errorMsg);
+		assert.throws(function(){recursion.fibo(undefined)},errorMsg);
+		assert.throws(function(){recursion.fibo('s')},errorMsg);
+	});
+
+	it('should return out of range for given terms zero',function(){
+		assert.throws(function(){recursion.fibo(0)}, errorMsg);
 	});
 });
