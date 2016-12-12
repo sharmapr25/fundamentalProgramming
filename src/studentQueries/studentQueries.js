@@ -4,7 +4,7 @@ var setValue = function(number){
 	if(number == undefined || number == 'undefined'){
 		return 0;
 	}
-	return number;
+	return +number;
 };
 
 var changedToSubject = function(ele){
@@ -26,13 +26,13 @@ var greater = function(first, second, subject){
 };
 
 var lesser = function(first, second, subject){
-	if(first[subject]< second[subject])
-		return first;
-	return second;
+	if(second[subject] <= first[subject])
+		return second;
+	return first;
 };
 
 var isSubjectHasDNAMarks = function(marks){
-	return marks == 'DNA';
+	return isNaN(marks);
 };
 
 var skipDNAMarksStudent = function(list, subject){

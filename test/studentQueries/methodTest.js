@@ -224,11 +224,11 @@ describe('Lowest score based on subject',function(){
 
 		it("should return lowest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
-				var actualStudent = queries.lowest(list, "computer_science");
+			var actualStudent = queries.lowest(list, "computer_science");
 
-				assert.equal("joel",actualStudent.name);
-				assert.equal(2, actualStudent.roll_num);
-				assert.equal(3, actualStudent.computer_science);
+			assert.equal("joel",actualStudent.name);
+			assert.equal(2, actualStudent.roll_num);
+			assert.equal(3, actualStudent.computer_science);
 		});
 
 		it('should return lowest score for undefined marks student',function(){
