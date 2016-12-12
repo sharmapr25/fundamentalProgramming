@@ -18,16 +18,35 @@ studentQueries.mappingList = function(list){
 	});
 };
 
-var greater = function(first, second, subject){
-	if(first[subject] > second[subject])
-		return first;
-	return second;
+var isDNA = function(number1, number2){
+	return number1 == 'DNA'|| number2 == 'DNA';
+};
+
+var escapeDNA = function(number1, number2, subject){
+	if(number1[subject] == 'DNA')
+		return number2;
+	return number1;
+};
+
+
+var greater = function(first, second, subject){ 
+	if(!isDNA(first[subject], second[subject])){
+		if(first[subject] > second[subject])
+			return first;
+		return second;
+	};
+
+	return escapeDNA(first,second, subject);
+		
 };
 
 var lesser = function(first, second, subject){
-	if(first[subject]< second[subject])
-		return first;
-	return second;
+	if(!isDNA(first[subject], second[subject])){
+		if(first[subject]< second[subject])
+			return first;
+		return second;
+	};
+	return escapeDNA(first[subject], second[subject]);
 };
 
 var selectStudentBaseOn = function(list, subject, condition){

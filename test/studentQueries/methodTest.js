@@ -39,6 +39,15 @@ describe('Highest score based on subject',function(){
 			assert.equal(1, actualStudent.roll_num);
 			assert.equal(3, actualStudent.mathematics);
 		});
+
+		it("should return highest score for DNA marks' student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,1,DNA,3"];
+
+			var actualStudent = queries.highest(list, "mathematics");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(3, actualStudent.mathematics);
+		});
 	});
 
 	describe('highest score in english',function(){
