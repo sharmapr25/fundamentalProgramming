@@ -11,12 +11,7 @@ describe('Mapping list into student',function(){
 		assert.deepEqual(expected, queries.mappingList(defaultList));
 	});
 
-	it('should return student object for given undefined subject',function(){
-		var list = ["joel, 2"];
-		var expected = [{name:"joel", roll_num:2, english:0,
-			mathematics:0, computer_science:0}];
-		assert.deepEqual(expected, queries.mappingList(list));
-	});
+	
 });
 
 describe('Highest score based on subject',function(){
@@ -158,9 +153,9 @@ describe('Lowest score based on subject',function(){
 			var list = ["joy,1,undefined,3,4", "joel,2,1,2,3"];
 
 			var actualStudent = queries.lowest(list, "english");
-			assert.equal("joy",actualStudent.name);
-			assert.equal(1, actualStudent.roll_num);
-			assert.equal(0, actualStudent.english);
+			assert.equal("joel",actualStudent.name);
+			assert.equal(2, actualStudent.roll_num);
+			assert.equal(1, actualStudent.english);
 		});
 
 		it("should return lowest score for DNA marks' student",function(){
@@ -197,9 +192,9 @@ describe('Lowest score based on subject',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,undefined,3"];
 
 			var actualStudent = queries.lowest(list, "mathematics");
-			assert.equal("joel",actualStudent.name);
-			assert.equal(2, actualStudent.roll_num);
-			assert.equal(0, actualStudent.mathematics);
+			assert.equal("joy",actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(3, actualStudent.mathematics);
 		});
 
 		it("should return lowest score for DNA marks' student",function(){
@@ -235,9 +230,9 @@ describe('Lowest score based on subject',function(){
 			var list = ["joy,1,2,3,undefined", "joel,2,1,1,3"];
 
 			var actualStudent = queries.lowest(list, "computer_science");
-			assert.equal("joy",actualStudent.name);
-			assert.equal(1, actualStudent.roll_num);
-			assert.equal(0, actualStudent.computer_science);	
+			assert.equal("joel",actualStudent.name);
+			assert.equal(2, actualStudent.roll_num);
+			assert.equal(3, actualStudent.computer_science);	
 		});
 
 		it("should return lowest score for DNA marks' student",function(){
@@ -247,6 +242,127 @@ describe('Lowest score based on subject',function(){
 			assert.equal("joel",actualStudent.name);
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(3, actualStudent.computer_science);	
+		});
+	});
+});
+
+describe('above a certain score',function(){
+	var defaultList = ["joy,1,2,3,4"];
+	var studentNames = function(list){
+		return list.map(function(student){return student.name;});
+	};
+
+	describe('in mathematics',function(){
+		it("should return student for a single element's list",function(){
+			var expectedName = ["joy"];
+			var actualStudent = queries.above(defaultList, "mathematics",2);
+
+			assert.deepEqual(expectedName, studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it('should return empty list for given score 3',function(){
+			var actualStudent = queries.above(defaultList, "mathematics",3);
+			assert.deepEqual(0,studentNames(actualStudent).length);
+			assert.equal(0, actualStudent.length);
+		});
+
+		it("should return a list for given score 2",function(){
+			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
+			var expectedNames = ["joy","joel"];
+			var actualStudent = queries.above(list, "mathematics",2);
+			assert.deepEqual(expectedNames, studentNames(actualStudent));
+			assert.equal(2, actualStudent.length);
+		});
+
+		it("should return a list for DNA marks' student",function(){
+			var list = ["joy,1,2,DNA,3", "joel,2,1,3,3"];
+			var actualStudent = queries.above(list, "mathematics",1);
+			assert.deepEqual(["joel"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it("should return a list for undefined marks' student",function(){
+			var list = ["joy,1,2,4,3", "joel,2,1,undefined,3"];
+			var actualStudent = queries.above(list, "mathematics",3);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+	});
+
+	describe('in english',function(){
+		it("should return student for a single element's list",function(){
+			var expectedName = ["joy"];
+			var actualStudent = queries.above(defaultList, "english",1);
+
+			assert.deepEqual(expectedName, studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it('should return empty list for given score 2',function(){
+			var actualStudent = queries.above(defaultList, "english",2);
+			assert.deepEqual(0,studentNames(actualStudent).length);
+			assert.equal(0, actualStudent.length);
+		});
+
+		it("should return a list for given score 6",function(){
+			var list = ["joy,1,8,3,4", "joel,2,9,4,3"];
+			var expectedNames = ["joy","joel"];
+			var actualStudent = queries.above(list, "english",6);
+			assert.deepEqual(expectedNames, studentNames(actualStudent));
+			assert.equal(2, actualStudent.length);
+		});
+
+		it("should return a list for DNA marks' student",function(){
+			var list = ["joy,1,DNA,2,3", "joel,2,2,3,3"];
+			var actualStudent = queries.above(list, "english",1);
+			assert.deepEqual(["joel"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it("should return a list for undefined marks' student",function(){
+			var list = ["joy,1,2,4,3", "joel,2,undefined,1,3"];
+			var actualStudent = queries.above(list, "english",1);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+	});
+
+	describe('in computer_science',function(){
+		it("should return student for a single element's list",function(){
+			var expectedName = ["joy"];
+			var actualStudent = queries.above(defaultList, "computer_science",3)
+
+			assert.deepEqual(expectedName, studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it('should return empty list for given score 4',function(){
+			var actualStudent = queries.above(defaultList, "computer_science",4)
+			assert.deepEqual(0,studentNames(actualStudent).length);
+			assert.equal(0, actualStudent.length);
+		});
+
+		it("should return a list for given score 3",function(){
+			var list = ["joy,1,8,3,4", "joel,2,9,4,6"];
+			var expectedNames = ["joy","joel"];
+			var actualStudent = queries.above(list, "computer_science",3);
+			assert.deepEqual(expectedNames, studentNames(actualStudent));
+			assert.equal(2, actualStudent.length);
+		});
+
+		it("should return a list for DNA marks' student",function(){
+			var list = ["joy,1,2,3,DNA", "joel,2,2,3,3"];
+			var actualStudent = queries.above(list, "computer_science",1);
+			assert.deepEqual(["joel"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it("should return a list for undefined marks' student",function(){
+			var list = ["joy,1,2,4,3", "joel,2,1,3,undefined"];
+			var actualStudent = queries.above(list, "computer_science",2);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
 		});
 	});
 });

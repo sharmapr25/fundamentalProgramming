@@ -1,9 +1,9 @@
 var studentQueries = {};
 
 var setValue = function(number){
-	if(number == undefined || number == 'undefined'){
-		return 0;
-	}
+	// if(number == undefined || number == 'undefined'){
+	// 	return 0;
+	// }
 	return +number;
 };
 
@@ -55,6 +55,18 @@ studentQueries.highest = function(list, subject){
 
 studentQueries.lowest = function(list, subject){
 	return selectStudentBasedOn(list, subject, lesser);
+};
+
+var isAboveOf = function(actualScore, score){
+	return actualScore> score;
+};
+
+studentQueries.above = function(list, subject, score){
+	var newList = studentQueries.mappingList(list);
+	var filteredList = skipDNAMarksStudent(newList, subject);
+	return filteredList.filter(function(student){
+		return isAboveOf(student[subject], score);
+	});
 };
 
 module.exports = studentQueries;
