@@ -106,7 +106,7 @@ test["'below' can retreieve students above a certain score in English"]=function
 test["'below' can retreieve students above a certain score in Computer Science"]=function() {
 	var actualStudents=queries.below(students,"computer_science",10);
 	var expectedNames=["Abhishek Gupta",
-		"Rahul Nandi	",
+		"Rahul Nandi",
 		"Saranraj Sekar",
 		"Suman Maity",
 		"Supriya Gole",

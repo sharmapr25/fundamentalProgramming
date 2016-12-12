@@ -3,13 +3,35 @@ var queries = require('../../src/studentQueries/studentQueries');
 
 describe('Mapping list into student',function(){
 	var defaultList = ["joy,1,2,3,4"];
+	var studentNames = function(list){
+		return list.map(function(student){return student.name});
+	};
 
-	it('should return student object for given list',function(){
-		var expected = [{name:"joy", roll_num:1,english:2,
-			mathematics:3,computer_science:4}];
-
-		assert.deepEqual(expected, queries.mappingList(defaultList));
+	it('should return student object for a single element list',function(){
+		var students = queries.mappingList(defaultList);
+		var actualNames = studentNames(students);  
+		assert.deepEqual(["joy"], actualNames);
+		assert.equal(1,students.length);
 	});
+
+	it('should return student object for given undefined subject',function(){
+		var list = ["joel, 2"];
+		var students = queries.mappingList(list);
+		var actualNames = studentNames(students);  
+		assert.deepEqual(["joel"], actualNames);
+		assert.equal(1,students.length);
+
+	});
+
+	it('should return students object for given list',function(){
+		var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
+		var expectedNames = ["joy","joel"]
+		
+		var students = queries.mappingList(list);
+		var actualNames = studentNames(students);  
+		assert.deepEqual(expectedNames, actualNames);
+		assert.equal(2,students.length);
+	});	
 });
 
 describe('Highest score based on subject',function(){
