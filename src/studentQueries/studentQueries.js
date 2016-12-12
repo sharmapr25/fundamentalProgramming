@@ -1,9 +1,6 @@
 var studentQueries = {};
 
 var setValue = function(number){
-	// if(number == undefined || number == 'undefined'){
-	// 	return 0;
-	// }
 	return +number;
 };
 
@@ -61,12 +58,24 @@ var isAboveOf = function(actualScore, score){
 	return actualScore> score;
 };
 
-studentQueries.above = function(list, subject, score){
+var isBelowOf = function(actualScore, score){
+	return actualScore < score;
+};
+
+var studentRangeOf = function(list, subject, score, condition){
 	var newList = studentQueries.mappingList(list);
 	var filteredList = skipDNAMarksStudent(newList, subject);
 	return filteredList.filter(function(student){
-		return isAboveOf(student[subject], score);
+		return condition(student[subject], score);
 	});
+};
+
+studentQueries.above = function(list, subject, score){
+	return studentRangeOf(list, subject, score, isAboveOf);
+};
+
+studentQueries.below = function(list, subject, score){
+	return studentRangeOf(list, subject, score, isBelowOf);
 };
 
 module.exports = studentQueries;

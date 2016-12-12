@@ -10,8 +10,6 @@ describe('Mapping list into student',function(){
 
 		assert.deepEqual(expected, queries.mappingList(defaultList));
 	});
-
-	
 });
 
 describe('Highest score based on subject',function(){
@@ -361,6 +359,100 @@ describe('above a certain score',function(){
 		it("should return a list for undefined marks' student",function(){
 			var list = ["joy,1,2,4,3", "joel,2,1,3,undefined"];
 			var actualStudent = queries.above(list, "computer_science",2);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+	});
+});
+
+describe('below a certain score',function(){
+	var defaultList = ["joy,1,2,3,4"];
+
+	var studentNames = function(list){
+		return list.map(function(student){return student.name;});
+	};
+
+	describe('in mathematics',function(){
+
+		it("should return a list for a single element's list",function(){
+			var actualStudent = queries.below(defaultList, "mathematics", 4);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it('should return an empty list for given score 2',function(){
+			var actualStudent = queries.below(defaultList, "mathematics", 2);
+			assert.deepEqual(0,studentNames(actualStudent).length);
+			assert.equal(0, actualStudent.length);
+		});
+
+		it("should return a list for DNA marks' student",function(){
+			var list = ["joy,1,2,DNA,3", "joel,2,1,3,3"];
+			var actualStudent = queries.below(list, "mathematics",4);
+			assert.deepEqual(["joel"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it("should return a list for undefined marks' student",function(){
+			var list = ["joy,1,2,4,3", "joel,2,1,undefined,3"];
+			var actualStudent = queries.below(list, "mathematics",5);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+	});
+
+	describe('in english',function(){
+		it("should return a list for a single element's list",function(){
+			var actualStudent = queries.below(defaultList, "english", 3);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it('should return an empty list for given score 2',function(){
+			var actualStudent = queries.below(defaultList, "english", 2);
+			assert.deepEqual(0,studentNames(actualStudent).length);
+			assert.equal(0, actualStudent.length);
+		});
+
+		it("should return a list for DNA marks' student",function(){
+			var list = ["joy,1,DNA,2,3", "joel,2,1,3,3"];
+			var actualStudent = queries.below(list, "english",3);
+			assert.deepEqual(["joel"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it("should return a list for undefined marks' student",function(){
+			var list = ["joy,1,2,4,3", "joel,2,undefined,1,3"];
+			var actualStudent = queries.below(list, "english",5);
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+	});
+
+
+	describe('in computer_science',function(){
+		it("should return a list for a single element's list",function(){
+			var actualStudent = queries.below(defaultList, "computer_science",5)
+			assert.deepEqual(["joy"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it('should return an empty list for given score 2',function(){
+			var actualStudent = queries.below(defaultList, "computer_science",2)
+			assert.deepEqual(0,studentNames(actualStudent).length);
+			assert.equal(0, actualStudent.length);
+		});
+
+		it("should return a list for DNA marks' student",function(){
+			var list = ["joy,1,2,3,DNA", "joel,2,1,3,2"];
+			var actualStudent = queries.below(list, "computer_science",3);
+			assert.deepEqual(["joel"], studentNames(actualStudent));
+			assert.equal(1, actualStudent.length);
+		});
+
+		it("should return a list for undefined marks' student",function(){
+			var list = ["joy,1,2,4,3", "joel,2,1,3,undefined"];
+			var actualStudent = queries.below(list, "computer_science",4);
 			assert.deepEqual(["joy"], studentNames(actualStudent));
 			assert.equal(1, actualStudent.length);
 		});
