@@ -30,19 +30,15 @@ var isSubjectHasDNAMarks = function(marks){
 	return isNaN(marks);
 };
 
-var skipDNAMarksStudents = function(list, subject){
+var removeStudentsWhoDNA = function(list, subject){
+	var list = studentQueries.mappingList(list);
 	return list.filter(function(student){
 		return !isSubjectHasDNAMarks(student[subject])
 	});
 };
 
-var filteredList = function(list, subject){
-	var newList = studentQueries.mappingList(list);
-	return skipDNAMarksStudents(newList, subject);
-};
-
 var selectStudentBasedOn = function(list, subject, condition){
-	var list = filteredList(list, subject);
+	var list = removeStudentsWhoDNA(list, subject);
 	return list.reduce(function(initial, current){
 		return condition(initial, current, subject);
 	});	
@@ -65,7 +61,7 @@ var isBelowOf = function(actualScore, score){
 };
 
 var studentRangeOf = function(list, subject, score, condition){
-	var list = filteredList(list, subject);
+	var list = removeStudentsWhoDNA(list, subject);
 	return list.filter(function(student){
 		return condition(student[subject], score);
 	});
@@ -79,17 +75,9 @@ studentQueries.below = function(list, subject, score){
 	return studentRangeOf(list, subject, score, isBelowOf);
 };
 
-var isAlphabet = function(alphabet){
-	var asciiCode = alphabet.charCodeAt(0);
-	return (asciiCode > 64 && asciiCode <= 90);
-};
-
-studentQueries.createPhoneBook = function(alphabets){
-	var list = Array.prototype.filter.call(alphabets, function(alphabet){	
-		return isAlphabet(alphabet);
-	});	
-
-	return list.reduce(function(initial, current){
+createPhoneBook = function(){
+	var alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	return alphabets.split("").reduce(function(initial, current){
 		initial[current] = [];
 		return initial;
 	},{});
@@ -103,15 +91,14 @@ var addStudentInPhoneBook = function(list, phoneBook){
 };
 
 studentQueries.phoneBook = function(list){
-	var alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var phonebook = studentQueries.createPhoneBook(alphabets);
+	var phonebook = createPhoneBook();
 	var newList = studentQueries.mappingList(list);
 	addStudentInPhoneBook(newList, phonebook);
 	return phonebook;
 };
 
 studentQueries.averageOf = function(list,subject){
-	var list = filteredList(list, subject);
+	var list = removeStudentsWhoDNA(list, subject);
 	var sum = list.reduce(function(init, curr){return init+curr[subject];},0);
 	return Math.ceil(sum/list.length);
 };
@@ -121,7 +108,7 @@ isBetweenOf = function(score, rangeFrom, rangeTo){
 };
 
 studentQueries.between = function(list, subject, rangeFrom, rangeTo){
-	var list = filteredList(list, subject);
+	var list = removeStudentsWhoDNA(list, subject);
 	return list.filter(function(student){
 		return isBetweenOf(student[subject], rangeFrom, rangeTo);
 	});

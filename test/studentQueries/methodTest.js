@@ -474,27 +474,6 @@ describe('Below a certain score',function(){
 	});
 });
 
-describe('Create Phonebook',function(){
-	it('should return phonebook for given alphabet A',function(){
-		var expected = {"A":[]};
-		assert.deepEqual(expected,queries.createPhoneBook("A"));
-	});
-
-	it('should return phonebook for given alphabets ABC',function(){
-		var expected = {A:[],B:[],C:[]};
-		assert.deepEqual(expected, queries.createPhoneBook("ABC"));
-	});
-
-	it('should return an empty list for given non-alphabet 1',function(){
-		assert.deepEqual([], queries.createPhoneBook("1"));
-	});
-
-	it('should return only alphabets list for given alphabets 12ABC',function(){
-		var expected = {"A":[],"B":[],"C":[]};
-		assert.deepEqual(expected, queries.createPhoneBook("12ABC"));
-	});
-});
-
 describe('Phonebook',function(){
 	var namesBeginWith = function(phoneBook,alphabet){
 		return phoneBook[alphabet].map(function(student){return student.name});
