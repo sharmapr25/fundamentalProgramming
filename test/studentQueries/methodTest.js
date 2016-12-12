@@ -2,13 +2,13 @@ var assert = require('assert');
 var queries = require('../../src/studentQueries/studentQueries');
 
 describe('Mapping list into student',function(){
-	var defaulList = ["joy,1,2,3,4"];
+	var defaultList = ["joy,1,2,3,4"];
 
 	it('should return student object for given list',function(){
 		var expected = [{name:"joy", roll_num:1,english:2,
 			mathematics:3,computer_science:4}];
 
-		assert.deepEqual(expected, queries.mappingList(defaulList));
+		assert.deepEqual(expected, queries.mappingList(defaultList));
 	});
 
 	it('should return student object for given undefined subject',function(){
@@ -21,6 +21,14 @@ describe('Mapping list into student',function(){
 
 describe('Highest score based on subject',function(){
 	describe('highest score in mathematics',function(){
+		it('should return highest score for a single element list',function(){
+			var list = ["joy,1,2,3,4"];
+			var actualStudent = queries.highest(list, "mathematics");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(3, actualStudent.mathematics);
+		});
+
 		it('should return joel student as a highest scorer in maths',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 
