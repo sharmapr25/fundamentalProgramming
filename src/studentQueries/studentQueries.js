@@ -16,6 +16,7 @@ studentQueries.mappingList = function(list){
 };
 
 
+
 var greater = function(first, second, subject){ 
 	if(first[subject] > second[subject])
 		return first;
@@ -38,10 +39,14 @@ var skipDNAMarksStudent = function(list, subject){
 	});
 };
 
-var selectStudentBasedOn = function(list, subject, condition){
+var filteredList = function(list, subject){
 	var newList = studentQueries.mappingList(list);
-	var filteredList = skipDNAMarksStudent(newList, subject);
-	return filteredList.reduce(function(initial, current){
+	return skipDNAMarksStudent(newList, subject);
+};
+
+var selectStudentBasedOn = function(list, subject, condition){
+	var list = filteredList(list, subject);
+	return list.reduce(function(initial, current){
 		return condition(initial, current, subject);
 	});	
 };
@@ -63,9 +68,8 @@ var isBelowOf = function(actualScore, score){
 };
 
 var studentRangeOf = function(list, subject, score, condition){
-	var newList = studentQueries.mappingList(list);
-	var filteredList = skipDNAMarksStudent(newList, subject);
-	return filteredList.filter(function(student){
+	var list = filteredList(list, subject);
+	return list.filter(function(student){
 		return condition(student[subject], score);
 	});
 };
@@ -94,25 +98,36 @@ studentQueries.createPhoneBook = function(alphabets){
 	},{})
 };
 
+var addStudentInPhoneBook = function(list, phoneBook){
+	list.forEach(function(student){
+		var alphabet = student.name[0];
+		phoneBook[alphabet].push(student);
+	});
+};
+
 studentQueries.phoneBook = function(list){
 	var alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	var alphabetsPhoneBook =  studentQueries.createPhoneBook(alphabets);
 	var newList = studentQueries.mappingList(list);
-	newList.forEach(function(student){
-		var alphabet = student.name[0];
-		alphabetsPhoneBook[alphabet].push(student);
-	});
+	addStudentInPhoneBook(newList, alphabetsPhoneBook);
 	return alphabetsPhoneBook;
 };
 
 studentQueries.averageOf = function(list,subject){
-	var newList = studentQueries.mappingList(list);
-	var filteredList = skipDNAMarksStudent(newList, subject);
-	var sum = filteredList.reduce(function(initial, current){
-		return initial+current[subject];
-	},0);
+	var list = filteredList(list, subject);
+	var sum = list.reduce(function(init, curr){return init+curr[subject];},0);
+	return Math.ceil(sum/list.length);
+};
 
-	return (sum/list.length);
+isBetweenOf = function(score, rangeFrom, rangeTo){
+	return (score > rangeFrom-1 && score <= rangeTo);
+};
+
+studentQueries.between = function(list, subject, rangeFrom, rangeTo){
+	var list = filteredList(list, subject);
+	return list.filter(function(student){
+		return isBetweenOf(student[subject], rangeFrom, rangeTo);
+	});
 };
 
 module.exports = studentQueries;

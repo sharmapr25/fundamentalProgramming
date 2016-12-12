@@ -1,11 +1,12 @@
 var assert = require('assert');
 var queries = require('../../src/studentQueries/studentQueries');
 
+var studentNames = function(list){
+		return list.map(function(student){return student.name});
+};
+
 describe('Mapping list into student',function(){
 	var defaultList = ["joy,1,2,3,4"];
-	var studentNames = function(list){
-		return list.map(function(student){return student.name});
-	};
 
 	it('should return student object for a single element list',function(){
 		var students = queries.mappingList(defaultList);
@@ -268,10 +269,6 @@ describe('Lowest score based on subject',function(){
 
 describe('Above a certain score',function(){
 	var defaultList = ["joy,1,2,3,4"];
-	var studentNames = function(list){
-		return list.map(function(student){return student.name;});
-	};
-
 	describe('in mathematics',function(){
 		it("should return student for a single element's list",function(){
 			var expectedName = ["joy"];
@@ -389,10 +386,6 @@ describe('Above a certain score',function(){
 
 describe('Below a certain score',function(){
 	var defaultList = ["joy,1,2,3,4"];
-
-	var studentNames = function(list){
-		return list.map(function(student){return student.name;});
-	};
 
 	describe('in mathematics',function(){
 
@@ -559,16 +552,68 @@ describe('AverageOf',function(){
 	describe('more than one element array',function(){
 		var list = ["Joy,1,2,3,4","Joel,2,3,4,5"];
 
-		it('should return 2.5 average of given subject english',function(){
-			assert.equal(2.5, queries.averageOf(list, "english"));
+		it('should return 3 average of given subject english',function(){
+			assert.equal(3, queries.averageOf(list, "english"));
 		});
 
-		it('should return 3.5 average of given subject maths',function(){
-			assert.equal(3.5, queries.averageOf(list, "mathematics"));
+		it('should return 4 average of given subject maths',function(){
+			assert.equal(4, queries.averageOf(list, "mathematics"));
 		});
 
-		it('should reutrn 4.5 average for computer science', function(){
-			assert.equal(4.5, queries.averageOf(list, "computer_science"));
+		it('should reutrn 5 average for computer science', function(){
+			assert.equal(5, queries.averageOf(list, "computer_science"));
+		});
+	});
+});
+
+describe('between',function(){
+	var singleEleList = ["Joy,1,2,3,4"];
+	var list = ["Joy,1,2,3,4","Joel,2,3,4,5"];
+
+	describe('in english',function(){
+		it('should return students for single element list',function(){
+			var actualStudent = queries.between(singleEleList,"english",1,2);
+			assert.equal(1, actualStudent.length);
+			assert.deepEqual(["Joy"], studentNames(actualStudent));
+		});
+
+		it('should return students whose score lies in given range',function(){
+			var actualStudent = queries.between(list,"english",1,3);
+			var expected = ["Joy","Joel"];
+			assert.equal(2, actualStudent.length);
+			assert.deepEqual(expected, studentNames(actualStudent));
+		});
+	})
+
+	describe('in mathematics',function(){
+		it('should return students for single element list',function(){
+			var list = ["Joy,1,2,3,4"];
+			var actualStudent = queries.between(list,"mathematics",1,3);
+			assert.equal(1, actualStudent.length);
+			assert.deepEqual(["Joy"], studentNames(actualStudent));
+		});
+
+		it('should return students whose score lies in given range',function(){
+			var actualStudent = queries.between(list,"mathematics",2,4);
+			var expected = ["Joy","Joel"];
+			assert.equal(2, actualStudent.length);
+			assert.deepEqual(expected, studentNames(actualStudent));
+		});
+	});
+
+	describe('in computer_science',function(){
+		it('should return students for single element list',function(){
+			var list = ["Joy,1,2,3,4"];
+			var actualStudent = queries.between(list,"computer_science",1,4);
+			assert.equal(1, actualStudent.length);
+			assert.deepEqual(["Joy"], studentNames(actualStudent));
+		});
+
+		it('should return students whose score lies in given range',function(){
+			var actualStudent = queries.between(list,"computer_science",3,5);
+			var expected = ["Joy","Joel"];
+			assert.equal(2, actualStudent.length);
+			assert.deepEqual(expected, studentNames(actualStudent));
 		});
 	});
 });
