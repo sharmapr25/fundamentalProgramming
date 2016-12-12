@@ -35,7 +35,6 @@ var greater = function(first, second, subject){
 			return first;
 		return second;
 	};
-
 	return escapeDNA(first,second, subject);
 		
 };
@@ -46,7 +45,7 @@ var lesser = function(first, second, subject){
 			return first;
 		return second;
 	};
-	return escapeDNA(first[subject], second[subject]);
+	return escapeDNA(first, second, subject);
 };
 
 var selectStudentBaseOn = function(list, subject, condition){

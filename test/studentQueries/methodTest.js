@@ -68,6 +68,15 @@ describe('Highest score based on subject',function(){
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(1, actualStudent.english);
 		});
+
+		it("should return highest score for DNA marks' student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,DNA,1,3"];
+
+			var actualStudent = queries.highest(list, "english");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(2, actualStudent.english);
+		});
 	});
 
 	describe('highest score in computer_science',function(){
@@ -83,10 +92,19 @@ describe('Highest score based on subject',function(){
 		it('should return high score if student has undefined marks',function(){ 
 			var list = ["joy,1,1,3,undefined", "joel,2,1,2,3"];
 
-			var actualStudent = queries.highest(list, "english");
+			var actualStudent = queries.highest(list, "computer_science");
 			assert.equal("joel",actualStudent.name);
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(3, actualStudent.computer_science);
+		});
+
+		it("should return highest score for DNA marks' student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,8,1,DNA"];
+
+			var actualStudent = queries.highest(list, "computer_science");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(4, actualStudent.computer_science);
 		});
 	});
 });
@@ -110,6 +128,16 @@ describe('Lowest score based on subject',function(){
 			assert.equal(1, actualStudent.roll_num);
 			assert.equal(0, actualStudent.english);
 		});
+
+		it("should return lowest score for DNA marks' student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,DNA,1,1"];
+
+			var actualStudent = queries.lowest(list, "english");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(2, actualStudent.english);
+		});
+
 	});
 		
 	describe('lowest score in mathematics',function(){
@@ -130,6 +158,15 @@ describe('Lowest score based on subject',function(){
 			assert.equal(2, actualStudent.roll_num);
 			assert.equal(0, actualStudent.mathematics);
 		});
+
+		it("should return lowest score for DNA marks' student",function(){
+			var list = ["joy,1,2,3,4", "joel,2,8,DNA,1"];
+
+			var actualStudent = queries.lowest(list, "mathematics");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(2, actualStudent.english);
+		});
 	});
 
 	describe('lowest score in computer_science',function(){
@@ -149,6 +186,15 @@ describe('Lowest score based on subject',function(){
 			assert.equal("joy",actualStudent.name);
 			assert.equal(1, actualStudent.roll_num);
 			assert.equal(0, actualStudent.computer_science);	
+		});
+
+		it("should return lowest score for DNA marks' student",function(){
+			var list = ["joy,1,2,3,DNA", "joel,2,1,1,3"];
+
+			var actualStudent = queries.lowest(list, "computer_science");
+			assert.equal("joel",actualStudent.name);
+			assert.equal(2, actualStudent.roll_num);
+			assert.equal(3, actualStudent.computer_science);	
 		});
 	});
 });
