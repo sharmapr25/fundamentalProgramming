@@ -59,6 +59,14 @@ describe('Highest score based on subject',function(){
 	});
 
 	describe('highest score in english',function(){
+		it('should return highest score for a single element list',function(){
+			var list = ["joy,1,2,3,4"];
+			var actualStudent = queries.highest(list, "english");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(2, actualStudent.english);
+		});
+
 		it('should return joy student as a high score in english',function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 
@@ -88,6 +96,15 @@ describe('Highest score based on subject',function(){
 	});
 
 	describe('highest score in computer_science',function(){
+
+		it('should return highest score for a single element list',function(){
+			var list = ["joy,1,2,3,4"];
+			var actualStudent = queries.highest(list, "computer_science");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(4, actualStudent.computer_science);
+		});
+
 		it("should return highest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 
@@ -119,6 +136,15 @@ describe('Highest score based on subject',function(){
 
 describe('Lowest score based on subject',function(){
 	describe('lowest score in english',function(){
+
+		it('should return lowest score for a single element list',function(){
+			var list = ["joy,1,2,3,4"];
+			var actualStudent = queries.lowest(list, "english");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(2, actualStudent.english);
+		});
+
 		it("should return lowest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 			var actualStudent = queries.lowest(list, "english");
@@ -149,6 +175,15 @@ describe('Lowest score based on subject',function(){
 	});
 		
 	describe('lowest score in mathematics',function(){
+
+		it('should return lowest score for a single element list',function(){
+			var list = ["joy,1,2,3,4"];
+			var actualStudent = queries.lowest(list, "mathematics");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(3, actualStudent.mathematics);
+		});
+
 		it("should return lowest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 			var actualStudent = queries.lowest(list, "mathematics");
@@ -178,6 +213,15 @@ describe('Lowest score based on subject',function(){
 	});
 
 	describe('lowest score in computer_science',function(){
+
+		it('should return lowest score for a single element list',function(){
+			var list = ["joy,1,2,3,4"];
+			var actualStudent = queries.lowest(list, "computer_science");
+			assert.equal("joy", actualStudent.name);
+			assert.equal(1, actualStudent.roll_num);
+			assert.equal(4, actualStudent.computer_science);
+		});
+
 		it("should return lowest score's student",function(){
 			var list = ["joy,1,2,3,4", "joel,2,1,4,3"];
 				var actualStudent = queries.lowest(list, "computer_science");

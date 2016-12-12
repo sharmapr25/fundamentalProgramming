@@ -485,7 +485,7 @@ describe('array', function(){
 	});
 
 	describe('Extract digits',function(){
-			var msg = /invalid number/;
+		var msg = /invalid number/;
 		it('should return list of 1234',function(){
 			assert.deepEqual(defaultList, arrays.extractDigits(1234));
 		});

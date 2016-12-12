@@ -18,49 +18,43 @@ studentQueries.mappingList = function(list){
 	});
 };
 
-var isDNA = function(number1, number2){
-	return number1 == 'DNA'|| number2 == 'DNA';
-};
-
-var escapeDNA = function(number1, number2, subject){
-	if(number1[subject] == 'DNA')
-		return number2;
-	return number1;
-};
-
 
 var greater = function(first, second, subject){ 
-	if(!isDNA(first[subject], second[subject])){
-		if(first[subject] > second[subject])
-			return first;
-		return second;
-	};
-	return escapeDNA(first,second, subject);
-		
+	if(first[subject] > second[subject])
+		return first;
+	return second;	
 };
 
 var lesser = function(first, second, subject){
-	if(!isDNA(first[subject], second[subject])){
-		if(first[subject]< second[subject])
-			return first;
-		return second;
-	};
-	return escapeDNA(first, second, subject);
+	if(first[subject]< second[subject])
+		return first;
+	return second;
 };
 
-var selectStudentBaseOn = function(list, subject, condition){
+var isSubjectHasDNAMarks = function(marks){
+	return marks == 'DNA';
+};
+
+var skipDNAMarksStudent = function(list, subject){
+	return list.filter(function(student){
+		return !isSubjectHasDNAMarks(student[subject])
+	});
+};
+
+var selectStudentBasedOn = function(list, subject, condition){
 	var newList = studentQueries.mappingList(list);
-	return newList.reduce(function(initial, current){
+	var filteredList = skipDNAMarksStudent(newList, subject);
+	return filteredList.reduce(function(initial, current){
 		return condition(initial, current, subject);
 	});	
 };
 
 studentQueries.highest = function(list, subject){
-	return selectStudentBaseOn(list, subject, greater);
+	return selectStudentBasedOn(list, subject, greater);
 };
 
 studentQueries.lowest = function(list, subject){
-	return selectStudentBaseOn(list, subject, lesser);
+	return selectStudentBasedOn(list, subject, lesser);
 };
 
 module.exports = studentQueries;
