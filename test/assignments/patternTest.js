@@ -27,5 +27,36 @@ describe('Filled rectangle', function(){
 			assert.deepEqual(expected, pattern.fillRectangle(4,5));
 		});
 	});
-	
+});
+
+describe('Empty rectangle',function(){
+	it('should return an empty rectangle for 3*3 dimension',function(){
+		var expected = ["***",
+						"* *",    
+						"***"];
+
+		assert.deepEqual(expected, pattern.createEmptyRectangle(3,3));
+	});
+
+	it('should return an empty rectangle for 5*10 dimension',function(){
+		var expected = ["**********",
+						"*        *",
+						"*        *",
+						"*        *",
+						"**********"];
+		assert.deepEqual(expected, pattern.createEmptyRectangle(5,10));
+	});
+
+	it('should return an empty rectangle for 2*2 dimension',function(){
+		var expected  = ["**","**"];
+    	assert.deepEqual(expected, pattern.createEmptyRectangle(2,2));
+	});
+
+	it('should return an empty rectangle for 1*1 dimension',function(){
+		assert.deepEqual(["*"], pattern.createEmptyRectangle(1,1));
+	});
+
+	it('should return an empty rectangle for 0*0 dimension',function(){
+		assert.deepEqual([], pattern.createEmptyRectangle(0,0));
+	});
 });
