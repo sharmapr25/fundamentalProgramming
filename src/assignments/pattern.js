@@ -1,5 +1,9 @@
 var pattern = {};
+var isEven = require('./basicFunctions.js').isEven;
 
+var drawList = function(length){
+	return Array.apply(null, Array(length));
+}
 
 var draw = function(times,character){
 	if(times == 1)
@@ -13,7 +17,7 @@ var drawStar = function(times){
 
 
 pattern.fillRectangle = function(row, column){
-	var list = Array.apply(null, Array(row));
+	var list =  drawList(row);
 	return list.map(function(element){
 		return drawStar(column);
 	});
@@ -33,11 +37,28 @@ pattern.createEmptyRectangle = function(row, column){
 	if(row<2){
 		return pattern.fillRectangle(row, column);
 	}
-	var list = Array.apply(null, Array(row-2));
+	var list = drawList(row-2);
 	var newList =  list.map(function(element){
 		return drawGaps(column);
 	});
 	return withFirstAndLast(newList, column);
 };
 
+var cycleOf = function(patternList){	
+	var i = -1;
+	var len = patternList.length;
+	return function(columns){
+		i = (i+1)%len;
+		return draw(columns, patternList[i]);
+	};
+}
+
+pattern.drawPattern = function(rows, columns,patternList){
+	var list = [];
+	var cycle = cycleOf(patternList);
+	for (var i = 0; i < rows; i++) {
+		list.push(cycle(columns));
+	};
+	return list;
+};
 module.exports = pattern;

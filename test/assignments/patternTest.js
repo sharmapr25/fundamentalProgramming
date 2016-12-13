@@ -60,3 +60,30 @@ describe('Empty rectangle',function(){
 		assert.deepEqual([], pattern.createEmptyRectangle(0,0));
 	});
 });
+
+describe('cycle * and - patterns',function(){
+	it('should return cycle of pattern for dimension 1*1',function(){
+		assert.deepEqual(['-'], pattern.drawPattern(1,1,['-','*']));
+	});
+
+	it('should return cycle pattern for given dimension 3*4',function(){
+		var expected = ['----',
+						"****",
+						"----"];
+		var list = ['-','*'];
+		assert.deepEqual(expected, pattern.drawPattern(3,4,list));
+	});
+
+	it('should return pattern for 0*0 dimension',function(){
+		assert.deepEqual([], pattern.drawPattern(0,0,['-','*']));
+	});
+
+	it('should return pattern for 4*5 dimension',function(){
+		var expected = ['*****',
+						'-----',
+						'*****',
+						'-----'];
+		var list = ['*','-'];
+		assert.deepEqual(expected, pattern.drawPattern(4,5, list));
+	});
+});
