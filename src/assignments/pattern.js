@@ -53,7 +53,7 @@ var cycleOf = function(patternList){
 	};
 }
 
-pattern.drawPattern = function(rows, columns,patternList){
+pattern.drawPatternsCycle = function(rows, columns,patternList){
 	var list = [];
 	var cycle = cycleOf(patternList);
 	for (var i = 0; i < rows; i++) {
@@ -61,4 +61,11 @@ pattern.drawPattern = function(rows, columns,patternList){
 	};
 	return list;
 };
+
+pattern.alignTriangleLeft = function(numberOfLines){
+	var list = [];
+	list.push(drawStar(numberOfLines));
+	return list;
+};
+
 module.exports = pattern;

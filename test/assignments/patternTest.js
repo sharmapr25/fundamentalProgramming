@@ -63,7 +63,7 @@ describe('Empty rectangle',function(){
 
 describe('cycle * and - patterns',function(){
 	it('should return cycle of pattern for dimension 1*1',function(){
-		assert.deepEqual(['-'], pattern.drawPattern(1,1,['-','*']));
+		assert.deepEqual(['-'], pattern.drawPatternsCycle(1,1,['-','*']));
 	});
 
 	it('should return cycle pattern for given dimension 3*4',function(){
@@ -71,11 +71,11 @@ describe('cycle * and - patterns',function(){
 						"****",
 						"----"];
 		var list = ['-','*'];
-		assert.deepEqual(expected, pattern.drawPattern(3,4,list));
+		assert.deepEqual(expected, pattern.drawPatternsCycle(3,4,list));
 	});
 
 	it('should return pattern for 0*0 dimension',function(){
-		assert.deepEqual([], pattern.drawPattern(0,0,['-','*']));
+		assert.deepEqual([], pattern.drawPatternsCycle(0,0,['-','*']));
 	});
 
 	it('should return pattern for 4*5 dimension',function(){
@@ -84,6 +84,12 @@ describe('cycle * and - patterns',function(){
 						'*****',
 						'-----'];
 		var list = ['*','-'];
-		assert.deepEqual(expected, pattern.drawPattern(4,5, list));
+		assert.deepEqual(expected, pattern.drawPatternsCycle(4,5, list));
+	});
+});
+
+describe('Left aligned triangle',function(){
+	it('should return triangle for one line',function(){
+		assert.deepEqual(['*'], pattern.alignTriangleLeft(1));
 	});
 });
