@@ -34,7 +34,7 @@ var withFirstAndLast = function(list, column){
 }
 
 pattern.createEmptyRectangle = function(row, column){
-	if(row<2){
+	if(row<=2){
 		return pattern.fillRectangle(row, column);
 	}
 	var list = drawList(row-2);
