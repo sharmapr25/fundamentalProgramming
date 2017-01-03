@@ -16,7 +16,7 @@ There are some assignments for:
 * Basic functions (Write functions such as isEven or isOdd)
 * [Loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
 * Pattern (Draw circle,rectangle)
-* Recursion (User [recursion](http://www.integralist.co.uk/posts/js-recursion.html) to evalute)
+* Recursion (Use [recursion](http://www.integralist.co.uk/posts/js-recursion.html) to evalute)
 
 
 
