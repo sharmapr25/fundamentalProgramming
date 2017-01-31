@@ -64,7 +64,9 @@ pattern.drawPatternsCycle = function(rows, columns,patternList){
 
 pattern.alignTriangleLeft = function(numberOfLines){
 	var list = [];
-	list.push(drawStar(numberOfLines));
+	for (var i = 1; i <= numberOfLines; i++) {
+		list.push(drawStar(i));
+	}
 	return list;
 };
 
