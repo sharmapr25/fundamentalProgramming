@@ -90,6 +90,26 @@ describe('cycle * and - patterns',function(){
 
 describe('Left aligned triangle',function(){
 	it('should return triangle for one line',function(){
-		assert.deepEqual(['*'], pattern.alignTriangleLeft(1));
+		assert.deepEqual(['*'], pattern.alignTriangleLeft(1,['*']));
+	});
+
+	it('should return triangle for four lines',function(){
+		var expected = ['*',
+						'**',
+						'***',
+						'****'];
+
+		var list = ['*'];
+		assert.deepEqual(expected, pattern.alignTriangleLeft(4,['*']));
+	});
+
+	it('should return triangle for two patterns for four lines',function(){
+		var expected = ['*',
+						'--',
+						'***',
+						'----'];
+
+		var list = ['*','-'];
+		assert.deepEqual(expected, pattern.alignTriangleLeft(4,list));
 	});
 });
