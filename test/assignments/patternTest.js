@@ -99,8 +99,21 @@ describe('Left aligned triangle',function(){
 						'***',
 						'****'];
 
-		var list = ['*'];
 		assert.deepEqual(expected, pattern.alignTriangleLeft(4));
 	});
+});
 
+describe('Right aligned triangle',function(){
+	it('should return triangle for one line',function(){
+		assert.deepEqual(['*'], pattern.alignTriangleRight(1));
+	});
+
+	it('should return triangle for four lines',function(){
+		var expected = ['   *',
+						'  **',
+						' ***',
+						'****'];
+
+		assert.deepEqual(expected, pattern.alignTriangleRight(4));
+	});
 });

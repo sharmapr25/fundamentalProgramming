@@ -6,9 +6,12 @@ var drawList = function(length){
 }
 
 var draw = function(times,character){
-	if(times == 1)
-		return character;
-	return draw(times-1,character)+character;
+	if(times>0){
+		if(times == 1)
+			return character;
+		return draw(times-1,character)+character;
+	}
+	return '';
 };
 
 var drawStar = function(times){
@@ -69,5 +72,13 @@ pattern.alignTriangleLeft = function(numberOfLines){
 	}
 	return list;
 };
+
+pattern.alignTriangleRight = function(numberOfLines){
+	var list = [];
+	for (var i = 1; i <= numberOfLines; i++) {
+		list.push(draw(numberOfLines-i,' ')+drawStar(i));
+	}
+	return list;
+}
 
 module.exports = pattern;
