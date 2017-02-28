@@ -85,15 +85,14 @@ var isLesser = function(number, limit){
 	return limit> number;
 }
 
-
-arrays.numbersAboveThresold = function(list, thresold){
-	return isNumberValidateUpon(list, thresold, isGreater);
-};
-
-isNumberValidateUpon = function(list, thresold, condition){
+var isNumberValidateUpon = function(list, thresold, condition){
 	return list.filter(function(number){
 		return condition(number, thresold);
 	}).length;
+};
+
+arrays.numbersAboveThresold = function(list, thresold){
+	return isNumberValidateUpon(list, thresold, isGreater);
 };
 
 arrays.numbersBelowThresold = function(list, thresold){
